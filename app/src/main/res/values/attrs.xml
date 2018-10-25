@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="custom_component_attributes">
+        <attr name="custom_component_title" format="reference" />
+        <attr name="custom_component_length" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="billyon_text_input_layout_attributes">
+        <attr name="textHint" format="reference" />
+        <attr name="textErrorMessage" format="reference"/>
+        <attr name="textMinLength" format="integer"/>
+    </declare-styleable>
+
+</resources>
