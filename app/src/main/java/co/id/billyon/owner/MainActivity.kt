@@ -1,21 +1,15 @@
 package co.id.billyon
 
-import android.net.Uri
-import android.opengl.Visibility
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.internal.BottomNavigationMenu
 import android.support.design.widget.BottomNavigationView
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavController.OnNavigatedListener {
 

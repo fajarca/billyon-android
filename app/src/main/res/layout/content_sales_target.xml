@@ -11,6 +11,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="Sales Target"
+        android:textSize="14sp"
         style="@style/BillyonTheme.Text.Heading"
         app:layout_constraintBottom_toBottomOf="@+id/btnDailyTarget"
         app:layout_constraintEnd_toStartOf="@+id/btnDailyTarget"
@@ -18,27 +19,59 @@
         app:layout_constraintTop_toTopOf="@+id/btnDailyTarget" />
 
     <TextView
-        android:id="@+id/tvTargetSales"
+        android:id="@+id/labelGrossIncome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Target IDR 5.000.000/month"
-        app:layout_constraintEnd_toEndOf="@+id/btnMonthTarget"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/circularstdbook"
+        android:text="Revenue"
         app:layout_constraintStart_toStartOf="@+id/labelSalesTargetHeading"
-        app:layout_constraintTop_toBottomOf="@+id/btnDailyTarget" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ProgressBar
-        android:id="@+id/pbSalesTarget"
+        android:id="@+id/pbGross"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:max="100"
+        android:progress="70"
+        android:progressDrawable="@drawable/rounded_progressbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelGrossIncome" />
+
+    <ProgressBar
+        android:id="@+id/pbNett"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:max="100"
-        android:progressDrawable="@drawable/rounded_progressbar"
         android:progress="70"
-        app:layout_constraintEnd_toEndOf="@+id/tvTargetSales"
-        app:layout_constraintStart_toStartOf="@+id/tvTargetSales"
-        app:layout_constraintTop_toBottomOf="@+id/tvTargetSales" />
+        android:progressDrawable="@drawable/rounded_progressbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/labelGrossIncome"
+        app:layout_constraintTop_toBottomOf="@+id/labelNettIncome" />
+
+    <ProgressBar
+        android:id="@+id/pbTransaction"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:max="100"
+        android:progress="70"
+        android:progressDrawable="@drawable/rounded_progressbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/labelGrossIncome"
+        app:layout_constraintTop_toBottomOf="@+id/labelTransactionAmount" />
 
     <Button
         android:id="@+id/btnMonthTarget"
@@ -72,38 +105,75 @@
         android:layout_marginTop="16dp"
         android:textSize="10sp"
         android:layout_marginEnd="8dp"
-        android:text="Daily"
+        android:text="Today"
         app:layout_constraintEnd_toStartOf="@+id/btnWeekTarget"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/labelCurrentSalesTarget"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/circularstdbook"
-        android:layout_marginTop="16dp"
-        android:text="Current Daily Sales"
-        app:layout_constraintEnd_toEndOf="@+id/tvTargetSales"
-        app:layout_constraintStart_toStartOf="@+id/tvTargetSales"
-        app:layout_constraintTop_toBottomOf="@+id/pbSalesTarget" />
-
-    <TextView
-        android:id="@+id/tvSalesTarget"
+        android:id="@+id/labelNettIncome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/circularstdbook"
-        android:text="3.4 Juta"
-        android:textColor="@color/pink_500"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Profit"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelCurrentSalesTarget" />
+        app:layout_constraintTop_toBottomOf="@+id/pbGross" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/circularstdbook"
+        android:text="5jt"
+        app:layout_constraintBottom_toBottomOf="@+id/labelGrossIncome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelGrossIncome" />
+
+    <TextView
+        android:id="@+id/labelTransactionAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/circularstdbook"
+        android:text="Transaction Number"
+        app:layout_constraintStart_toStartOf="@+id/pbNett"
+        app:layout_constraintTop_toBottomOf="@+id/pbNett" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/circularstdbook"
+        android:text="2jt"
+        app:layout_constraintBottom_toBottomOf="@+id/labelNettIncome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelNettIncome" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/circularstdbook"
+        android:text="50"
+        app:layout_constraintBottom_toBottomOf="@+id/labelTransactionAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/labelTransactionAmount" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/circularstdbook"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="12sp"
+        android:layout_marginTop="16dp"
+        android:text="Today, 29 October 2019"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelSalesTargetHeading" />
 
 
 </android.support.constraint.ConstraintLayout>

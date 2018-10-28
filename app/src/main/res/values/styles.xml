@@ -40,11 +40,22 @@
         <item name="android:minWidth">0dp</item>
     </style>
 
+    <!--TextView-->
     <style name="BillyonTheme.Text.Heading" parent="android:Widget.TextView">
         <item name="android:textSize">12sp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/grey_700</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="BillyonTheme.Text.Circular" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/circular_family</item>
+    </style>
+
+    <!--BottomNavigationView-->
+    <style name="BillyonTheme.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/circularstdbook</item>
+    </style>
+
 
 </resources>

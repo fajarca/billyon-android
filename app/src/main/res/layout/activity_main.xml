@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".owner.MainActivity">
 
    <include
        android:id="@+id/toolbar"
@@ -31,7 +31,8 @@
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:menu="@menu/bottom_main_menu"
-       app:labelVisibilityMode="unlabeled"
+       app:labelVisibilityMode="labeled"
+       android:theme="@style/BillyonTheme.BottomNavigationView"
        app:itemIconTint="@drawable/selector_bottom_navigation"
        app:itemTextColor="@drawable/selector_bottom_navigation" />
 

@@ -28,5 +28,7 @@
 
     <string name="err_msg_field_empty">Isian ini tidak boleh kosong</string>
     <string name="err_msg_field_empty_">Tidak boleh kosong.</string>
+    <string name="label_store_number">Store\nNumber</string>
+    <string name="label_employee_number">Employee\nNumber</string>
 
 </resources>

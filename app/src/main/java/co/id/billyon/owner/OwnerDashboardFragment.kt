@@ -91,7 +91,7 @@ class OwnerDashboardFragment : Fragment() {
 
         val dataSets = arrayListOf<ILineDataSet>()
         dataSets.add(firstDataSet)
-        dataSets.add(secondDataSet)
+       // dataSets.add(secondDataSet)
 
         val lineData = LineData(dataSets)
         lineChart.data = lineData

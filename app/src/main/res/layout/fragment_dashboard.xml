@@ -17,14 +17,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="@dimen/margin24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:paddingBottom="64dp"
             app:cardCornerRadius="@dimen/margin8dp"
             app:cardElevation="@dimen/margin8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cvTotalProductSold">
+            app:layout_constraintTop_toTopOf="parent">
 
             <include
                 layout="@layout/content_sales_target"
@@ -43,6 +43,7 @@
             android:clickable="true"
             app:cardBackgroundColor="#BBDEFB"
             app:cardCornerRadius="@dimen/margin8dp"
+            android:visibility="gone"
             app:cardElevation="@dimen/margin8dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/centerGuideline"
@@ -99,6 +100,7 @@
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             app:cardBackgroundColor="#ffcdd2"
+            android:visibility="gone"
             app:cardCornerRadius="@dimen/margin8dp"
             app:cardElevation="@dimen/margin8dp"
             app:layout_constraintEnd_toStartOf="@+id/centerGuideline"
@@ -156,6 +158,7 @@
             app:cardBackgroundColor="#B2DFDB"
             app:cardCornerRadius="@dimen/margin8dp"
             app:cardElevation="@dimen/margin8dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/centerGuideline"
             app:layout_constraintTop_toTopOf="@+id/cvGrossIncome">
@@ -206,15 +209,15 @@
             android:id="@+id/cvGrossIncome"
             android:layout_width="0dp"
             android:layout_height="190dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="4dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             app:cardCornerRadius="@dimen/margin8dp"
             app:cardElevation="@dimen/margin8dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@+id/centerGuideline"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/labelHello">
+            tools:layout_editor_absoluteY="100dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -264,44 +267,17 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin16dp"
-            android:layout_marginTop="@dimen/margin16dp"
-            android:fontFamily="@font/circularstdbook"
-            android:text="Hello Fajar!"
-            android:textColor="@color/grey_700"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/labelHello"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/circularstdbook"
-            android:text="Here is your report summary"
-            android:textColor="@color/grey_700"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
         <include
+            android:id="@+id/include"
             layout="@layout/content_sales_chart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="@dimen/margin16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/cvSalesTarget"
-            app:layout_constraintStart_toStartOf="@+id/cvSalesTarget"
-            app:layout_constraintTop_toBottomOf="@+id/cvSalesTarget" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include2" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
@@ -318,10 +294,33 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1056dp"
             android:orientation="vertical"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintGuide_percent="0.9"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/include2"
+            layout="@layout/content_employee_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/cvSalesTarget"
+            app:layout_constraintStart_toStartOf="@+id/centerGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/cvSalesTarget" />
+
+        <include
+            android:id="@+id/include2"
+            layout="@layout/content_store_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/cvSalesTarget"
+            app:layout_constraintEnd_toStartOf="@+id/centerGuideline"
+            app:layout_constraintStart_toStartOf="@+id/cvSalesTarget"
+            app:layout_constraintTop_toBottomOf="@+id/cvSalesTarget" />
+
 
     </android.support.constraint.ConstraintLayout>
 
