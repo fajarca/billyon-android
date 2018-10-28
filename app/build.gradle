@@ -1,14 +1,16 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 //Apply Safe Args Plugin for Navigation Component
 apply plugin: 'androidx.navigation.safeargs'
 
 
 android {
+    dataBinding {
+        enabled = true
+    }
+    flavorDimensions "default"
     compileSdkVersion 28
     defaultConfig {
         applicationId "co.id.billyon"
@@ -23,6 +25,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    productFlavors {
+        production {
+            dimension "default"
+            resValue "string", "app_name", "Billyon"
+        }
+
+        development {
+            dimension "default"
+            resValue "string", "app_name", "Billyon Demo"
+        }
+
     }
 }
 
@@ -44,4 +58,9 @@ dependencies {
 
     //Chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
+    //Room
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+
 }

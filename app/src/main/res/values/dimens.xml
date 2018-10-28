@@ -9,6 +9,11 @@
     <dimen name="padding8dp">8dp</dimen>
     <dimen name="padding16dp">8dp</dimen>
 
+    <dimen name="textSize12sp">12sp</dimen>
+    <dimen name="textSize14sp">14sp</dimen>
+    <dimen name="textSize16sp">16sp</dimen>
+    <dimen name="textSize18sp">18sp</dimen>
+
     <dimen name="button_radius_16dp">16dp</dimen>
     <dimen name="margin24dp">24dp</dimen>
 

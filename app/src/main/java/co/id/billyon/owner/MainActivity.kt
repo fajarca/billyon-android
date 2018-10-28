@@ -1,5 +1,6 @@
 package co.id.billyon.owner
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
@@ -11,29 +12,29 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import co.id.billyon.R
+import co.id.billyon.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NavController.OnNavigatedListener {
 
-
-
     lateinit var toolbar : Toolbar
     lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setupToolbar()
         setupNavigation()
     }
 
     private fun setupToolbar() {
-        toolbar = findViewById(R.id.toolbar)
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        toolbar = binding.toolbar.toolbar
         setSupportActionBar(toolbar)
     }
 
     private fun setupNavigation() {
         val navController = findNavController(R.id.nav_host)
-
+        bottomNavigationView = binding.bottomNavigationView
         //When we navigate to a new screen, we would like to update the Toolbar’s title
         setupActionBarWithNavController(navController)
         bottomNavigationView.setupWithNavController(navController)

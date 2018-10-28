@@ -52,6 +52,20 @@
         <item name="android:fontFamily">@font/circular_family</item>
     </style>
 
+    <style name="BillyonTheme.Text.Circular.Bold" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/circular_family</item>
+        <item name="android:textSize">@dimen/textSize16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey_700</item>
+    </style>
+
+
+    <style name="BillyonTheme.Text.Circular.Normal" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/circular_family</item>
+        <item name="android:textSize">@dimen/textSize14sp</item>
+        <item name="android:textColor">@color/grey_500</item>
+    </style>
+
     <!--BottomNavigationView-->
     <style name="BillyonTheme.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
         <item name="fontFamily">@font/circularstdbook</item>

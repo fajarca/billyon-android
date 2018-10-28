@@ -36,5 +36,7 @@
     <color name="teal_700">#00796B</color>
     <color name="teal_900">#004D40</color>
 
+    <color name="white">#fff</color>
+
     <color name="pale_green">#6BF3AD</color>
 </resources>

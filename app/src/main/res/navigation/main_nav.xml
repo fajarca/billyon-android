@@ -97,5 +97,10 @@
         android:name="co.id.billyon.owner.EmployeeFragment"
         android:label="@string/label_employee"
         tools:layout="@layout/fragment_employee" />
+    <fragment
+        android:id="@+id/cashierDashboardFragment"
+        android:name="co.id.billyon.staff.CashierDashboardFragment"
+        android:label="fragment_cashier_dashboard"
+        tools:layout="@layout/fragment_cashier_dashboard" />
 
 </navigation>
