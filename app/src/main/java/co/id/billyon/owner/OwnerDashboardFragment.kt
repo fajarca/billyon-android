@@ -1,12 +1,14 @@
 package co.id.billyon.owner
 
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.id.billyon.R
+import co.id.billyon.databinding.FragmentDashboardBinding
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -22,10 +24,16 @@ import java.util.*
  */
 class OwnerDashboardFragment : Fragment() {
 
+    lateinit var binding : FragmentDashboardBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container,false)
+        val view = binding.root
+
+        binding.contentEmployeeNumber.tvEmployeeNumber.text = "80"
+
         return view
     }
 
