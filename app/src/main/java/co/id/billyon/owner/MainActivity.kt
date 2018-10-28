@@ -1,4 +1,4 @@
-package co.id.billyon
+package co.id.billyon.owner
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -10,6 +10,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import co.id.billyon.R
 
 class MainActivity : AppCompatActivity(), NavController.OnNavigatedListener {
 

@@ -1,4 +1,4 @@
-package co.id.billyon
+package co.id.billyon.owner
 
 
 import android.os.Bundle
@@ -6,8 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation.findNavController
-import kotlinx.android.synthetic.main.fragment_owner_store_management.*
+import co.id.billyon.R
 
 /**
  * A simple [Fragment] subclass.

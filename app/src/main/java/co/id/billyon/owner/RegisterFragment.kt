@@ -1,4 +1,4 @@
-package co.id.billyon
+package co.id.billyon.owner
 
 
 import android.os.Bundle
@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation.findNavController
-import kotlinx.android.synthetic.main.fragment_login.*
+import co.id.billyon.R
+import co.id.billyon.owner.RegisterFragmentDirections
 import kotlinx.android.synthetic.main.fragment_register.*
 
 

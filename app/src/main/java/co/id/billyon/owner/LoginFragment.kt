@@ -1,13 +1,14 @@
-package co.id.billyon
+package co.id.billyon.owner
 
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import co.id.billyon.owner.LoginFragmentDirections
+import co.id.billyon.R
 import kotlinx.android.synthetic.main.fragment_login.*
 
 
