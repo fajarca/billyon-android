@@ -10,13 +10,16 @@ data class Product(
 
         @PrimaryKey
         @ColumnInfo(name = "product_id")
-        var id : String,
+        var id : Long,
 
         @ColumnInfo(name = "store_id")
         var storeId : Int,
 
         @ColumnInfo(name = "category_id")
         var categoryId : Int,
+
+        @ColumnInfo(name = "image_path")
+        var imagePath : String,
 
         var name : String,
         var stock : Int,
