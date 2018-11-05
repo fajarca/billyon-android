@@ -8,13 +8,13 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="co.id.billyon.staff.viewmodel.CashierDashboardViewModel"/>
+            type="co.id.billyon.viewmodel.CashierDashboardViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".staff.CashierDashboardFragment">
+        tools:context=".ui.CashierDashboardFragment">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"

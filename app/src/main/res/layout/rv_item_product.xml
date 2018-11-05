@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="product"
-            type="co.id.billyon.staff.uimodels.Product"/>
+            type="co.id.billyon.model.Product"/>
     </data>
 
     <android.support.v7.widget.CardView

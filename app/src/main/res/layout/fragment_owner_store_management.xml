@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".owner.OwnerStoreManagement">
+    tools:context=".ui.OwnerStoreManagement">
 
     <Button
         android:id="@+id/btnAddStore"
