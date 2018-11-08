@@ -3,10 +3,13 @@ package co.id.billyon.repository
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import co.id.billyon.api.ApiService
+import co.id.billyon.db.BillyonDatabase
+import co.id.billyon.db.dao.ProductsDao
+import co.id.billyon.db.entity.Products
 import co.id.billyon.model.Product
 import co.id.billyon.util.NetManager
 
-class ProductRepository {
+class ProductRepository(private val productsDao : ProductsDao?) {
 
     val remoteDataSource = ProductRemoteDataSource()
     val localDataSource = ProductLocalDataSource()
@@ -21,6 +24,14 @@ class ProductRepository {
         data.value = productList
 
         return data
+    }
+
+    fun insertProduct(product: Products) {
+        productsDao?.insert(product)
+    }
+
+    fun getAllProductFromDb() : LiveData<List<Products>>? {
+        return productsDao?.getAllProduct()
     }
 
   /*  fun fetchProductFromServer(storeId : Int) : Observable<Product>{

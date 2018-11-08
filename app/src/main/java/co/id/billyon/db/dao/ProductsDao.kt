@@ -1,15 +1,16 @@
 package co.id.billyon.db.dao
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import co.id.billyon.db.entity.Products
 
 @Dao
-interface ProductDao {
+interface ProductsDao {
     @Query("SELECT * FROM products")
-    fun getAllProduct() : List<Products>
+    fun getAllProduct() : LiveData<List<Products>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(product: Products)
+    fun insert(product: Products) : Long
 
     @Delete
     fun delete(product: Products)

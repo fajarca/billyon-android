@@ -24,13 +24,14 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
 
     lateinit var binding : FragmentCashierDashboardBinding
     private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
+    private lateinit var viewModel : CashierDashboardViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cashier_dashboard, container,false)
 
-        val viewModel = ViewModelProviders.of(this).get(CashierDashboardViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(CashierDashboardViewModel::class.java)
         viewModel.loadProducts()
 
         binding.viewModel = viewModel
@@ -44,7 +45,7 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
             }
         })
 
-        viewModel.loadAllProducts().observe(this, Observer { data ->
+        viewModel.loadAllProducts()?.observe(this, Observer { data ->
             data?.let {
                 Log.v("Ha", data.size.toString())
             }
@@ -56,6 +57,7 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
 
     override fun onProductSelected(position: Int) {
         Toast.makeText(activity,"$position", Toast.LENGTH_SHORT).show()
+        viewModel.insertProduct()
     }
 
 }

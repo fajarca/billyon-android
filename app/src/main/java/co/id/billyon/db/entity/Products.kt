@@ -26,8 +26,7 @@ data class Products(
         var minStock : Int,
         var displayPrice : Long,
         var actualPrice : Long, //harga jual
-        var unitPrice : Long, //harga modal
-        val dozenPrice : Long,
+        var dozenPrice : Long,
         var isActive : Int
 
 
