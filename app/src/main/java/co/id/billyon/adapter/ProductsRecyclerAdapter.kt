@@ -4,10 +4,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import co.id.billyon.databinding.RvItemProductBinding
+import co.id.billyon.db.entity.Products
 import co.id.billyon.model.Product
 import java.util.ArrayList
 
-class ProductsRecyclerAdapter(private var products: ArrayList<Product>,
+class ProductsRecyclerAdapter(private var products: List<Products>,
                               private val listener: OnProductClickListener)
     : RecyclerView.Adapter<ProductsRecyclerAdapter.ViewHolder>() {
 
@@ -23,7 +24,7 @@ class ProductsRecyclerAdapter(private var products: ArrayList<Product>,
 
     class ViewHolder(private val binding: RvItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product, listener: OnProductClickListener?) {
+        fun bind(product: Products, listener: OnProductClickListener?) {
             binding.product = product
             listener?.let {
                 binding.root.setOnClickListener({ _ -> listener.onProductSelected(layoutPosition) })
@@ -38,7 +39,7 @@ class ProductsRecyclerAdapter(private var products: ArrayList<Product>,
         fun onProductSelected(position: Int)
     }
 
-    fun replaceData(products : ArrayList<Product> ) {
+    fun replaceData(products : List<Products> ) {
         this.products = products
         notifyDataSetChanged()
     }

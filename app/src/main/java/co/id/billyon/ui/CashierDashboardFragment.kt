@@ -32,21 +32,17 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cashier_dashboard, container,false)
 
         viewModel = ViewModelProviders.of(this).get(CashierDashboardViewModel::class.java)
-        viewModel.loadProducts()
 
         binding.viewModel = viewModel
         binding.executePendingBindings()
 
         binding.recyclerView.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerView.adapter = productRecylerViewAdapter
-        viewModel.products.observe(this, Observer<ArrayList<Product>> {
-            it?.let {
-                productRecylerViewAdapter.replaceData(it)
-            }
-        })
+
 
         viewModel.loadAllProducts()?.observe(this, Observer { data ->
             data?.let {
+                productRecylerViewAdapter.replaceData(it)
                 Log.v("Ha", data.size.toString())
             }
 
