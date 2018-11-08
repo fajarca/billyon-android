@@ -5,8 +5,8 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.Index
 import android.arch.persistence.room.PrimaryKey
 
-@Entity(tableName = "product")
-data class Product(
+@Entity(tableName = "products")
+data class Products(
 
         @PrimaryKey
         @ColumnInfo(name = "product_id")

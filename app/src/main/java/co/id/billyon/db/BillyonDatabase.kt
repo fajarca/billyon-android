@@ -5,10 +5,10 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import co.id.billyon.db.dao.ProductDao
-import co.id.billyon.db.entity.Product
+import co.id.billyon.db.entity.Products
 
 
-@Database(entities = arrayOf(Product::class), version = 1)
+@Database(entities = arrayOf(Products::class), version = 1)
 abstract class BillyonDatabase : RoomDatabase() {
 
     abstract fun ProductDao() : ProductDao

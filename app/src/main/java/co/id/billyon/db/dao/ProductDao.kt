@@ -1,20 +1,20 @@
 package co.id.billyon.db.dao
 
 import android.arch.persistence.room.*
-import co.id.billyon.db.entity.Product
+import co.id.billyon.db.entity.Products
 
 @Dao
 interface ProductDao {
-    @Query("SELECT * FROM product")
-    fun getAllProduct() : List<Product>
+    @Query("SELECT * FROM products")
+    fun getAllProduct() : List<Products>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(product: Product)
+    fun insert(product: Products)
 
     @Delete
-    fun delete(product: Product)
+    fun delete(product: Products)
 
-    @Query("DELETE FROM product")
+    @Query("DELETE FROM products")
     fun deleteAll()
 
 }
