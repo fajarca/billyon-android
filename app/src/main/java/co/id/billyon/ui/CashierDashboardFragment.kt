@@ -29,25 +29,26 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cashier_dashboard, container,false)
 
         viewModel = ViewModelProviders.of(this).get(CashierDashboardViewModel::class.java)
 
-        binding.viewModel = viewModel
-        binding.executePendingBindings()
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cashier_dashboard, container,false)
 
-        binding.recyclerView.layoutManager = GridLayoutManager(activity, 2)
-        binding.recyclerView.adapter = productRecylerViewAdapter
+        binding.apply {
+            viewmodel = viewModel
+            binding.executePendingBindings()
 
+            recyclerView.layoutManager = GridLayoutManager(activity, 2)
+            recyclerView.adapter = productRecylerViewAdapter
+        }
 
         viewModel.loadAllProducts()?.observe(this, Observer { data ->
             data?.let {
                 productRecylerViewAdapter.replaceData(it)
                 Log.v("Ha", data.size.toString())
             }
-
-
         })
+
         return binding.root
     }
 
