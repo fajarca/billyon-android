@@ -11,21 +11,25 @@ import co.id.billyon.db.entity.Products
 @Database(entities = arrayOf(Products::class), version = 1)
 abstract class BillyonDatabase : RoomDatabase() {
 
-    abstract fun ProductDao() : ProductsDao
+    abstract fun productDao() : ProductsDao
 
     companion object {
+        @Volatile
         private var INSTANCE : BillyonDatabase? = null
         private val DATABASE_NAME = "billyon.db"
 
-        fun getInstance(context : Context) : BillyonDatabase? {
+        fun getDatabase(context : Context) : BillyonDatabase {
+            val tempInstance = INSTANCE
 
-            if (INSTANCE == null) {
-                synchronized(BillyonDatabase::class) {
-                    INSTANCE = Room.databaseBuilder(context.applicationContext, BillyonDatabase::class.java, DATABASE_NAME).build()
-                }
+            if (tempInstance != null) {
+                return tempInstance
             }
 
-            return INSTANCE
+            synchronized(this) {
+                val instance = Room.databaseBuilder(context.applicationContext, BillyonDatabase::class.java, DATABASE_NAME).build()
+                INSTANCE = instance
+                return instance
+            }
         }
 
         fun destoryInstance() {

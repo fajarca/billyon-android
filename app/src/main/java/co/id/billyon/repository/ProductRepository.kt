@@ -9,10 +9,10 @@ import co.id.billyon.db.entity.Products
 import co.id.billyon.model.Product
 import co.id.billyon.util.NetManager
 
-class ProductRepository(private val productsDao : ProductsDao?) {
+class ProductRepository(private val productsDao : ProductsDao) {
 
     val remoteDataSource = ProductRemoteDataSource()
-    val localDataSource = ProductLocalDataSource()
+    val localDataSource = ProductLocalDataSource(productsDao)
 
     fun getAllProducts() : LiveData<List<Product>> {
         val data = MutableLiveData<List<Product>>()
@@ -27,11 +27,11 @@ class ProductRepository(private val productsDao : ProductsDao?) {
     }
 
     fun insertProduct(product: Products) {
-        productsDao?.insert(product)
+        productsDao.insert(product)
     }
 
-    fun getAllProductFromDb() : LiveData<List<Products>>? {
-        return productsDao?.getAllProduct()
+    fun getAllProductFromDb() : LiveData<List<Products>> {
+        return productsDao.getAllProduct()
     }
 
   /*  fun fetchProductFromServer(storeId : Int) : Observable<Product>{

@@ -11,13 +11,13 @@ import java.util.concurrent.Executors
 class CashierDashboardViewModel(application: Application) : AndroidViewModel(application) {
     val isLoading = ObservableField<Boolean>()
 
-    val db = BillyonDatabase.getInstance(application)
-    val repository = ProductRepository(db?.ProductDao())
+    val db = BillyonDatabase.getDatabase(application)
+    val repository = ProductRepository(db.productDao())
     val executor = Executors.newSingleThreadExecutor()
 
     fun loadAllProducts() = repository.getAllProductFromDb()
     fun insertProduct() {
-        val product = Products(4,1,1,"/haha","Kopi Susu Istri",100,80,12000,8000,8000,60000)
+        val product = Products(5,1,1,"/haha","Kopi Susu Istri",100,80,12000,8000,8000,60000)
         executor.execute {
             repository.insertProduct(product)
         }
