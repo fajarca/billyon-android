@@ -7,6 +7,7 @@ import android.content.Context
 import co.id.billyon.db.dao.ProductDao
 import co.id.billyon.db.entity.Product
 
+
 @Database(entities = arrayOf(Product::class), version = 1)
 abstract class BillyonDatabase : RoomDatabase() {
 

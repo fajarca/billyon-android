@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,13 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
             }
         })
 
+        viewModel.loadAllProducts().observe(this, Observer { data ->
+            data?.let {
+                Log.v("Ha", data.size.toString())
+            }
+
+
+        })
         return binding.root
     }
 
