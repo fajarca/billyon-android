@@ -17,14 +17,23 @@ import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
 import co.id.billyon.di.DaggerAppComponent
 import co.id.billyon.di.Info
+import co.id.billyon.util.HELLO
+import co.id.billyon.util.LOVE
+import co.id.billyon.util.annotation.Use
 import co.id.billyon.viewmodel.CashierDashboardViewModel
 import javax.inject.Inject
 
 
+
+
 class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener {
 
-    @Inject
-    lateinit var info : Info
+    @Inject @field:Use(LOVE)
+    lateinit var infoLove : Info
+
+    @Inject @field:Use(HELLO)
+    lateinit var infoHello : Info
+
 
     lateinit var binding : FragmentCashierDashboardBinding
     private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
@@ -46,7 +55,7 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
             recyclerView.adapter = productRecylerViewAdapter
         }
 
-        viewModel.loadAllProducts()?.observe(this, Observer { data ->
+        viewModel.loadAllProducts().observe(this, Observer { data ->
             data?.let {
                 productRecylerViewAdapter.replaceData(it)
                 Log.v("Ha", data.size.toString())
@@ -54,7 +63,7 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
         })
 
         DaggerAppComponent.create().inject(this)
-        val text = info.text
+        val text = "${infoHello.text} ${infoLove.text}"
 
         return binding.root
     }
