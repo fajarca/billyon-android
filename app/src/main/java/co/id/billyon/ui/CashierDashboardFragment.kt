@@ -15,12 +15,16 @@ import android.widget.Toast
 import co.id.billyon.R
 import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
-import co.id.billyon.model.Product
+import co.id.billyon.di.DaggerAppComponent
+import co.id.billyon.di.Info
 import co.id.billyon.viewmodel.CashierDashboardViewModel
+import javax.inject.Inject
 
 
 class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener {
 
+    @Inject
+    lateinit var info : Info
 
     lateinit var binding : FragmentCashierDashboardBinding
     private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
@@ -48,6 +52,9 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
                 Log.v("Ha", data.size.toString())
             }
         })
+
+        DaggerAppComponent.create().inject(this)
+        val text = info.text
 
         return binding.root
     }

@@ -15,16 +15,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c19778c5-ab5e-42d3-99b5-8ce3b575e180" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/AppComponent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/Info.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/AppModule.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/CashierDashboardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/CashierDashboardFragment.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,8 +51,8 @@
       <file leaf-file-name="CashierDashboardViewModel.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/viewmodel/CashierDashboardViewModel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+            <state relative-caret-position="270">
+              <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
               <folding>
                 <element signature="e#33#321#0" expanded="true" />
               </folding>
@@ -59,86 +60,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApiService.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/api/ApiService.kt">
+      <file leaf-file-name="CashierDashboardFragment.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/CashierDashboardFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductLocalDataSource.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/ProductLocalDataSource.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductRemoteDataSource.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/ProductRemoteDataSource.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductsDao.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/ProductsDao.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductRepository.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/ProductRepository.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="73" column="42" lean-forward="true" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="12" column="22" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BillyonDatabase.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/BillyonDatabase.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="259">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
               <folding>
-                <element signature="e#26#273#0" expanded="true" />
+                <element signature="e#27#674#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Products.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/Products.kt">
+      <file leaf-file-name="AppModule.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/AppModule.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+              <folding>
+                <element signature="e#33#105#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppComponent.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/AppComponent.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <folding>
+                <element signature="e#26#139#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Info.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/Info.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+              <folding>
+                <element signature="e#26#75#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -4425,10 +4390,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_owner_sales_report.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/OwnerDashboardFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/owner/AddStoreFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/owner/RegisterFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/owner/LoginFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
@@ -4469,13 +4430,17 @@
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/adapter/ProductsRecyclerAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/rv_item_product.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_cashier_dashboard.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/CashierDashboardFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/BillyonDatabase.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/ProductRepository.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/viewmodel/CashierDashboardViewModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/ProductLocalDataSource.kt" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/viewmodel/CashierDashboardViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/Info.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/AppModule.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/Info.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/AppComponent.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/CashierDashboardFragment.kt" />
       </list>
     </option>
   </component>
@@ -4565,6 +4530,28 @@
             </path>
             <path>
               <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="di" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="di" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
@@ -4589,6 +4576,7 @@
       <recent name="co.id.billyon.adapter" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di" />
       <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui" />
       <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity" />
       <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/staff" />
@@ -4734,7 +4722,7 @@
       <window_info anchor="right" id="Anko Layout Preview" order="3" weight="0.3297568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="3" sideWeight="0.50060606" side_tool="true" weight="0.3297568" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
@@ -4789,37 +4777,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/ProductRepository.kt</url>
-          <line>29</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/CashierDashboardFragment.kt</url>
+          <line>58</line>
           <properties />
-          <option name="timeStamp" value="8" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="11" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_owner_sales_report.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/OwnerProductManagement.kt" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -5116,13 +5086,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/CashierDashboardFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="45" column="23" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/ProductsDao.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -5137,13 +5100,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/BillyonDatabase.kt">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#26#273#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="478">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/ProductRepository.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
@@ -5168,34 +5135,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/BillyonDatabase.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#26#273#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/viewmodel/CashierDashboardViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        <state relative-caret-position="270">
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
           <folding>
             <element signature="e#33#321#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/ProductRepository.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/AppModule.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="90">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding>
+            <element signature="e#33#105#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/AppComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="22" />
+        <state relative-caret-position="135">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding>
+            <element signature="e#26#139#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/CashierDashboardFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="73" column="42" lean-forward="true" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
+        <state relative-caret-position="259">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#27#674#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/Info.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding>
+            <element signature="e#26#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
