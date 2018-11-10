@@ -1,6 +1,6 @@
 package co.id.billyon.di.module
 
-import co.id.billyon.AppController
+import android.app.Application
 import co.id.billyon.api.ApiService
 import dagger.Module
 import dagger.Provides
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 class NetworkModule {
     @Provides
     @Singleton
-    fun provideHttpCache(application: AppController): Cache {
+    fun provideHttpCache(application: Application): Cache {
         val cacheSize: Long = 10 * 10 * 1024
         return Cache(application.cacheDir, cacheSize)
     }
