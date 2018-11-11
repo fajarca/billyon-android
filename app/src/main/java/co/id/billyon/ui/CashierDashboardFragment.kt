@@ -30,12 +30,14 @@ import javax.inject.Inject
 
 
 class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener {
+/*
 
     @Inject @field:Use(LOVE)
     lateinit var infoLove : Info
 
     @Inject @field:Use(HELLO)
     lateinit var infoHello : Info
+*/
 
 
     lateinit var binding : FragmentCashierDashboardBinding
@@ -65,8 +67,8 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
             }
         })
 
-        DaggerAppComponent.create().inject(this)
-        val text = "${infoHello.text} ${infoLove.text}"
+      /*  DaggerAppComponent.create().inject(this)
+        val text = "${infoHello.text} ${infoLove.text}"*/
 
         return binding.root
     }
