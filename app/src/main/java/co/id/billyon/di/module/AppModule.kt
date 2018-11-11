@@ -34,9 +34,9 @@ class AppModule {
     @Singleton
     fun provideApplication(app: BillyonApp) : Context = app
 
-  /*  @Provides
+    @Provides
     @Singleton
-    fun provideDatabase(context: Context) = Room.databaseBuilder(context, BillyonDatabase::class.java, DATABASE_NAME).build()*/
+    fun provideDatabase(context: Context) = Room.databaseBuilder(context, BillyonDatabase::class.java, DATABASE_NAME).build()
 
     @Provides
     fun provideExecutor() =  Executors.newSingleThreadExecutor()
