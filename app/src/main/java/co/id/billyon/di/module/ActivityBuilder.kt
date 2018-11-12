@@ -1,6 +1,6 @@
 package co.id.billyon.di.module
 
-import co.id.billyon.ui.MainActivity
+import co.id.billyon.ui.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

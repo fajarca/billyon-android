@@ -1,4 +1,4 @@
-package co.id.billyon.ui
+package co.id.billyon.ui.main
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
