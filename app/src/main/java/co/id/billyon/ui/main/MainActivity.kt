@@ -3,6 +3,7 @@ package co.id.billyon.ui.main
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
@@ -19,9 +20,16 @@ import co.id.billyon.util.HELLO
 import co.id.billyon.util.LOVE
 import co.id.billyon.util.annotation.Use
 import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), NavController.OnNavigatedListener {
+class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavController.OnNavigatedListener {
+    @Inject
+    lateinit var dispatchingAndroidInjector : DispatchingAndroidInjector<Fragment>
+
+    override fun supportFragmentInjector() = dispatchingAndroidInjector
 
     @Inject
     @field:Use(LOVE)
