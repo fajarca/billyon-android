@@ -2,7 +2,6 @@ package co.id.billyon.ui
 
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -16,29 +15,10 @@ import android.widget.Toast
 import co.id.billyon.R
 import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
-import co.id.billyon.di.DaggerAppComponent
-import co.id.billyon.di.Info
-import co.id.billyon.di.ViewModelFactory
-import co.id.billyon.util.HELLO
-import co.id.billyon.util.LOVE
-import co.id.billyon.util.annotation.Use
 import co.id.billyon.viewmodel.CashierDashboardViewModel
-import dagger.android.AndroidInjection
-import javax.inject.Inject
-
-
 
 
 class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener {
-/*
-
-    @Inject @field:Use(LOVE)
-    lateinit var infoLove : Info
-
-    @Inject @field:Use(HELLO)
-    lateinit var infoHello : Info
-*/
-
 
     lateinit var binding : FragmentCashierDashboardBinding
     private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
