@@ -1,5 +1,6 @@
 package co.id.billyon.di.module
 
+import co.id.billyon.ui.CashierDashboardFragment
 import co.id.billyon.ui.LoginFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -8,4 +9,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentModule {
     @ContributesAndroidInjector
     abstract fun contributesLoginFragment() : LoginFragment
+    @ContributesAndroidInjector
+    abstract fun contributesCashierDashboardFragment() : CashierDashboardFragment
 }
