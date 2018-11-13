@@ -66,12 +66,12 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
             recyclerView.adapter = productRecylerViewAdapter
         }
 
-        /*viewModel.loadAllProducts().observe(this, Observer { data ->
+        viewModel.loadAllProducts().observe(this, Observer { data ->
             data?.let {
                 productRecylerViewAdapter.replaceData(it)
                 Log.v("Ha", data.size.toString())
             }
-        })*/
+        })
 
         return binding.root
     }
