@@ -32,7 +32,11 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideApplication(app: BillyonApp) : Context = app
+    fun provideContext(app: BillyonApp) : Context = app
+
+    @Provides
+    @Singleton
+    fun provideApplications(app : BillyonApp) : Application = app
 
     @Provides
     @Singleton

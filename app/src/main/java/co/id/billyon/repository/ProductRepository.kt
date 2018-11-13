@@ -9,9 +9,9 @@ import co.id.billyon.db.entity.Products
 import co.id.billyon.model.Product
 import co.id.billyon.util.NetManager
 
-class ProductRepository(private val productsDao : ProductsDao) {
+class ProductRepository(private val apiService: ApiService, private val productsDao : ProductsDao) {
 
-    val remoteDataSource = ProductRemoteDataSource()
+    val remoteDataSource = ProductRemoteDataSource(apiService)
     val localDataSource = ProductLocalDataSource(productsDao)
 
     fun getAllProducts() : LiveData<List<Product>> {
@@ -22,7 +22,6 @@ class ProductRepository(private val productsDao : ProductsDao) {
         productList.add(Product(1,1,"/haha",1,"Kopi Susu Mantan",100,80,12000,8000,8000,60000,1))
         productList.add(Product(1,1,"/haha",1,"Kopi Susu Istri",100,80,12000,8000,8000,60000,1))
         data.value = productList
-
         return data
     }
 
@@ -33,16 +32,6 @@ class ProductRepository(private val productsDao : ProductsDao) {
     fun getAllProductFromDb() : LiveData<List<Products>> {
         return productsDao.getAllProduct()
     }
-
-  /*  fun fetchProductFromServer(storeId : Int) : Observable<Product>{
-        netManager.isConnectedToInternet?.let {
-            if (it) {
-                return
-            }
-        }
-
-    }*/
-
 
 
 }

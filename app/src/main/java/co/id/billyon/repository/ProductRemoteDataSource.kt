@@ -1,5 +1,7 @@
 package co.id.billyon.repository
 
-class ProductRemoteDataSource {
+import co.id.billyon.api.ApiService
+
+class ProductRemoteDataSource(private val apiService: ApiService) {
 
 }
