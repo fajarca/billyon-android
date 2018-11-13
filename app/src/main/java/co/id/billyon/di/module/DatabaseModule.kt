@@ -6,6 +6,7 @@ import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.repository.ProductRepository
 import dagger.Module
 import dagger.Provides
+import java.util.concurrent.ExecutorService
 import javax.inject.Singleton
 
 @Module
@@ -16,5 +17,5 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideProductRepository(apiService: ApiService, productsDao: ProductsDao) = ProductRepository(apiService,productsDao)
+    fun provideProductRepository(apiService: ApiService, productsDao: ProductsDao, executor : ExecutorService) = ProductRepository(apiService,productsDao,executor)
 }

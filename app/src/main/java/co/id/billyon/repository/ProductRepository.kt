@@ -8,13 +8,14 @@ import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.db.entity.Products
 import co.id.billyon.model.Product
 import co.id.billyon.util.NetManager
+import java.util.concurrent.ExecutorService
 
-class ProductRepository(private val apiService: ApiService, private val productsDao : ProductsDao) {
+class ProductRepository(private val apiService: ApiService, private val productsDao : ProductsDao, private val executor: ExecutorService) {
 
     val remoteDataSource = ProductRemoteDataSource(apiService)
-    val localDataSource = ProductLocalDataSource(productsDao)
+    val localDataSource = ProductLocalDataSource(productsDao, executor)
 
-    fun getAllProducts() : LiveData<List<Product>> {
+    /*fun getAllProducts() : LiveData<List<Product>> {
         val data = MutableLiveData<List<Product>>()
 
         val productList = arrayListOf<Product>()
@@ -23,15 +24,11 @@ class ProductRepository(private val apiService: ApiService, private val products
         productList.add(Product(1,1,"/haha",1,"Kopi Susu Istri",100,80,12000,8000,8000,60000,1))
         data.value = productList
         return data
-    }
+    }*/
 
-    fun insertProduct(product: Products) {
-        productsDao.insert(product)
-    }
+    fun insert(product: Products) = localDataSource.insertProduct(product)
 
-    fun getAllProductFromDb() : LiveData<List<Products>> {
-        return productsDao.getAllProduct()
-    }
+    fun getAllProduct() =  localDataSource.getAllProduct()
 
 
 }
