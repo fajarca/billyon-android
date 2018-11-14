@@ -2,7 +2,7 @@ package co.id.billyon
 
 import android.app.Activity
 import android.app.Application
-import co.id.billyon.di.DaggerAppComponent
+import co.id.billyon.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector

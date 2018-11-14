@@ -1,15 +1,15 @@
 package co.id.billyon.db
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.*
 import android.content.Context
 import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.db.entity.Products
+import co.id.billyon.util.Converters
 import co.id.billyon.util.DATABASE_NAME
 
 
 @Database(entities = arrayOf(Products::class), version = 1)
+@TypeConverters(Converters::class)
 abstract class BillyonDatabase : RoomDatabase() {
 
     abstract fun productDao() : ProductsDao

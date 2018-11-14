@@ -26,6 +26,7 @@ import co.id.billyon.util.Utils
 import co.id.billyon.util.annotation.Use
 import co.id.billyon.viewmodel.CashierDashboardViewModel
 import dagger.android.support.AndroidSupportInjection
+import java.util.*
 import javax.inject.Inject
 
 
@@ -72,7 +73,6 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
         viewModel.loadAllProducts().observe(this, Observer { data ->
             data?.let {
                 productRecylerViewAdapter.replaceData(it)
-                Log.v("Ha", data.size.toString())
             }
         })
 
@@ -80,10 +80,9 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
     }
 
     override fun onProductSelected(position: Int) {
-        Toast.makeText(activity, "$position", Toast.LENGTH_SHORT).show()
-
-        val currentTimestamp = Utils.getCurrentTimestamp()
-        val product = Products(currentTimestamp, 1, 1, "/haha", "Kopi Susu Istri", 100, 80, 12000, 8000, 8000, 60000)
+        val currentTimestampAsId = Utils.getCurrentTimestampAsId()
+        val currentTimestamp = Date(System.currentTimeMillis())
+        val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Istri", 100, 80, 12000, 8000, 1,currentTimestamp,currentTimestamp)
 
         viewModel.insertProduct(product)
     }

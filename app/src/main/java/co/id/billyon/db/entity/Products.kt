@@ -1,9 +1,8 @@
 package co.id.billyon.db.entity
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.Index
-import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.*
+import co.id.billyon.util.Converters
+import java.util.*
 
 @Entity(tableName = "products")
 data class Products(
@@ -23,11 +22,23 @@ data class Products(
 
         var name : String,
         var stock : Int,
+
+        @ColumnInfo(name = "min_stock")
         var minStock : Int,
+
+        @ColumnInfo(name = "display_price")
         var displayPrice : Long,
+
+        @ColumnInfo(name = "actual_price")
         var actualPrice : Long, //harga jual
-        var dozenPrice : Long,
-        var isActive : Int
+
+        @ColumnInfo(name="is_active")
+        var isActive : Int,
+
+        @TypeConverters(Converters::class)
+        var created_date : Date,
+        @TypeConverters(Converters::class)
+        var updated_date : Date
 
 
 )

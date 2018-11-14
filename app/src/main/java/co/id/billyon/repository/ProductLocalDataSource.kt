@@ -10,8 +10,7 @@ class ProductLocalDataSource(private val productsDao: ProductsDao, private val e
     fun insertProduct(product: Products) {
 //        val product = Products(5,1,1,"/haha","Kopi Susu Istri",100,80,12000,8000,8000,60000)
         executor.execute {
-            val id = productsDao.insert(product)
-            Log.v("TAG", id.toString())
+            productsDao.insert(product)
         }
     }
 

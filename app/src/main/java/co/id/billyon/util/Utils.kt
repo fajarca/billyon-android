@@ -5,8 +5,8 @@ import java.util.*
 
 object Utils {
     @JvmStatic
-    fun getCurrentTimestamp() : Long {
-        val date = SimpleDateFormat("yyyyMMddHHmmssSSS").format(Date())
-        return date.toLong()
-    }
+    fun getCurrentTimestampAsId() = SimpleDateFormat("yyyyMMddHHmmssSSS").format(Date()).toLong()
+
+    @JvmStatic
+    fun getCurrentTimeStamp() = SimpleDateFormat("yyyyMMddHHmmssSSS").format(Date()).toLong()
 }
