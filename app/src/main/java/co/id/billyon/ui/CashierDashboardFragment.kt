@@ -19,18 +19,17 @@ import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
 import co.id.billyon.db.entity.Products
 import co.id.billyon.di.Info
-import co.id.billyon.di.ViewModelFactory
+import co.id.billyon.ui.handlers.BillyonHandlers
 import co.id.billyon.util.HELLO
 import co.id.billyon.util.LOVE
 import co.id.billyon.util.Utils
 import co.id.billyon.util.annotation.Use
 import co.id.billyon.viewmodel.CashierDashboardViewModel
 import dagger.android.support.AndroidSupportInjection
-import java.util.*
 import javax.inject.Inject
 
 
-class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener {
+class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonHandlers {
 
     lateinit var binding: FragmentCashierDashboardBinding
     private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
@@ -61,7 +60,7 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(CashierDashboardViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cashier_dashboard, container, false)
-
+        binding.handlers = this
         binding.apply {
             viewmodel = viewModel
             binding.executePendingBindings()
@@ -75,14 +74,17 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
                 productRecylerViewAdapter.replaceData(it)
             }
         })
-
         return binding.root
     }
 
     override fun onProductSelected(position: Int) {
+
+    }
+
+    override fun onFabAddProductPressed() {
         val currentTimestampAsId = Utils.getCurrentTimestampAsId()
-        val currentTimestamp = Date(System.currentTimeMillis())
-        val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Istri", 100, 80, 12000, 8000, 1,currentTimestamp,currentTimestamp)
+        val currentTimestamp = Utils.getCurrentTimeStamp()
+        val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true,true,currentTimestamp,currentTimestamp)
 
         viewModel.insertProduct(product)
     }

@@ -9,36 +9,40 @@ data class Products(
 
         @PrimaryKey
         @ColumnInfo(name = "product_id")
-        var id : Long,
+        var id: Long,
 
         @ColumnInfo(name = "store_id")
-        var storeId : Int,
+        var storeId: Int,
 
         @ColumnInfo(name = "category_id")
-        var categoryId : Int,
+        var categoryId: Int,
 
         @ColumnInfo(name = "image_path")
-        var imagePath : String,
+        var imagePath: String,
 
-        var name : String,
-        var stock : Int,
+        var name: String,
+        var stock: Int,
 
         @ColumnInfo(name = "min_stock")
-        var minStock : Int,
+        var minStock: Int,
 
         @ColumnInfo(name = "display_price")
-        var displayPrice : Long,
+        var displayPrice: Long,
 
         @ColumnInfo(name = "actual_price")
-        var actualPrice : Long, //harga jual
-
-        @ColumnInfo(name="is_active")
-        var isActive : Int,
+        var actualPrice: Long, //harga jual
 
         @TypeConverters(Converters::class)
-        var created_date : Date,
+        @ColumnInfo(name = "is_active")
+        var isActive: Boolean,
+
         @TypeConverters(Converters::class)
-        var updated_date : Date
+        @ColumnInfo(name = "is_synced")
+        var isSynced: Boolean,
+
+        var created_date: String,
+
+        var updated_date: String
 
 
 )
