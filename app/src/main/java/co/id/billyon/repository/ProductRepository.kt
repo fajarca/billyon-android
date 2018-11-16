@@ -1,16 +1,12 @@
 package co.id.billyon.repository
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import co.id.billyon.api.ApiService
-import co.id.billyon.db.BillyonDatabase
 import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.db.entity.Products
-import co.id.billyon.model.Product
-import co.id.billyon.util.NetManager
+import co.id.billyon.di.NetManager
 import java.util.concurrent.ExecutorService
 
-class ProductRepository(private val apiService: ApiService, private val productsDao : ProductsDao, private val executor: ExecutorService) {
+class ProductRepository(private val apiService: ApiService, private val productsDao : ProductsDao, private val executor: ExecutorService, private val netManager: NetManager) {
 
     val remoteDataSource = ProductRemoteDataSource(apiService)
     val localDataSource = ProductLocalDataSource(productsDao, executor)
@@ -29,6 +25,8 @@ class ProductRepository(private val apiService: ApiService, private val products
     fun insert(product: Products) = localDataSource.insertProduct(product)
 
     fun getAllProduct() =  localDataSource.getAllProduct()
+
+    fun getAllPost() = if (netManager.isConnectedToInternet) remoteDataSource.fetchPost() else remoteDataSource.fetchPost()
 
 
 }

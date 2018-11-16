@@ -74,6 +74,7 @@ dependencies {
     //RxJava2
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
     //Dagger2
     implementation "com.google.dagger:dagger:$dagger_version"
