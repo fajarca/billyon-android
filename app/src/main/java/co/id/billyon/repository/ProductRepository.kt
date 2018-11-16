@@ -4,6 +4,7 @@ import co.id.billyon.api.ApiService
 import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.db.entity.Products
 import co.id.billyon.di.NetManager
+import io.reactivex.Completable
 import java.util.concurrent.ExecutorService
 
 class ProductRepository(private val apiService: ApiService, private val productsDao : ProductsDao, private val executor: ExecutorService, private val netManager: NetManager) {
@@ -22,7 +23,7 @@ class ProductRepository(private val apiService: ApiService, private val products
         return data
     }*/
 
-    fun insert(product: Products) = localDataSource.insertProduct(product)
+    fun insert(product: Products)  = localDataSource.insertProduct(product)
 
     fun getAllProduct() =  localDataSource.getAllProduct()
 
