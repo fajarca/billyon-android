@@ -67,8 +67,8 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
             recyclerView.layoutManager = GridLayoutManager(activity, 2)
             recyclerView.adapter = productRecylerViewAdapter
         }
-
-        viewModel.loadAllProducts().observe(this, Observer { data ->
+        viewModel.loadAllProducts()
+        viewModel.productsData.observe(this, Observer { data ->
             data?.let {
                 productRecylerViewAdapter.replaceData(it)
             }
@@ -82,13 +82,13 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
 
     override fun onFabAddProductPressed(view : View) {
         viewModel.loadPosts()
-       /* val currentTimestampAsId = Utils.getCurrentTimestampAsId()
+        val currentTimestampAsId = Utils.getCurrentTimestampAsId()
         val currentTimestamp = Utils.getCurrentTimeStamp()
         val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true,true,currentTimestamp,currentTimestamp)
 
         viewModel.insertProduct(product)
 
-        val action = CashierDashboardFragmentDirections.launchAddProductAction()
+       /* val action = CashierDashboardFragmentDirections.launchAddProductAction()
         val navController = Navigation.findNavController(view)
         navController.navigate(action)*/
     }

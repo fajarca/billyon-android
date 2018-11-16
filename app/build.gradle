@@ -74,7 +74,8 @@ dependencies {
     //RxJava2
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    // RxJava support for Room
+    implementation "android.arch.persistence.room:rxjava2:$persistence_component_version"
 
     //Dagger2
     implementation "com.google.dagger:dagger:$dagger_version"
@@ -84,12 +85,10 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
     //Retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
-
-    //Android Debug Database
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$retrofit_logging_interceptor_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 }
 
 
