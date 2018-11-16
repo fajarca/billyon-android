@@ -12,7 +12,13 @@ class ProductRepository(private val apiService: ApiService, private val products
     val remoteDataSource = ProductRemoteDataSource(apiService)
     val localDataSource = ProductLocalDataSource(productsDao)
 
-    fun insert(product: Products)  = localDataSource.insertProduct(product)
+    fun insertProduct(product: Products)  = localDataSource.insertProduct(product)
+    fun insertAllProduct(products: List<Products>) = localDataSource.insertAllProduct(products)
+
+    fun delete(product: Products) = localDataSource.delete(product)
+    fun deleteAll() = localDataSource.deleteAll()
+
+    fun update(product: Products) = localDataSource.update(product)
 
     fun getAllProduct() =  localDataSource.getAllProduct()
 

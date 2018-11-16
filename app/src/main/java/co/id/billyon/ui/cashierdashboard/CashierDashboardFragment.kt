@@ -81,12 +81,13 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
     }
 
     override fun onFabAddProductPressed(view : View) {
-        viewModel.loadPosts()
-        val currentTimestampAsId = Utils.getCurrentTimestampAsId()
+        //viewModel.loadPosts()
+        viewModel.deleteAllProduct()
+      /*  val currentTimestampAsId = Utils.getCurrentTimestampAsId()
         val currentTimestamp = Utils.getCurrentTimeStamp()
         val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true,true,currentTimestamp,currentTimestamp)
 
-        viewModel.insertProduct(product)
+        viewModel.insertProduct(product)*/
 
        /* val action = CashierDashboardFragmentDirections.launchAddProductAction()
         val navController = Navigation.findNavController(view)

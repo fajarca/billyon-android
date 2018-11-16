@@ -9,8 +9,11 @@ import co.id.billyon.model.PostsResponse
 import co.id.billyon.repository.ProductRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableObserver
+import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject
@@ -41,14 +44,22 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
                 })
     }
     fun insertProduct(product: Products) {
-        Observable.fromCallable { repository.insert(product) }
+        isLoading.set(true)
+        Completable.fromCallable { repository.insertProduct(product) }
                 .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    Log.v("Tag", "Inserted ${product.name} users from API in DB...")
+                   isLoading.set(false)
                 }
-
-       // Completable.fromAction()repository.insert(product)
+    }
+    fun deleteAllProduct() {
+        isLoading.set(true)
+        Completable.fromCallable { repository.deleteAll() }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    isLoading.set(false)
+                }
     }
     fun loadPosts() {
         isLoading.set(true)

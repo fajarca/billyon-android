@@ -7,19 +7,23 @@ import io.reactivex.Flowable
 
 @Dao
 interface ProductsDao {
+
     @Query("SELECT * FROM products")
-    fun getAllProduct() : Flowable<List<Products>>
+    fun getAll() : Flowable<List<Products>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(product: Products)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllProduct(products: List<Products>)
+    fun insertAll(products: List<Products>)
 
     @Delete
     fun delete(product: Products)
 
     @Query("DELETE FROM products")
     fun deleteAll()
+
+    @Update
+    fun update(product: Products)
 
 }

@@ -41,7 +41,7 @@ class AppModule {
     @Provides
     @Singleton
     fun provideDatabase(context: Context) = Room.databaseBuilder(context, BillyonDatabase::class.java, DATABASE_NAME).build()
-    
+
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit) = retrofit.create(ApiService::class.java)
