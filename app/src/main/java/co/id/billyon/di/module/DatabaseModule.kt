@@ -18,5 +18,5 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideProductRepository(apiService: ApiService, productsDao: ProductsDao, executor : ExecutorService, netManager: NetManager) = ProductRepository(apiService,productsDao,executor, netManager)
+    fun provideProductRepository(apiService: ApiService, productsDao: ProductsDao, netManager: NetManager) = ProductRepository(apiService,productsDao, netManager)
 }
