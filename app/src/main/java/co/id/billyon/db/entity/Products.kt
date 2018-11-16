@@ -4,7 +4,7 @@ import android.arch.persistence.room.*
 import co.id.billyon.util.Converters
 import java.util.*
 
-@Entity(tableName = "products")
+@Entity(tableName = "products",indices = arrayOf(Index(value = "name",name = "idx_name")))
 data class Products(
 
         @PrimaryKey

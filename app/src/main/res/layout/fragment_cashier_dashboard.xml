@@ -8,7 +8,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewmodel"
-            type="co.id.billyon.viewmodel.CashierDashboardViewModel"/>
+            type="co.id.billyon.ui.cashierdashboard.CashierDashboardViewModel"/>
         <variable
             name="handlers"
             type="co.id.billyon.ui.handlers.BillyonHandlers"/>
@@ -17,7 +17,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.CashierDashboardFragment">
+        tools:context=".ui.cashierdashboard.CashierDashboardFragment">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -34,7 +34,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:clickable="true"
-            android:onClick="@{()->handlers.onFabAddProductPressed()}"
+            android:onClick="@{(view)->handlers.onFabAddProductPressed(view)}"
             android:src="@drawable/ic_add_product"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

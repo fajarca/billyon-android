@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="co.id.billyon.ui.LoginFragment"
+        android:name="co.id.billyon.ui.login.LoginFragment"
         android:label="@string/label_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -99,8 +99,22 @@
         tools:layout="@layout/fragment_employee" />
     <fragment
         android:id="@+id/cashierDashboardFragment"
-        android:name="co.id.billyon.ui.CashierDashboardFragment"
-        android:label="fragment_cashier_dashboard"
-        tools:layout="@layout/fragment_cashier_dashboard" />
+        android:name="co.id.billyon.ui.cashierdashboard.CashierDashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_cashier_dashboard">
+        <action
+            android:id="@+id/launchAddProductAction"
+            app:destination="@id/addProductFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/cashierDashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="co.id.billyon.ui.addproduct.AddProductFragment"
+        android:label="Add Product"
+        tools:layout="@layout/fragment_add_product" />
 
 </navigation>
