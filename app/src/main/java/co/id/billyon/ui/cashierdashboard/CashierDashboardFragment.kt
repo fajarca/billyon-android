@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import co.id.billyon.R
 import co.id.billyon.adapter.ProductsRecyclerAdapter
@@ -76,22 +77,29 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
         return binding.root
     }
 
-    override fun onProductSelected(position: Int) {
-
+    override fun onProductSelected(product: Products) {
+        viewModel.deleteProduct(product)
     }
 
-    override fun onFabAddProductPressed(view : View) {
+    override fun onFabAddProductPressed(view: View) {
         //viewModel.loadPosts()
-        viewModel.deleteAllProduct()
-      /*  val currentTimestampAsId = Utils.getCurrentTimestampAsId()
+        //viewModel.deleteAllProduct()
+        /*  val currentTimestampAsId = Utils.getCurrentTimestampAsId()
+          val currentTimestamp = Utils.getCurrentTimeStamp()
+          val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true,true,currentTimestamp,currentTimestamp)
+
+          viewModel.insertProduct(product)*/
+
+        /* val action = CashierDashboardFragmentDirections.launchAddProductAction()
+         val navController = Navigation.findNavController(view)
+         navController.navigate(action)*/
+
+        val currentTimestampAsId = Utils.getCurrentTimestampAsId()
         val currentTimestamp = Utils.getCurrentTimeStamp()
-        val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true,true,currentTimestamp,currentTimestamp)
+        val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true, true, currentTimestamp, currentTimestamp)
 
-        viewModel.insertProduct(product)*/
+        viewModel.insertProduct(product)
 
-       /* val action = CashierDashboardFragmentDirections.launchAddProductAction()
-        val navController = Navigation.findNavController(view)
-        navController.navigate(action)*/
     }
 
 }

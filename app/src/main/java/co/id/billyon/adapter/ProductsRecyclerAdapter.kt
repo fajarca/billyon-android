@@ -27,7 +27,7 @@ class ProductsRecyclerAdapter(private var products: List<Products>,
         fun bind(product: Products, listener: OnProductClickListener?) {
             binding.product = product
             listener?.let {
-                binding.root.setOnClickListener({ _ -> listener.onProductSelected(layoutPosition) })
+                binding.root.setOnClickListener({ _ -> listener.onProductSelected(product) })
             }
             binding.executePendingBindings()
         }
@@ -36,7 +36,7 @@ class ProductsRecyclerAdapter(private var products: List<Products>,
     }
 
     interface OnProductClickListener {
-        fun onProductSelected(position: Int)
+        fun onProductSelected(product: Products)
     }
 
     fun replaceData(products : List<Products> ) {

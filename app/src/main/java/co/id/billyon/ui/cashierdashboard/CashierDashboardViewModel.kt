@@ -7,10 +7,12 @@ import android.util.Log
 import co.id.billyon.db.entity.Products
 import co.id.billyon.model.PostsResponse
 import co.id.billyon.repository.ProductRepository
+import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.observers.DisposableSingleObserver
@@ -22,9 +24,10 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
     val isLoading = ObservableField<Boolean>()
     val data = MutableLiveData<List<PostsResponse>>()
     val productsData = MutableLiveData<List<Products>>()
+    val compositeDisposable = CompositeDisposable()
 
     fun loadAllProducts() {
-        repository.getAllProduct()
+        compositeDisposable += repository.getAllProduct()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSubscriber<List<Products>>() {
@@ -45,16 +48,22 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
     }
     fun insertProduct(product: Products) {
         isLoading.set(true)
-        Completable.fromCallable { repository.insertProduct(product) }
+        compositeDisposable += Completable.fromCallable { repository.insertProduct(product) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                    isLoading.set(false)
                 }
     }
+    fun deleteProduct(product: Products) {
+        compositeDisposable += Completable.fromCallable { repository.delete(product) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
+    }
     fun deleteAllProduct() {
         isLoading.set(true)
-        Completable.fromCallable { repository.deleteAll() }
+        compositeDisposable += Completable.fromCallable { repository.deleteAll() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
@@ -63,7 +72,7 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
     }
     fun loadPosts() {
         isLoading.set(true)
-        repository.getAllPost()
+        compositeDisposable += repository.getAllPost()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<List<PostsResponse>>() {
@@ -83,5 +92,12 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
                     }
 
                 })
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        if (!compositeDisposable.isDisposed) {
+            compositeDisposable.dispose()
+        }
     }
 }
