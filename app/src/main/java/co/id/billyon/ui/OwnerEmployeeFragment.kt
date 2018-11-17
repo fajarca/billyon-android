@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import co.id.billyon.R
 
 
-class EmployeeFragment : Fragment() {
+class OwnerEmployeeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

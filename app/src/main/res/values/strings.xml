@@ -10,6 +10,9 @@
     <string name="label_add_store">Add Store</string>
     <string name="label_register">Register</string>
     <string name="label_login">Login</string>
+    <string name="label_employee">Employee</string>
+    <string name="label_add_product">Add Product</string>
+
     <string name="hint_password">Password</string>
     <string name="hint_email">Email</string>
     <string name="hint_confirmation_password">Confirmation Password</string>
@@ -17,7 +20,7 @@
     <string name="hint_first_name">First Name</string>
     <string name="hint_last_name">Last Name</string>
     <string name="hint_already_have_an_account">Already have an account? Sign in here</string>
-    <string name="label_employee">Employee</string>
+
 
     <string name="default_hint">Default hint</string>
     <string name="component_one">Custom Component 1</string>
