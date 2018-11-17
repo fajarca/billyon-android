@@ -1,4 +1,4 @@
-package co.id.billyon.ui.addproduct
+package co.id.billyon.ui.cashier.addproduct
 
 
 import android.arch.lifecycle.Observer
@@ -40,6 +40,7 @@ class AddProductFragment : Fragment(), BillyonHandlers.AddProduct {
         vm = ViewModelProviders.of(this, viewModelFactory).get(AddProductViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_product, container, false)
         binding.handlers = this
+
         vm.isInsertSuccessful.observe(this, Observer { isSuccess->
             isSuccess?.let {
                 if (it) {
@@ -47,6 +48,7 @@ class AddProductFragment : Fragment(), BillyonHandlers.AddProduct {
                     findNavController().navigate(R.id.fragmentCashierDashboard)
                 }
             } })
+        
         return binding.root
     }
 

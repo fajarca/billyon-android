@@ -1,15 +1,12 @@
-package co.id.billyon.ui.addproduct
+package co.id.billyon.ui.cashier.addproduct
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableField
+import android.util.Log
 import co.id.billyon.db.entity.Products
-import co.id.billyon.model.PostsResponse
 import co.id.billyon.repository.ProductRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
-import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver

@@ -1,4 +1,4 @@
-package co.id.billyon.ui
+package co.id.billyon.ui.owner
 
 
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.id.billyon.R
-import kotlinx.android.synthetic.main.fragment_add_store.*
+import co.id.billyon.ui.owner.AddStoreFragmentArgs
 
 
 /**
@@ -27,7 +27,7 @@ class AddStoreFragment : Fragment() {
         arguments?.let {
             val passedArgument = AddStoreFragmentArgs.fromBundle(it)
             val storeId = passedArgument.storeId
-            tvStoreId.text = "Passed ID : $storeId"
+            //tvStoreId.text = "Passed ID : $storeId"
         }
     }
 

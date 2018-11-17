@@ -1,4 +1,4 @@
-package co.id.billyon.ui.cashierdashboard
+package co.id.billyon.ui.cashier.cashierdashboard
 
 
 import android.arch.lifecycle.Observer
@@ -13,7 +13,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.Navigation
 import co.id.billyon.R
 import co.id.billyon.adapter.ProductsRecyclerAdapter
@@ -23,7 +22,6 @@ import co.id.billyon.di.Info
 import co.id.billyon.ui.handlers.BillyonHandlers
 import co.id.billyon.util.HELLO
 import co.id.billyon.util.LOVE
-import co.id.billyon.util.Utils
 import co.id.billyon.util.annotation.Use
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject

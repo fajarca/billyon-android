@@ -1,4 +1,4 @@
-package co.id.billyon.ui.cashierdashboard
+package co.id.billyon.ui.cashier.cashierdashboard
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
@@ -8,14 +8,9 @@ import co.id.billyon.db.entity.Products
 import co.id.billyon.model.PostsResponse
 import co.id.billyon.repository.ProductRepository
 import co.id.billyon.util.extensions.plusAssign
-import io.reactivex.Completable
-import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableObserver
-import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject

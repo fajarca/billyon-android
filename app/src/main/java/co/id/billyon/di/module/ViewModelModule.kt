@@ -4,8 +4,8 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import co.id.billyon.di.ViewModelFactory
 import co.id.billyon.di.ViewModelKey
-import co.id.billyon.ui.addproduct.AddProductViewModel
-import co.id.billyon.ui.cashierdashboard.CashierDashboardViewModel
+import co.id.billyon.ui.cashier.addproduct.AddProductViewModel
+import co.id.billyon.ui.cashier.cashierdashboard.CashierDashboardViewModel
 import co.id.billyon.ui.login.LoginViewModel
 import dagger.Binds
 import dagger.Module

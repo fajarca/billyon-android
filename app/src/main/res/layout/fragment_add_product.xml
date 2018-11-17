@@ -13,7 +13,7 @@
 
         <variable
             name="vm"
-            type="co.id.billyon.ui.addproduct.AddProductViewModel" />
+            type="co.id.billyon.ui.cashier.addproduct.AddProductViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
