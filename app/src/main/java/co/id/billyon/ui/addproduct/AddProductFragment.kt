@@ -12,12 +12,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
 import co.id.billyon.databinding.FragmentAddProductBinding
 import co.id.billyon.db.entity.Products
-import co.id.billyon.ui.cashierdashboard.CashierDashboardFragmentDirections
 import co.id.billyon.ui.handlers.BillyonHandlers
 import co.id.billyon.util.Utils
 import dagger.android.support.AndroidSupportInjection
@@ -46,7 +44,7 @@ class AddProductFragment : Fragment(), BillyonHandlers.AddProduct {
             isSuccess?.let {
                 if (it) {
                     Toast.makeText(activity, "Berhasil insert",Toast.LENGTH_LONG).show()
-                    findNavController().navigate(R.id.cashierDashboardFragment)
+                    findNavController().navigate(R.id.fragmentCashierDashboard)
                 }
             } })
         return binding.root

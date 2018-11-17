@@ -45,12 +45,12 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         labelRegister.setOnClickListener {
-            val action = LoginFragmentDirections.openRegisterFragmentAction()
+            val action = LoginFragmentDirections.actionLaunchRegister()
             val navController = Navigation.findNavController(view)
             navController.navigate(action)
         }
         btnLogin.setOnClickListener {
-            val action = LoginFragmentDirections.openDashboardFragmentAction()
+            val action = LoginFragmentDirections.actionLaunchOwnerDashboard()
             val navController = Navigation.findNavController(view)
             navController.navigate(action)
         }

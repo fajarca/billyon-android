@@ -20,7 +20,6 @@ import co.id.billyon.util.HELLO
 import co.id.billyon.util.LOVE
 import co.id.billyon.util.annotation.Use
 import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
@@ -73,7 +72,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavControll
         when(destination.id) {
 
 
-            R.id.registerFragment, R.id.loginFragment, R.id.addProductFragment -> {
+            R.id.fragmentRegister, R.id.fragmentLogin, R.id.fragmentAddProduct -> {
                 toolbar.visibility = View.GONE
                 bottomNavigationView.visibility = View.GONE
             }

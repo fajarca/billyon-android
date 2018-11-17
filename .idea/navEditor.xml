@@ -8,66 +8,30 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="action_dashboard">
+                  <entry key="fragmentAddEmployee">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="518" />
-                            <option name="y" value="288" />
+                            <option name="x" value="1222" />
+                            <option name="y" value="303" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="action_employee">
+                  <entry key="fragmentAddProduct">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="507" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="action_profile">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="177" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="action_report">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="addProductFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="3" />
-                            <option name="y" value="-318" />
+                            <option name="x" value="700" />
+                            <option name="y" value="-316" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_addProductFragment_to_cashierDashboardFragment">
+                            <entry key="launchDashboardAction">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -77,25 +41,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="addStoreFragment">
+                  <entry key="fragmentAddStore">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="342" />
-                            <option name="y" value="12" />
+                            <option name="x" value="1044" />
+                            <option name="y" value="301" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="cashierDashboardFragment">
+                  <entry key="fragmentCashierDashboard">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-198" />
-                            <option name="y" value="5" />
+                            <option name="x" value="519" />
+                            <option name="y" value="-25" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -110,7 +74,19 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="loginFragment">
+                  <entry key="fragmentDashboard">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="518" />
+                            <option name="y" value="288" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="fragmentLogin">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -121,12 +97,12 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="openDashboardFragmentAction">
+                            <entry key="actionLaunchOwnerDashboard">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="openRegisterFragmentAction">
+                            <entry key="actionLaunchRegister">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -136,28 +112,52 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="registerFragment">
+                  <entry key="fragmentProfile">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="265" />
-                            <option name="y" value="331" />
+                            <option name="x" value="869" />
+                            <option name="y" value="296" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="fragmentRegister">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="264" />
+                            <option name="y" value="291" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="openDashboardAction">
+                            <entry key="actionLaunchLogin">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="openLoginFragmentAction">
+                            <entry key="actionLaunchOwnerDashboard">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="fragmentReport">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="690" />
+                            <option name="y" value="290" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

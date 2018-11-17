@@ -90,7 +90,7 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
 
           viewModel.insertProduct(product)*/
 
-         val action = CashierDashboardFragmentDirections.launchAddProductAction()
+         val action = CashierDashboardFragmentDirections.actionLaunchAddProduct()
          val navController = Navigation.findNavController(view)
          navController.navigate(action)
 
