@@ -3,9 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="handlers"
+            type="co.id.billyon.util.handlers.BillyonClickHandlers.AddProduct" />
+
+        <variable
+            name="vm"
+            type="co.id.billyon.ui.cashier.addproduct.AddProductViewModel" />
+    </data>
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".ui.cashier.addproduct.AddProductFragment">
 
 
@@ -36,7 +48,7 @@
                 android:id="@+id/etProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Product Name" />
+                android:hint="@string/hint_product_name" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -53,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:inputType="number"
                 android:layout_height="wrap_content"
-                android:hint="Display Price" />
+                android:hint="@string/hint_display_price" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -70,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:inputType="number"
                 android:layout_height="wrap_content"
-                android:hint="Actual Price" />
+                android:hint="@string/hint_actual_price" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -87,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="Quantity" />
+                android:hint="@string/hint_quantity" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -104,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="Min Quantity" />
+                android:hint="@string/hint_min_quantity" />
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
@@ -115,6 +127,17 @@
             app:layout_constraintEnd_toEndOf="@+id/tvMinQuantity"
             app:layout_constraintStart_toStartOf="@+id/tvMinQuantity"
             app:layout_constraintTop_toBottomOf="@+id/tvMinQuantity" />
+
+        <TextView
+            android:id="@+id/tvNoCategoryNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_marginTop="8dp"
+            android:text="No category found"
+            android:onClick="@{(view)->handlers.onAddCategoryPressed(view)}"
+            app:layout_constraintStart_toStartOf="@+id/spinner"
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

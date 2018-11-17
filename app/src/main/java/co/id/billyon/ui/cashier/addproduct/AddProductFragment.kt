@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
 import co.id.billyon.databinding.FragmentAddProductBinding
+import co.id.billyon.db.entity.Category
 import co.id.billyon.db.entity.Products
 import co.id.billyon.util.handlers.BillyonClickHandlers
 import co.id.billyon.util.Utils
@@ -23,6 +24,7 @@ import javax.inject.Inject
 
 
 class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
+
 
     private lateinit var binding: FragmentAddProductBinding
     private lateinit var vm: AddProductViewModel
@@ -39,15 +41,26 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
         // Inflate the layout for this fragment
         vm = ViewModelProviders.of(this, viewModelFactory).get(AddProductViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_product, container, false)
-        binding.handlers = this
 
-        vm.isInsertSuccessful.observe(this, Observer { isSuccess->
+        binding.handlers = this
+        binding.contentAddProduct.handlers = this
+
+        vm.isInsertSuccessful.observe(this, Observer { isSuccess ->
             isSuccess?.let {
                 if (it) {
-                    Toast.makeText(activity, "Berhasil insert",Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, "Berhasil insert", Toast.LENGTH_LONG).show()
                     findNavController().navigate(R.id.fragmentCashierDashboard)
                 }
-            } })
+            }
+        })
+
+        vm.isInsertCategorySuccessful.observe(this, Observer { isSuccess ->
+            isSuccess?.let {
+                if (it) {
+                    Toast.makeText(activity, "Berhasil menambah category", Toast.LENGTH_LONG).show()
+                }
+            }
+        })
 
         return binding.root
     }
@@ -62,9 +75,15 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
 
         val currentTimestampAsId = Utils.getCurrentTimestampAsId()
         val currentTimestamp = Utils.getCurrentTimeStamp()
-        val product = Products(currentTimestampAsId, 1, 1, imagePath, productName, productQty.toInt(), productMinQty.toInt(), productDisplayPrice.toLong(), productActualPrice.toLong(), true, false, currentTimestamp, currentTimestamp)
+        val product = Products(currentTimestampAsId, 1, 1, imagePath, productName, productQty.toInt(), productMinQty.toInt(), productDisplayPrice.toLong(), productActualPrice.toLong(), true, true, currentTimestamp, currentTimestamp)
 
-         vm.insertProduct(product)
+        vm.insertProduct(product)
+    }
+
+    override fun onAddCategoryPressed(view: View) {
+        val currentTimestamp = Utils.getCurrentTimeStamp()
+        val category = Category(1, "Minuman", 1, true, true,  currentTimestamp, currentTimestamp)
+        vm.insertCategory(category)
     }
 
 }

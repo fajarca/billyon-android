@@ -11,14 +11,14 @@ interface CategoryDao {
     @Query("SELECT * FROM category")
     fun getAllCategory() : Flowable<List<Category>>
 
-    @Query("SELECT * FROM category where category_id = :categoryId")
-    fun findCategory(categoryId : Long)
+ /*   @Query("SELECT * FROM category where category_id = :categoryId")
+    fun findCategory(categoryId : Long)*/
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(product: Category)
+    fun insert(category: Category)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(products: List<Category>)
+    fun insertAll(categories: List<Category>)
 
     @Delete
     fun delete(category: Category)

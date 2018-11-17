@@ -37,8 +37,8 @@ data class Products(
         var isActive: Boolean,
 
         @TypeConverters(Converters::class)
-        @ColumnInfo(name = "is_synced")
-        var isSynced: Boolean,
+        @ColumnInfo(name = "need_synced")
+        var need_synced: Boolean,
 
         var created_date: String,
 

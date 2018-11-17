@@ -34,21 +34,11 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
     private lateinit var viewModel: DashboardViewModel
 
     @Inject
-    @field:Use(LOVE)
-    lateinit var infoLove: Info
-
-    @Inject
-    @field:Use(HELLO)
-    lateinit var infoHello: Info
-
-    @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
-        val text = "${infoHello.text} ${infoLove.text}"
-        Log.v("Ha", text)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

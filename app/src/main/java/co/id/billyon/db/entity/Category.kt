@@ -19,16 +19,13 @@ data class Category(
         @ColumnInfo(name = "store_id")
         var storeId: Long,
 
-        @ColumnInfo(name = "product_id")
-        var productId: Long,
-
         @TypeConverters(Converters::class)
         @ColumnInfo(name = "is_active")
         var isActive: Boolean,
 
         @TypeConverters(Converters::class)
-        @ColumnInfo(name = "is_synced")
-        var isSynced: Boolean,
+        @ColumnInfo(name = "need_synced")
+        var need_synced: Boolean,
 
         var created_date: String,
 

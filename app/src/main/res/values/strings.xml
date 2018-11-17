@@ -32,5 +32,10 @@
     <string name="err_msg_field_empty_">Tidak boleh kosong.</string>
     <string name="label_store_number">Store\nNumber</string>
     <string name="label_employee_number">Employee\nNumber</string>
+    <string name="hint_product_name">Product Name</string>
+    <string name="hint_display_price">Display Price</string>
+    <string name="hint_actual_price">Actual Price</string>
+    <string name="hint_quantity">Quantity</string>
+    <string name="hint_min_quantity">Min Quantity</string>
 
 </resources>
