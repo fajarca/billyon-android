@@ -9,7 +9,7 @@
 
         <variable
             name="handlers"
-            type="co.id.billyon.ui.handlers.BillyonHandlers.AddProduct" />
+            type="co.id.billyon.util.handlers.BillyonClickHandlers.AddProduct" />
 
         <variable
             name="vm"

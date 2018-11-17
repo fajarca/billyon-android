@@ -16,13 +16,13 @@ import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
 import co.id.billyon.databinding.FragmentAddProductBinding
 import co.id.billyon.db.entity.Products
-import co.id.billyon.ui.handlers.BillyonHandlers
+import co.id.billyon.util.handlers.BillyonClickHandlers
 import co.id.billyon.util.Utils
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
-class AddProductFragment : Fragment(), BillyonHandlers.AddProduct {
+class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
 
     private lateinit var binding: FragmentAddProductBinding
     private lateinit var vm: AddProductViewModel
@@ -48,7 +48,7 @@ class AddProductFragment : Fragment(), BillyonHandlers.AddProduct {
                     findNavController().navigate(R.id.fragmentCashierDashboard)
                 }
             } })
-        
+
         return binding.root
     }
 

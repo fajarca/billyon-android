@@ -19,7 +19,7 @@ import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
 import co.id.billyon.db.entity.Products
 import co.id.billyon.di.Info
-import co.id.billyon.ui.handlers.BillyonHandlers
+import co.id.billyon.util.handlers.BillyonClickHandlers
 import co.id.billyon.util.HELLO
 import co.id.billyon.util.LOVE
 import co.id.billyon.util.annotation.Use
@@ -27,7 +27,7 @@ import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
-class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonHandlers.Dashboard {
+class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.Dashboard {
 
     lateinit var binding: FragmentCashierDashboardBinding
     private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
