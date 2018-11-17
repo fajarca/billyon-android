@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavControll
         when(destination.id) {
 
 
-            R.id.registerFragment, R.id.loginFragment -> {
+            R.id.registerFragment, R.id.loginFragment, R.id.addProductFragment -> {
                 toolbar.visibility = View.GONE
                 bottomNavigationView.visibility = View.GONE
             }

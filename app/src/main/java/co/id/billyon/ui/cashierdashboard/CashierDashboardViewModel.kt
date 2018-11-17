@@ -51,9 +51,7 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
         compositeDisposable += Completable.fromCallable { repository.insertProduct(product) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                   isLoading.set(false)
-                }
+                .subscribe { isLoading.set(false) }
     }
     fun deleteProduct(product: Products) {
         compositeDisposable += Completable.fromCallable { repository.delete(product) }
@@ -66,9 +64,7 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
         compositeDisposable += Completable.fromCallable { repository.deleteAll() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    isLoading.set(false)
-                }
+                .subscribe { isLoading.set(false) }
     }
     fun loadPosts() {
         isLoading.set(true)
