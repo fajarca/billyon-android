@@ -29,7 +29,7 @@ import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
-class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonHandlers {
+class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonHandlers.Dashboard {
 
     lateinit var binding: FragmentCashierDashboardBinding
     private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
@@ -78,7 +78,7 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
     }
 
     override fun onProductSelected(product: Products) {
-        viewModel.deleteProduct(product)
+        //viewModel.deleteProduct(product)
     }
 
     override fun onFabAddProductPressed(view: View) {

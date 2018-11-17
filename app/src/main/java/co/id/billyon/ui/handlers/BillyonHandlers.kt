@@ -4,5 +4,11 @@ import android.util.Log
 import android.view.View
 
 interface BillyonHandlers {
-    fun onFabAddProductPressed(view : View)
+    interface Dashboard {
+        fun onFabAddProductPressed(view : View)
+    }
+    interface AddProduct {
+        fun onButtonSaveProductPressed(view : View)
+    }
+
 }

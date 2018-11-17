@@ -11,7 +11,7 @@
             type="co.id.billyon.ui.cashierdashboard.CashierDashboardViewModel"/>
         <variable
             name="handlers"
-            type="co.id.billyon.ui.handlers.BillyonHandlers"/>
+            type="co.id.billyon.ui.handlers.BillyonHandlers.Dashboard"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

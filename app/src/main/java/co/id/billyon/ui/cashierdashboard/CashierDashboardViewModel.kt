@@ -46,26 +46,7 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
 
                 })
     }
-    fun insertProduct(product: Products) {
-        isLoading.set(true)
-        compositeDisposable += Completable.fromCallable { repository.insertProduct(product) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { isLoading.set(false) }
-    }
-    fun deleteProduct(product: Products) {
-        compositeDisposable += Completable.fromCallable { repository.delete(product) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
-    }
-    fun deleteAllProduct() {
-        isLoading.set(true)
-        compositeDisposable += Completable.fromCallable { repository.deleteAll() }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { isLoading.set(false) }
-    }
+
     fun loadPosts() {
         isLoading.set(true)
         compositeDisposable += repository.getAllPost()
@@ -77,7 +58,7 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
                     }
 
                     override fun onNext(t: List<PostsResponse>) {
-                       val list = t
+                        val list = t
                         data.value = t
                         Log.v("tag", list.size.toString())
                         isLoading.set(false)
@@ -92,8 +73,6 @@ class CashierDashboardViewModel @Inject constructor(private val repository: Prod
 
     override fun onCleared() {
         super.onCleared()
-        if (!compositeDisposable.isDisposed) {
-            compositeDisposable.dispose()
-        }
+        compositeDisposable.dispose()
     }
 }
