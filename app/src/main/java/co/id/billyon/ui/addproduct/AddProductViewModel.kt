@@ -9,6 +9,7 @@ import co.id.billyon.repository.ProductRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
@@ -16,17 +17,24 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class AddProductViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
-    val isLoading = ObservableField<Boolean>()
-    val data = MutableLiveData<List<PostsResponse>>()
-    val productsData = MutableLiveData<List<Products>>()
+    val isInsertSuccessful = MutableLiveData<Boolean>()
     val compositeDisposable = CompositeDisposable()
 
     fun insertProduct(product: Products) {
-        isLoading.set(true)
+        isInsertSuccessful.value = false
         compositeDisposable += Completable.fromCallable { repository.insertProduct(product) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { isLoading.set(false) }
+                .subscribeWith(object : DisposableCompletableObserver(){
+                    override fun onComplete() {
+                        isInsertSuccessful.value = true
+                    }
+
+                    override fun onError(e: Throwable) {
+                        isInsertSuccessful.value = false
+                    }
+                })
+
     }
 
     fun deleteProduct(product: Products) {
@@ -37,11 +45,10 @@ class AddProductViewModel @Inject constructor(private val repository: ProductRep
     }
 
     fun deleteAllProduct() {
-        isLoading.set(true)
         compositeDisposable += Completable.fromCallable { repository.deleteAll() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { isLoading.set(false) }
+                .subscribe {  }
     }
 
     override fun onCleared() {

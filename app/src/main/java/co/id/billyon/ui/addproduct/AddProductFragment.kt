@@ -1,6 +1,7 @@
 package co.id.billyon.ui.addproduct
 
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
@@ -38,11 +39,16 @@ class AddProductFragment : Fragment(), BillyonHandlers.AddProduct {
         vm = ViewModelProviders.of(this, viewModelFactory).get(AddProductViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_product, container, false)
         binding.handlers = this
+        vm.isInsertSuccessful.observe(this, Observer { isSuccess->
+            isSuccess?.let {
+                if (it) {
+                    Toast.makeText(activity, "Berhasil insert",Toast.LENGTH_LONG).show()
+                }
+            } })
         return binding.root
     }
 
     override fun onButtonSaveProductPressed(view: View) {
-        Toast.makeText(activity,"Ha",Toast.LENGTH_SHORT).show()
         val imagePath = "/haha"
         val productName = binding.contentAddProduct.etProductName.text.toString().trim()
         val productQty = binding.contentAddProduct.etQuantity.text.toString()
