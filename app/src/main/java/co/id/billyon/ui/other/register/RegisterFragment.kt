@@ -1,4 +1,4 @@
-package co.id.billyon.ui.register
+package co.id.billyon.ui.other.register
 
 
 import android.os.Bundle

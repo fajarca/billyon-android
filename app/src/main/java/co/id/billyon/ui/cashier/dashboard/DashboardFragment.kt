@@ -1,4 +1,4 @@
-package co.id.billyon.ui.cashier.cashierdashboard
+package co.id.billyon.ui.cashier.dashboard
 
 
 import android.arch.lifecycle.Observer
@@ -27,11 +27,11 @@ import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
-class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.Dashboard {
+class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.Dashboard {
 
     lateinit var binding: FragmentCashierDashboardBinding
     private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
-    private lateinit var viewModel: CashierDashboardViewModel
+    private lateinit var viewModel: DashboardViewModel
 
     @Inject
     @field:Use(LOVE)
@@ -55,7 +55,7 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CashierDashboardViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(DashboardViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cashier_dashboard, container, false)
         binding.handlers = this
@@ -88,7 +88,7 @@ class CashierDashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductCl
 
           viewModel.insertProduct(product)*/
 
-         val action = CashierDashboardFragmentDirections.actionLaunchAddProduct()
+         val action = DashboardFragmentDirections.actionLaunchAddProduct()
          val navController = Navigation.findNavController(view)
          navController.navigate(action)
 

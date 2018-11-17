@@ -1,4 +1,4 @@
-package co.id.billyon.ui.cashier.cashierdashboard
+package co.id.billyon.ui.cashier.dashboard
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject
 
-class CashierDashboardViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
+class DashboardViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
     val isLoading = ObservableField<Boolean>()
     val data = MutableLiveData<List<PostsResponse>>()
     val productsData = MutableLiveData<List<Products>>()

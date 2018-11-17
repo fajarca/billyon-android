@@ -22,7 +22,7 @@ import java.util.*
  * A simple [Fragment] subclass.
  *
  */
-class OwnerDashboardFragment : Fragment() {
+class DashboardFragment : Fragment() {
 
     lateinit var binding : FragmentDashboardBinding
 

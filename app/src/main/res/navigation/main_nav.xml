@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentDashboard"
-        android:name="co.id.billyon.ui.owner.OwnerDashboardFragment"
+        android:name="co.id.billyon.ui.owner.DashboardFragment"
         android:label="@string/label_dashboard"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentRegister"
-        android:name="co.id.billyon.ui.register.RegisterFragment"
+        android:name="co.id.billyon.ui.other.register.RegisterFragment"
         android:label="@string/label_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentLogin"
-        android:name="co.id.billyon.ui.login.LoginFragment"
+        android:name="co.id.billyon.ui.other.login.LoginFragment"
         android:label="@string/label_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -75,12 +75,12 @@
 
     <fragment
         android:id="@+id/fragmentAddEmployee"
-        android:name="co.id.billyon.ui.owner.OwnerEmployeeFragment"
+        android:name="co.id.billyon.ui.owner.EmployeeFragment"
         android:label="@string/label_employee"
         tools:layout="@layout/fragment_employee" />
     <fragment
         android:id="@+id/fragmentCashierDashboard"
-        android:name="co.id.billyon.ui.cashier.cashierdashboard.CashierDashboardFragment"
+        android:name="co.id.billyon.ui.cashier.dashboard.DashboardFragment"
         android:label="@string/label_dashboard"
         tools:layout="@layout/fragment_cashier_dashboard">
         <action
