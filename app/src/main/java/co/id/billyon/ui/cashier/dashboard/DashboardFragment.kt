@@ -9,14 +9,18 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.navigation.Navigation
 import co.id.billyon.R
+import co.id.billyon.adapter.CategoryRecyclerAdapter
 import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
+import co.id.billyon.db.entity.Category
 import co.id.billyon.db.entity.Products
 import co.id.billyon.di.Info
 import co.id.billyon.util.handlers.BillyonClickHandlers
@@ -25,12 +29,16 @@ import co.id.billyon.util.LOVE
 import co.id.billyon.util.annotation.Use
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
+import co.id.billyon.R.id.recyclerView
+import android.support.v7.widget.DividerItemDecoration
+import androidx.navigation.fragment.findNavController
 
 
-class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.Dashboard {
+class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.Dashboard, CategoryRecyclerAdapter.OnCategoryClickListener {
 
     lateinit var binding: FragmentCashierDashboardBinding
     private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
+    private val categoryAdapter = CategoryRecyclerAdapter(arrayListOf(), this)
     private lateinit var viewModel: DashboardViewModel
 
     @Inject
@@ -53,8 +61,8 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
             viewmodel = viewModel
             binding.executePendingBindings()
 
-            recyclerView.layoutManager = GridLayoutManager(activity, 2)
-            recyclerView.adapter = productRecylerViewAdapter
+            recyclerView.layoutManager = LinearLayoutManager(activity)
+            recyclerView.adapter = categoryAdapter
         }
         viewModel.loadAllProducts()
         viewModel.productsData.observe(this, Observer { data ->
@@ -62,6 +70,25 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
                 productRecylerViewAdapter.replaceData(it)
             }
         })
+
+        viewModel.getAllCategory()
+        viewModel.getAllCategoriesWithProductCount()
+
+        viewModel._categories.observe(this, Observer { data ->
+            data?.let {
+                categoryAdapter.refreshData(it)
+
+            }
+        })
+
+        viewModel._categoriesProducts.observe(this, Observer { data ->
+            data?.let {
+                val a  = data
+                Log.v("tag", a.size.toString())
+
+            }
+        })
+
         return binding.root
     }
 
@@ -88,6 +115,9 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
 
         viewModel.insertProduct(product)
 */
+    }
+    override fun onCategorySelected(category: Category) {
+            findNavController().navigate(R.id.actionLaunchAddProduct)
     }
 
 }

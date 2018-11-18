@@ -9,6 +9,7 @@ class ProductLocalDataSource(private val productsDao: ProductsDao, private val c
 
     fun getAllProduct() =  productsDao.getAll()
     fun getAllCategories() = categoryDao.getAllCategory()
+    fun getAllCategoriesWithProductCount() = categoryDao.getAllCategoryWithProductCount()
 
     fun insertProduct(product: Products) = productsDao.insert(product)
     fun insertCategory(category : Category) = categoryDao.insert(category)
