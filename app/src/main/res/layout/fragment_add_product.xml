@@ -34,7 +34,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SAVE"
+            android:text="@string/save"
             android:onClick="@{(view)->handlers.onButtonSaveProductPressed(view)}"
             app:layout_constraintBottom_toBottomOf="parent" />
 

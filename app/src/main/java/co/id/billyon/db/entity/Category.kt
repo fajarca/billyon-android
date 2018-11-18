@@ -8,11 +8,6 @@ import co.id.billyon.util.Converters
 
 @Entity(tableName = "category")
 data class Category(
-
-        @PrimaryKey
-        @ColumnInfo(name = "category_id")
-        var id: Long,
-
         @ColumnInfo(name = "category_name")
         var categoryName: String,
 
@@ -31,4 +26,8 @@ data class Category(
 
         var updated_date: String
 
-)
+) {
+        @PrimaryKey(autoGenerate = true)
+        @ColumnInfo(name = "category_id")
+        var id: Long = 0
+}

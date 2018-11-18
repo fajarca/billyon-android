@@ -53,9 +53,7 @@ class DashboardViewModel @Inject constructor(private val repository: ProductRepo
                     }
 
                     override fun onNext(t: List<PostsResponse>) {
-                        val list = t
                         data.value = t
-                        Log.v("tag", list.size.toString())
                         isLoading.set(false)
                     }
 

@@ -37,5 +37,6 @@
     <string name="hint_actual_price">Actual Price</string>
     <string name="hint_quantity">Quantity</string>
     <string name="hint_min_quantity">Min Quantity</string>
+    <string name="save">SAVE</string>
 
 </resources>

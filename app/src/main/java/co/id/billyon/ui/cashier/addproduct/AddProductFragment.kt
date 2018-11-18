@@ -11,8 +11,11 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import co.id.billyon.R
 import co.id.billyon.databinding.FragmentAddProductBinding
 import co.id.billyon.db.entity.Category
@@ -23,9 +26,7 @@ import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
-class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
-
-
+class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct, AdapterView.OnItemSelectedListener {
     private lateinit var binding: FragmentAddProductBinding
     private lateinit var vm: AddProductViewModel
     @Inject
@@ -45,11 +46,25 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
         binding.handlers = this
         binding.contentAddProduct.handlers = this
 
+        binding.contentAddProduct.spinner.onItemSelectedListener = this
+        val categories = ArrayList<String>()
+        categories.add("Automobile");
+        categories.add("Business Services");
+        categories.add("Computers");
+        categories.add("Education");
+        categories.add("Personal");
+        categories.add("Travel");
+
+
+
         vm.isInsertSuccessful.observe(this, Observer { isSuccess ->
             isSuccess?.let {
                 if (it) {
                     Toast.makeText(activity, "Berhasil insert", Toast.LENGTH_LONG).show()
-                    findNavController().navigate(R.id.fragmentCashierDashboard)
+                    val options = navOptions {
+
+                    }
+                    findNavController().navigate(R.id.fragmentCashierDashboard,null,options)
                 }
             }
         })
@@ -62,6 +77,16 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
             }
         })
 
+
+        vm.getAllCategory()
+
+        vm._categories.observe(this, Observer { data ->
+            data?.let {
+                val adapter = ArrayAdapter<Category> (activity,R.layout.support_simple_spinner_dropdown_item,data)
+                binding.contentAddProduct.spinner.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+        })
         return binding.root
     }
 
@@ -82,8 +107,15 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
 
     override fun onAddCategoryPressed(view: View) {
         val currentTimestamp = Utils.getCurrentTimeStamp()
-        val category = Category(1, "Minuman", 1, true, true,  currentTimestamp, currentTimestamp)
+        val category = Category( "Minuman Keras", 2, true, true,  currentTimestamp, currentTimestamp)
         vm.insertCategory(category)
     }
 
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+
+    }
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+    }
 }
