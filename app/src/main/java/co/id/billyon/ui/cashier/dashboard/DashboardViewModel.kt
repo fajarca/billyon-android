@@ -12,6 +12,7 @@ import co.id.billyon.model.PostsResponse
 import co.id.billyon.repository.ProductRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
@@ -104,22 +105,22 @@ class DashboardViewModel @Inject constructor(private val repository: ProductRepo
 
     fun getAllCategoriesWithProductCount() {
         compositeDisposable += repository.getAllCategoriesWithProductCount()
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableMaybeObserver<List<CategoryWithProducts>>() {
-                    override fun onSuccess(categories: List<CategoryWithProducts>) {
-                        _categoriesProducts.value = categories
-                        Log.v("tagg", "onSuccess, ${categories.size}")
-                    }
-
+                .subscribeWith(object : DisposableSubscriber<List<CategoryWithProducts>>() {
                     override fun onComplete() {
-                        Log.v("tagg", "onComplete, no user found")
+                        Log.v("TAG", "onComplete")
                     }
 
-                    override fun onError(e: Throwable) {
-                        Log.v("tagg", "onError, ${e.message}")
+                    override fun onNext(categories: List<CategoryWithProducts>?) {
+                        Log.v("TAG", "onNext")
+                        _categoriesProducts.value = categories
+
                     }
 
+                    override fun onError(t: Throwable?) {
+                        Log.v("TAG", "onError getAllCategoriesWithProductCount ${t?.message}")
+                    }
 
                 })
     }

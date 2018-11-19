@@ -81,15 +81,15 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct, AdapterV
         })
 
 
-        vm.getAllCategory()
+        //vm.getAllCategory()
 
-        vm._categories.observe(this, Observer { data ->
+       /* vm._categories.observe(this, Observer { data ->
             data?.let {
                 val adapter = ArrayAdapter<Category>(activity, R.layout.support_simple_spinner_dropdown_item, data)
                 binding.contentAddProduct.spinner.adapter = adapter
                 adapter.notifyDataSetChanged()
             }
-        })
+        })*/
 
         val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
         categoryId = passedArgument.categoryId

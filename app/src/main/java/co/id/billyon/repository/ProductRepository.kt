@@ -30,7 +30,7 @@ class ProductRepository(private val apiService: ApiService, private val products
     fun getAllPost() = if (netManager.isConnectedToInternet) remoteDataSource.fetchPost() else remoteDataSource.fetchPost()
 
     fun getAllCategories() = localDataSource.getAllCategories()
-    fun getAllCategoriesWithProductCount() = categoryDao.getAllCategoryWithProductCount()
+    fun getAllCategoriesWithProductCount() = localDataSource.getAllCategoriesWithProductCount()
 
 
 }

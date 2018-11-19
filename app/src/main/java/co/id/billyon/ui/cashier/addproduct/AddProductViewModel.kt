@@ -58,7 +58,7 @@ class AddProductViewModel @Inject constructor(private val repository: ProductRep
 
     }
 
-    fun getAllCategory() {
+    /*fun getAllCategory() {
         compositeDisposable += repository.getAllCategories()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -83,7 +83,7 @@ class AddProductViewModel @Inject constructor(private val repository: ProductRep
 
 
                 })
-    }
+    }*/
 
     fun deleteProduct(product: Products) {
         compositeDisposable += Completable.fromCallable { repository.delete(product) }
