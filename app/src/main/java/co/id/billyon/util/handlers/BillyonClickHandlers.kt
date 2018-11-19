@@ -10,5 +10,8 @@ interface BillyonClickHandlers {
     interface AddProduct {
         fun onButtonSaveProductPressed(view : View)
     }
+    interface ProductList {
+
+    }
 
 }

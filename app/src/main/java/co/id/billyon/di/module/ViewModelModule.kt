@@ -6,6 +6,7 @@ import co.id.billyon.di.ViewModelFactory
 import co.id.billyon.di.ViewModelKey
 import co.id.billyon.ui.cashier.addproduct.AddProductViewModel
 import co.id.billyon.ui.cashier.dashboard.DashboardViewModel
+import co.id.billyon.ui.cashier.product.ProductListViewModel
 import co.id.billyon.ui.other.login.LoginViewModel
 import dagger.Binds
 import dagger.Module
@@ -31,6 +32,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AddProductViewModel::class)
     internal abstract fun providesAddProductViewModel(viewModel: AddProductViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProductListViewModel::class)
+    internal abstract fun providesProductListViewModel(viewModel: ProductListViewModel) : ViewModel
 
     //Add more ViewModels here
 }

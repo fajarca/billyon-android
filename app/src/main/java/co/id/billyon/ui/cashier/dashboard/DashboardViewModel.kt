@@ -4,34 +4,26 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
-import android.util.Log
 import co.id.billyon.db.entity.Category
-import co.id.billyon.db.entity.Products
 import co.id.billyon.db.entity.CategoryWithProducts
+import co.id.billyon.db.entity.Products
 import co.id.billyon.model.PostsResponse
-import co.id.billyon.repository.ProductRepository
+import co.id.billyon.repository.cashier.dashboard.DashboardRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
-import io.reactivex.observers.DisposableMaybeObserver
-import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject
 
-class DashboardViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
+class DashboardViewModel @Inject constructor(private val repository: DashboardRepository) : ViewModel() {
     val isLoading = ObservableField<Boolean>()
     val data = MutableLiveData<List<PostsResponse>>()
-    val productsData = MutableLiveData<List<Products>>()
     val compositeDisposable = CompositeDisposable()
     val isInsertCategorySuccessful = MutableLiveData<Boolean>()
-    val _categories = MutableLiveData<List<Category>>()
     val _categoriesProducts = MutableLiveData<List<CategoryWithProducts>>()
-    val categoryEmpty = ObservableBoolean()
-    val cat = MutableLiveData<List<Category>>()
 
     /*fun loadAllProducts() {
         compositeDisposable += repository.getAllProduct()
@@ -103,7 +95,7 @@ class DashboardViewModel @Inject constructor(private val repository: ProductRepo
                 })
     }*/
 
-    fun getAllCategoriesWithProductCount() {
+    fun getAllCategories() {
         isLoading.set(true)
         compositeDisposable += repository.getAllCategoriesWithProductCount()
                 .subscribeOn(Schedulers.io())

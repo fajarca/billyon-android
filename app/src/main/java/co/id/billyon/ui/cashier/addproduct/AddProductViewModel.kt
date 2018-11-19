@@ -2,19 +2,14 @@ package co.id.billyon.ui.cashier.addproduct
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableBoolean
-import android.util.Log
-import co.id.billyon.db.entity.Category
 import co.id.billyon.db.entity.Products
-import co.id.billyon.repository.ProductRepository
+import co.id.billyon.repository.cashier.product.ProductRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
-import io.reactivex.observers.DisposableMaybeObserver
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject
 
 class AddProductViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {

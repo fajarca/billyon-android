@@ -5,10 +5,10 @@ import co.id.billyon.db.BillyonDatabase
 import co.id.billyon.db.dao.CategoryDao
 import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.di.NetManager
-import co.id.billyon.repository.ProductRepository
+import co.id.billyon.repository.cashier.dashboard.DashboardRepository
+import co.id.billyon.repository.cashier.product.ProductRepository
 import dagger.Module
 import dagger.Provides
-import java.util.concurrent.ExecutorService
 import javax.inject.Singleton
 
 @Module
@@ -23,5 +23,9 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideProductRepository(apiService: ApiService, productsDao: ProductsDao, categoryDao : CategoryDao, netManager: NetManager) = ProductRepository(apiService,productsDao,categoryDao, netManager)
+    fun provideProductRepository(apiService: ApiService, productsDao: ProductsDao, netManager: NetManager) = ProductRepository(apiService, productsDao, netManager)
+
+    @Provides
+    @Singleton
+    fun provideDashboardRepository(apiService: ApiService, categoryDao : CategoryDao, netManager: NetManager) = DashboardRepository(apiService, categoryDao, netManager)
 }

@@ -66,7 +66,7 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
         })
 
         viewModel.getAllCategory()*/
-        viewModel.getAllCategoriesWithProductCount()
+        viewModel.getAllCategories()
 
         /*viewModel._categories.observe(this, Observer { data ->
             data?.let {
@@ -131,7 +131,7 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
     }
 
     override fun onCategorySelected(category: CategoryWithProducts) {
-        val action = DashboardFragmentDirections.actionLaunchAddProduct()
+        val action = DashboardFragmentDirections.actionLaunchProductList()
         action.setStoreId(category.storeId.toInt())
         action.setCategoryId(category.id.toInt())
         Log.v(TAG, "Store id ${category.storeId} category id ${category.id}")

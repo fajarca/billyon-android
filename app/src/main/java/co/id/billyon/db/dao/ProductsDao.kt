@@ -11,6 +11,9 @@ interface ProductsDao {
     @Query("SELECT * FROM products")
     fun getAll() : Flowable<List<Products>>
 
+    @Query("select * from products where category_id  = :categoryId")
+    fun getProductByCategoryId(categoryId : Int) : Flowable<List<Products>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(product: Products)
 
