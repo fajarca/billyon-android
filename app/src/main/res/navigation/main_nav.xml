@@ -105,6 +105,14 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@+id/fragmentCashierDashboard" />
+        <argument
+            android:name="categoryId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="storeId"
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

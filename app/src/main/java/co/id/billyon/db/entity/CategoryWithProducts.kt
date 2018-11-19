@@ -1,13 +1,19 @@
 package co.id.billyon.db.entity
 
 import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Embedded
 
-data class CategoryWithProducts (
-    @Embedded
-    var category : Category,
+data class CategoryWithProducts(
 
-    @ColumnInfo(name = "count")
-    var productCount : Int
+        @ColumnInfo(name = "category_id")
+        var id: Long = 0,
+
+        @ColumnInfo(name = "category_name")
+        var categoryName: String,
+
+        @ColumnInfo(name = "store_id")
+        var storeId: Long,
+
+        @ColumnInfo(name = "count")
+        var productCount: Int
 
 )

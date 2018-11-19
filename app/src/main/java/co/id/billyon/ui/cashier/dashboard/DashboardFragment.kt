@@ -8,30 +8,24 @@ import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import androidx.navigation.Navigation
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
 import co.id.billyon.adapter.CategoryRecyclerAdapter
 import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
 import co.id.billyon.db.entity.Category
+import co.id.billyon.db.entity.CategoryWithProducts
 import co.id.billyon.db.entity.Products
-import co.id.billyon.di.Info
+import co.id.billyon.util.Utils
 import co.id.billyon.util.handlers.BillyonClickHandlers
-import co.id.billyon.util.HELLO
-import co.id.billyon.util.LOVE
-import co.id.billyon.util.annotation.Use
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
-import co.id.billyon.R.id.recyclerView
-import android.support.v7.widget.DividerItemDecoration
-import androidx.navigation.fragment.findNavController
 
 
 class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.Dashboard, CategoryRecyclerAdapter.OnCategoryClickListener {
@@ -64,28 +58,37 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
             recyclerView.layoutManager = LinearLayoutManager(activity)
             recyclerView.adapter = categoryAdapter
         }
-        viewModel.loadAllProducts()
+       /* viewModel.loadAllProducts()
         viewModel.productsData.observe(this, Observer { data ->
             data?.let {
                 productRecylerViewAdapter.replaceData(it)
             }
         })
 
-        viewModel.getAllCategory()
+        viewModel.getAllCategory()*/
         viewModel.getAllCategoriesWithProductCount()
 
-        viewModel._categories.observe(this, Observer { data ->
+        /*viewModel._categories.observe(this, Observer { data ->
             data?.let {
                 categoryAdapter.refreshData(it)
 
             }
-        })
+        })*/
 
         viewModel._categoriesProducts.observe(this, Observer { data ->
             data?.let {
-                val a  = data
+                val a = data
+                categoryAdapter.refreshData(it)
                 Log.v("tag", a.size.toString())
 
+            }
+        })
+
+        viewModel.isInsertCategorySuccessful.observe(this, Observer { datas ->
+            datas?.let {
+               if (it) {
+                   Toast.makeText(activity, "Berhasil insert", Toast.LENGTH_LONG).show()
+               }
             }
         })
 
@@ -97,6 +100,19 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
     }
 
     override fun onFabAddProductPressed(view: View) {
+        val currentTimestamp = Utils.getCurrentTimeStamp();
+        val categories = arrayListOf<Category>()
+
+        categories.add(Category("Pakaian", 1, true, true, currentTimestamp, currentTimestamp))
+        /*categories.add(Category("Pakaian Dalam", 1, true, true, currentTimestamp, currentTimestamp))
+        categories.add(Category("Bawahan", 2, true, true, currentTimestamp, currentTimestamp))
+        categories.add(Category("Outer", 3, true, true, currentTimestamp, currentTimestamp))
+        categories.add(Category("Jacket", 4, true, true, currentTimestamp, currentTimestamp))
+        categories.add(Category("Sweater", 5, true, true, currentTimestamp, currentTimestamp))*/
+
+
+        viewModel.insertAllCategories(categories)
+
         //viewModel.loadPosts()
         //viewModel.deleteAllProduct()
         /*  val currentTimestampAsId = Utils.getCurrentTimestampAsId()
@@ -105,19 +121,23 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
 
           viewModel.insertProduct(product)*/
 
-         val action = DashboardFragmentDirections.actionLaunchAddProduct()
-         val navController = Navigation.findNavController(view)
-         navController.navigate(action)
+      /*  val action = DashboardFragmentDirections.actionLaunchAddProduct()
+        val navController = Navigation.findNavController(view)
+        navController.navigate(action)*/
 
-      /*  val currentTimestampAsId = Utils.getCurrentTimestampAsId()
-        val currentTimestamp = Utils.getCurrentTimeStamp()
-        val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true, true, currentTimestamp, currentTimestamp)
+        /*  val currentTimestampAsId = Utils.getCurrentTimestampAsId()
+          val currentTimestamp = Utils.getCurrentTimeStamp()
+          val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true, true, currentTimestamp, currentTimestamp)
 
-        viewModel.insertProduct(product)
-*/
+          viewModel.insertProduct(product)
+  */
     }
-    override fun onCategorySelected(category: Category) {
-            findNavController().navigate(R.id.actionLaunchAddProduct)
+
+    override fun onCategorySelected(category: CategoryWithProducts) {
+        val action = DashboardFragmentDirections.actionLaunchAddProduct()
+        action.setStoreId(category.storeId.toInt())
+        action.setCategoryId(category.id.toInt())
+        findNavController().navigate(action)
     }
 
 }

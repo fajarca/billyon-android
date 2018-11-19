@@ -18,6 +18,7 @@ class ProductRepository(private val apiService: ApiService, private val products
     fun insertCategory(category: Category) = localDataSource.insertCategory(category)
 
     fun insertAllProduct(products: List<Products>) = localDataSource.insertAllProduct(products)
+    fun insertAllCategories(categories : List<Category>) = localDataSource.insertAllCategory(categories)
 
     fun delete(product: Products) = localDataSource.delete(product)
     fun deleteAll() = localDataSource.deleteAll()

@@ -11,8 +11,10 @@ import co.id.billyon.db.entity.CategoryWithProducts
 import co.id.billyon.model.PostsResponse
 import co.id.billyon.repository.ProductRepository
 import co.id.billyon.util.extensions.plusAssign
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableMaybeObserver
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
@@ -28,8 +30,9 @@ class DashboardViewModel @Inject constructor(private val repository: ProductRepo
     val _categories = MutableLiveData<List<Category>>()
     val _categoriesProducts = MutableLiveData<List<CategoryWithProducts>>()
     val categoryEmpty = ObservableBoolean()
+    val cat = MutableLiveData<List<Category>>()
 
-    fun loadAllProducts() {
+    /*fun loadAllProducts() {
         compositeDisposable += repository.getAllProduct()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -97,7 +100,7 @@ class DashboardViewModel @Inject constructor(private val repository: ProductRepo
 
 
                 })
-    }
+    }*/
 
     fun getAllCategoriesWithProductCount() {
         compositeDisposable += repository.getAllCategoriesWithProductCount()
@@ -105,11 +108,6 @@ class DashboardViewModel @Inject constructor(private val repository: ProductRepo
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableMaybeObserver<List<CategoryWithProducts>>() {
                     override fun onSuccess(categories: List<CategoryWithProducts>) {
-                        if (categories.isEmpty()) {
-                            categoryEmpty.set(true)
-                        } else {
-                            categoryEmpty.set(false)
-                        }
                         _categoriesProducts.value = categories
                         Log.v("tagg", "onSuccess, ${categories.size}")
                     }
@@ -124,6 +122,23 @@ class DashboardViewModel @Inject constructor(private val repository: ProductRepo
 
 
                 })
+    }
+
+    fun insertAllCategories(categories: List<Category>) {
+        isInsertCategorySuccessful.value = false
+        compositeDisposable += Completable.fromCallable { repository.insertAllCategories(categories) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableCompletableObserver() {
+                    override fun onComplete() {
+                        isInsertCategorySuccessful.value = true
+                    }
+
+                    override fun onError(e: Throwable) {
+                        isInsertCategorySuccessful.value = false
+                    }
+                })
+
     }
 
     override fun onCleared() {

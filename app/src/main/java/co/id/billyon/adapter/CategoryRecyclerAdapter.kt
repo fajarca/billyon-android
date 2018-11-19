@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import co.id.billyon.databinding.RvItemCategoryBinding
 import co.id.billyon.databinding.RvItemProductBinding
 import co.id.billyon.db.entity.Category
+import co.id.billyon.db.entity.CategoryWithProducts
 import co.id.billyon.db.entity.Products
 import co.id.billyon.model.Product
 import java.util.ArrayList
 
-class CategoryRecyclerAdapter(private var categories: List<Category>,
+class CategoryRecyclerAdapter(private var categories: List<CategoryWithProducts>,
                               private val listener: OnCategoryClickListener)
     : RecyclerView.Adapter<CategoryRecyclerAdapter.ViewHolder>() {
 
@@ -28,7 +29,7 @@ class CategoryRecyclerAdapter(private var categories: List<Category>,
 
     class ViewHolder(private val binding: RvItemCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(category: Category, listener: OnCategoryClickListener?) {
+        fun bind(category: CategoryWithProducts, listener: OnCategoryClickListener?) {
             binding.category = category
             listener?.let {
                 binding.root.setOnClickListener({ _ -> listener.onCategorySelected(category) })
@@ -40,10 +41,10 @@ class CategoryRecyclerAdapter(private var categories: List<Category>,
     }
 
     interface OnCategoryClickListener {
-        fun onCategorySelected(category: Category)
+        fun onCategorySelected(category: CategoryWithProducts)
     }
 
-    fun refreshData(categories : List<Category> ) {
+    fun refreshData(categories : List<CategoryWithProducts> ) {
         this.categories = categories
         notifyDataSetChanged()
     }
