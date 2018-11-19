@@ -43,7 +43,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="@{String.valueOf(category.categoryName)}"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView2"
                 app:layout_constraintStart_toEndOf="@+id/ivProduct"
                 app:layout_constraintTop_toTopOf="@+id/ivProduct"
                 tools:text="Category Name" />
@@ -71,6 +71,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintGuide_percent="0.25"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivProduct"
+                app:srcCompat="@drawable/ic_chevron" />
 
         </android.support.constraint.ConstraintLayout>
 

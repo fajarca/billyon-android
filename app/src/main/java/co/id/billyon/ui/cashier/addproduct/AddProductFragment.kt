@@ -26,7 +26,7 @@ import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
-class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct, AdapterView.OnItemSelectedListener {
+class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
     private lateinit var binding: FragmentAddProductBinding
     private lateinit var vm: AddProductViewModel
     @Inject
@@ -49,15 +49,6 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct, AdapterV
         binding.handlers = this
         binding.contentAddProduct.handlers = this
 
-        binding.contentAddProduct.spinner.onItemSelectedListener = this
-        val categories = ArrayList<String>()
-        categories.add("Automobile");
-        categories.add("Business Services");
-        categories.add("Computers");
-        categories.add("Education");
-        categories.add("Personal");
-        categories.add("Travel");
-
 
 
         vm.isInsertSuccessful.observe(this, Observer { isSuccess ->
@@ -68,14 +59,6 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct, AdapterV
 
                     }
                     findNavController().navigate(R.id.fragmentCashierDashboard, null, options)
-                }
-            }
-        })
-
-        vm.isInsertCategorySuccessful.observe(this, Observer { isSuccess ->
-            isSuccess?.let {
-                if (it) {
-                    Toast.makeText(activity, "Berhasil menambah category", Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -115,22 +98,9 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct, AdapterV
 
         val currentTimestampAsId = Utils.getCurrentTimestampAsId()
         val currentTimestamp = Utils.getCurrentTimeStamp()
-        val product = Products(currentTimestampAsId, categoryId, storeId, imagePath, productName, productQty.toInt(), productMinQty.toInt(), productDisplayPrice.toLong(), productActualPrice.toLong(), true, true, currentTimestamp, currentTimestamp)
+        val product = Products(currentTimestampAsId, storeId, categoryId, imagePath, productName, productQty.toInt(), productMinQty.toInt(), productDisplayPrice.toLong(), productActualPrice.toLong(), true, true, currentTimestamp, currentTimestamp)
 
         vm.insertProduct(product)
     }
 
-    override fun onAddCategoryPressed(view: View) {
-        val currentTimestamp = Utils.getCurrentTimeStamp()
-        val category = Category("Minuman Keras", 2, true, true, currentTimestamp, currentTimestamp)
-        vm.insertCategory(category)
-    }
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-
-    }
-
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
-    }
 }

@@ -9,7 +9,6 @@ interface BillyonClickHandlers {
     }
     interface AddProduct {
         fun onButtonSaveProductPressed(view : View)
-        fun onAddCategoryPressed(view : View)
     }
 
 }

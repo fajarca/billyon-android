@@ -31,9 +31,9 @@ import javax.inject.Inject
 class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.Dashboard, CategoryRecyclerAdapter.OnCategoryClickListener {
 
     lateinit var binding: FragmentCashierDashboardBinding
-    private val productRecylerViewAdapter = ProductsRecyclerAdapter(arrayListOf(), this)
     private val categoryAdapter = CategoryRecyclerAdapter(arrayListOf(), this)
     private lateinit var viewModel: DashboardViewModel
+    private val TAG = DashboardFragment::class.java.simpleName
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -77,10 +77,7 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
 
         viewModel._categoriesProducts.observe(this, Observer { data ->
             data?.let {
-                val a = data
                 categoryAdapter.refreshData(it)
-                Log.v("tag", a.size.toString())
-
             }
         })
 
@@ -137,6 +134,7 @@ class DashboardFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickList
         val action = DashboardFragmentDirections.actionLaunchAddProduct()
         action.setStoreId(category.storeId.toInt())
         action.setCategoryId(category.id.toInt())
+        Log.v(TAG, "Store id ${category.storeId} category id ${category.id}")
         findNavController().navigate(action)
     }
 

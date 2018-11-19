@@ -19,9 +19,6 @@ import javax.inject.Inject
 
 class AddProductViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
     val isInsertSuccessful = MutableLiveData<Boolean>()
-    val isInsertCategorySuccessful = MutableLiveData<Boolean>()
-    val _categories = MutableLiveData<List<Category>>()
-    val categoryEmpty = ObservableBoolean()
     val compositeDisposable = CompositeDisposable()
 
     fun insertProduct(product: Products) {
@@ -40,50 +37,6 @@ class AddProductViewModel @Inject constructor(private val repository: ProductRep
                 })
 
     }
-
-    fun insertCategory(category: Category) {
-        isInsertCategorySuccessful.value = false
-        compositeDisposable += Completable.fromCallable { repository.insertCategory(category) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableCompletableObserver() {
-                    override fun onComplete() {
-                        isInsertCategorySuccessful.value = true
-                    }
-
-                    override fun onError(e: Throwable) {
-                        isInsertCategorySuccessful.value = false
-                    }
-                })
-
-    }
-
-    /*fun getAllCategory() {
-        compositeDisposable += repository.getAllCategories()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableMaybeObserver<List<Category>>() {
-                    override fun onSuccess(categories: List<Category>) {
-                        if (categories.isEmpty()) {
-                            categoryEmpty.set(true)
-                        } else {
-                            categoryEmpty.set(false)
-                        }
-                        _categories.value = categories
-                        Log.v("tagg", "onSuccess, ${categories.size}")
-                    }
-
-                    override fun onComplete() {
-                        Log.v("tagg", "onComplete, no user found")
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Log.v("tagg", "onError, ${e.message}")
-                    }
-
-
-                })
-    }*/
 
     fun deleteProduct(product: Products) {
         compositeDisposable += Completable.fromCallable { repository.delete(product) }

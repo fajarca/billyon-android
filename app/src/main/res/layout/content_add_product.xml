@@ -119,26 +119,6 @@
                 android:hint="@string/hint_min_quantity" />
         </android.support.design.widget.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:visibility="@{vm.categoryEmpty ? View.GONE : View.VISIBLE}"
-            app:layout_constraintEnd_toEndOf="@+id/tvMinQuantity"
-            app:layout_constraintStart_toStartOf="@+id/tvMinQuantity"
-            app:layout_constraintTop_toBottomOf="@+id/tvMinQuantity" />
-
-        <TextView
-            android:id="@+id/tvNoCategoryNotice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="No category found"
-            android:visibility="@{vm.categoryEmpty ? View.VISIBLE : View.VISIBLE}"
-            android:onClick="@{(view)->handlers.onAddCategoryPressed(view)}"
-            app:layout_constraintStart_toStartOf="@+id/spinner"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

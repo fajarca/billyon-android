@@ -104,22 +104,23 @@ class DashboardViewModel @Inject constructor(private val repository: ProductRepo
     }*/
 
     fun getAllCategoriesWithProductCount() {
+        isLoading.set(true)
         compositeDisposable += repository.getAllCategoriesWithProductCount()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSubscriber<List<CategoryWithProducts>>() {
                     override fun onComplete() {
-                        Log.v("TAG", "onComplete")
+                        isLoading.set(false)
                     }
 
                     override fun onNext(categories: List<CategoryWithProducts>?) {
-                        Log.v("TAG", "onNext")
+                        isLoading.set(false)
                         _categoriesProducts.value = categories
 
                     }
 
                     override fun onError(t: Throwable?) {
-                        Log.v("TAG", "onError getAllCategoriesWithProductCount ${t?.message}")
+                        isLoading.set(true)
                     }
 
                 })
