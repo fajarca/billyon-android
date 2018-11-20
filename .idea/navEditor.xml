@@ -69,6 +69,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="actionLaunchProductList">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>

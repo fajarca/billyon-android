@@ -12,6 +12,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import co.id.billyon.R
 import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentProductListBinding
@@ -23,6 +24,7 @@ import javax.inject.Inject
 
 
 class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.ProductList {
+
 
 
     lateinit var binding: FragmentProductListBinding
@@ -70,8 +72,8 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         return binding.root
     }
 
+
     override fun onProductSelected(product: Products) {
-
+       
     }
-
 }

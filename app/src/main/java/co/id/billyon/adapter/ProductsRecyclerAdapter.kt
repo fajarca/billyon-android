@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import co.id.billyon.databinding.RvItemProductBinding
 import co.id.billyon.db.entity.Products
-import co.id.billyon.model.Product
-import java.util.ArrayList
 
 class ProductsRecyclerAdapter(private var products: List<Products>,
                               private val listener: OnProductClickListener)

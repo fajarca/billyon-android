@@ -47,9 +47,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavControll
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setupToolbar()
         setupNavigation()
-
-        val text = "${infoHello.text} ${infoLove.text}"
-        Log.v("Ha",text)
     }
 
     private fun setupToolbar() {
