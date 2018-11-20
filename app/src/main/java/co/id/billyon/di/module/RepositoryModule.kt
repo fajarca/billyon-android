@@ -16,7 +16,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class DatabaseModule {
+class RepositoryModule {
     @Provides
     @Singleton
     fun provideProductDao(db: BillyonDatabase) = db.productDao()
