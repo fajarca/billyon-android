@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     lateinit var bottomNavigationView: BottomNavigationView
     lateinit var binding : ActivityMainBinding
     private lateinit var navController: NavController
-    private val isCashier = false
+    private val isCashier = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

@@ -1,11 +1,10 @@
 package co.id.billyon.repository.cashier.product
 
-import co.id.billyon.db.dao.CategoryDao
 import co.id.billyon.db.dao.ProductsDao
-import co.id.billyon.db.entity.Category
 import co.id.billyon.db.entity.Products
+import javax.inject.Inject
 
-class ProductLocalDataSource(private val productsDao: ProductsDao) {
+class ProductLocalDataSource @Inject constructor(private val productsDao: ProductsDao) {
 
     fun getAllProduct() =  productsDao.getAll()
     fun findProductByCategoryId(categoryId : Int) = productsDao.getProductByCategoryId(categoryId)

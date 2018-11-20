@@ -2,9 +2,9 @@ package co.id.billyon.repository.cashier.dashboard
 
 import co.id.billyon.db.dao.CategoryDao
 import co.id.billyon.db.entity.Category
-import co.id.billyon.db.entity.Products
+import javax.inject.Inject
 
-class DashboardLocalDataSource constructor(private val categoryDao : CategoryDao) {
+class DashboardLocalDataSource @Inject constructor(private val categoryDao : CategoryDao) {
 
     fun getAllCategories() = categoryDao.getAllCategory()
     fun getAllCategoriesWithProductCount() = categoryDao.getAllCategoryWithProductCount()
