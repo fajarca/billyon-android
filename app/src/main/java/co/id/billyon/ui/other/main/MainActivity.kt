@@ -27,7 +27,9 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavController.OnNavigatedListener {
+class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
+
+
     @Inject
     lateinit var dispatchingAndroidInjector : DispatchingAndroidInjector<Fragment>
 
@@ -55,6 +57,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavControll
         val navHostFragment= supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.main_nav)
+
         if (isCashier) {
             binding.bottomNavigationView.inflateMenu(R.menu.menu_cashier)
             graph.startDestination = R.id.fragmentCashierDashboard
@@ -62,11 +65,12 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavControll
             binding.bottomNavigationView.inflateMenu(R.menu.menu_owner)
             graph.startDestination = R.id.fragmentDashboard
         }
+
         navHostFragment.navController.graph = graph
         navController = navHostFragment.navController
+
         setupToolbar()
-        binding.bottomNavigationView.setupWithNavController(navController)
-        //navController.addOnNavigatedListener(this)
+        setupBottomNavigation()
     }
 
     private fun setupToolbar() {
@@ -75,6 +79,27 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavControll
         setupActionBarWithNavController(navController)
     }
 
+    private fun setupBottomNavigation() {
+        binding.bottomNavigationView.setupWithNavController(navController)
+        navController.addOnNavigatedListener(navigationListener)
+    }
+    val navigationListener = NavController.OnNavigatedListener { controller, destination ->
+        when(destination.id) {
+
+
+            R.id.fragmentRegister, R.id.fragmentLogin, R.id.fragmentAddProduct -> {
+                toolbar.visibility = View.GONE
+                binding.bottomNavigationView.visibility = View.GONE
+            }
+
+            else -> {
+                toolbar.visibility = View.VISIBLE
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                binding.bottomNavigationView.visibility = View.VISIBLE
+            }
+
+        }
+    }
     /*private fun setupNavigation() {
         bottomNavigationView = binding.bottomNavigationView
 
@@ -91,23 +116,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavControll
 
     }
 */
-    override fun onSupportNavigateUp() = findNavController(R.id.nav_host).navigateUp()
+    override fun onSupportNavigateUp() = navController.navigateUp()
 
-    override fun onNavigated(controller: NavController, destination: NavDestination) {
-        when(destination.id) {
-
-
-            R.id.fragmentRegister, R.id.fragmentLogin, R.id.fragmentAddProduct -> {
-                toolbar.visibility = View.GONE
-                bottomNavigationView.visibility = View.GONE
-            }
-
-            else -> {
-                toolbar.visibility = View.VISIBLE
-                supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                bottomNavigationView.visibility = View.VISIBLE
-            }
-
-        }
-    }
 }
