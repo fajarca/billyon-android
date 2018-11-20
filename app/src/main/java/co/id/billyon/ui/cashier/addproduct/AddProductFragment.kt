@@ -51,17 +51,7 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
 
 
 
-        vm.isInsertSuccessful.observe(this, Observer { isSuccess ->
-            isSuccess?.let {
-                if (it) {
-                    Toast.makeText(activity, "Berhasil insert", Toast.LENGTH_LONG).show()
-                    val options = navOptions {
-
-                    }
-                    findNavController().navigate(R.id.fragmentCashierDashboard, null, options)
-                }
-            }
-        })
+        vm.isInsertSuccessful.observe(this, Observer { findNavController().popBackStack()})
 
 
         //vm.getAllCategory()

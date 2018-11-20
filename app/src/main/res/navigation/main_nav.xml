@@ -84,34 +84,19 @@
         android:label="@string/label_dashboard"
         tools:layout="@layout/fragment_cashier_dashboard">
         <action
-            android:id="@+id/actionLaunchAddProduct"
-            app:destination="@id/fragmentAddProduct"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@+id/fragmentCashierDashboard" />
-        <action
             android:id="@+id/actionLaunchProductList"
             app:destination="@id/fragmentProductList"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_exit_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/fragmentCashierDashboard" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAddProduct"
         android:name="co.id.billyon.ui.cashier.addproduct.AddProductFragment"
         android:label="@string/label_add_product"
         tools:layout="@layout/fragment_add_product" >
-        <action
-            android:id="@+id/actionLaunchDashboard"
-            app:destination="@id/fragmentCashierDashboard"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@+id/fragmentCashierDashboard" />
         <argument
             android:name="categoryId"
             android:defaultValue="-1"
@@ -120,6 +105,10 @@
             android:name="storeId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <action
+            android:id="@+id/actionLaunchProductList"
+            app:destination="@id/fragmentProductList"
+            app:popUpTo="@+id/fragmentProductList" />
     </fragment>
 
     <fragment
@@ -135,6 +124,14 @@
             android:name="storeId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <action
+            android:id="@+id/actionLaunchAddProduct"
+            app:destination="@id/fragmentAddProduct"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/fragmentProductList" />
     </fragment>
 
 </navigation>

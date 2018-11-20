@@ -19,9 +19,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.content.FileProvider
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -53,8 +51,7 @@ import java.util.jar.Manifest
 import javax.inject.Inject
 
 
-class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRecyclerAdapter.OnCategoryClickListener {
-
+class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickListener {
 
 
     lateinit var binding: FragmentCashierDashboardBinding
@@ -67,9 +64,10 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    override fun onAttach(context: Context?) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -79,7 +77,6 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(DashboardViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cashier_dashboard, container, false)
-        binding.handlers = this
         binding.apply {
             viewmodel = viewModel
             binding.executePendingBindings()
@@ -95,62 +92,38 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
             }
         })
 
-        viewModel.isInsertCategorySuccessful.observe(this, Observer { datas ->
-            datas?.let {
-                if (it) {
-                    Toast.makeText(activity, "Berhasil insert", Toast.LENGTH_LONG).show()
-                }
-            }
-        })
+        viewModel.addCategoryMessage.observe(this, Observer { Toast.makeText(activity, it, Toast.LENGTH_LONG).show() })
 
         return binding.root
     }
 
-    override fun onFabAddProductPressed(view: View) {
-        /* val currentTimestamp = Utils.getCurrentTimeStamp();
-         val categories = arrayListOf<Category>()
-
-         categories.add(Category("Pakaian", 1, true, true, currentTimestamp, currentTimestamp))
-         *//*categories.add(Category("Pakaian Dalam", 1, true, true, currentTimestamp, currentTimestamp))
-        categories.add(Category("Bawahan", 2, true, true, currentTimestamp, currentTimestamp))
-        categories.add(Category("Outer", 3, true, true, currentTimestamp, currentTimestamp))
-        categories.add(Category("Jacket", 4, true, true, currentTimestamp, currentTimestamp))
-        categories.add(Category("Sweater", 5, true, true, currentTimestamp, currentTimestamp))*//*
-
-
-        viewModel.insertAllCategories(categories)*/
-
-        //viewModel.loadPosts()
-        /*  val currentTimestampAsId = Utils.getCurrentTimestampAsId()
-          val currentTimestamp = Utils.getCurrentTimeStamp()
-          val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true,true,currentTimestamp,currentTimestamp)
-
-          viewModel.insertProduct(product)*/
-
-        /*  val action = DashboardFragmentDirections.actionLaunchAddProduct()
-          val navController = Navigation.findNavController(view)
-          navController.navigate(action)*/
-
-        /*  val currentTimestampAsId = Utils.getCurrentTimestampAsId()
-          val currentTimestamp = Utils.getCurrentTimeStamp()
-          val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true, true, currentTimestamp, currentTimestamp)
-
-          viewModel.insertProduct(product)
-  */
-
-        //takePictureIntent()
-        Dexter.withActivity(activity)
-                .withPermissions(android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                .withListener(permissionListener)
-                .withErrorListener(errorPermissionListener)
-                .onSameThread()
-                .check()
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_dashboard, menu)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.menu_add_category -> {
+                Dexter.withActivity(activity)
+                        .withPermissions(android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                        .withListener(permissionListener)
+                        .withErrorListener(errorPermissionListener)
+                        .onSameThread()
+                        .check()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onAttach(context: Context?) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
+
     override fun onCategorySelected(category: CategoryWithProducts) = launchProductDetails(category)
     override fun onCategoryImageSelected(category: CategoryWithProducts) = displayCreateCategoryDialog()
-    override fun onCategoryImagePressed(view: View) {
-
-    }
 
     fun launchProductDetails(category: CategoryWithProducts) {
         val options = navOptions {
@@ -175,12 +148,8 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
         val etCategoryName = view.findViewById<TextView>(R.id.etCategoryName)
 
 
-        ivAddCategory.setOnClickListener { view ->
-            view?.let {
-                takePictureIntent()
-            }
-        }
-        
+        ivAddCategory.setOnClickListener { takePictureIntent() }
+
         val alertDialog = AlertDialog.Builder(activity)
         alertDialog.setView(view)
         val dialog = alertDialog.create()
@@ -189,7 +158,7 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
         btnAddCategory.setOnClickListener {
             val timestamp = Utils.getCurrentTimeStamp()
             val categoryName = etCategoryName.text.toString().trim()
-            val category = Category(categoryName, imageFilePath,2, true, true, timestamp, timestamp)
+            val category = Category(categoryName, imageFilePath, 2, true, true, timestamp, timestamp)
             viewModel.insertCategory(category)
             dialog.dismiss()
         }
@@ -202,14 +171,13 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             if (intent.resolveActivity(activity?.packageManager) != null) {
                 val authorities = activity?.packageName + ".fileprovider"
-                val imageUri = FileProvider.getUriForFile(context!!,authorities,imageFile!!)
+                val imageUri = FileProvider.getUriForFile(context!!, authorities, imageFile!!)
                 //Ask for extra output, which is the image uri of the picture taken
-                intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri)
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
                 startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
             }
         } catch (e: IOException) {
-           Log.v(TAG, "Error creating the file")
-            // Toast.makeText(this, "Could not create file!", Toast.LENGTH_SHORT).show()
+            Log.e(TAG, "Error creating the image file")
         }
 
 
@@ -260,11 +228,11 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
     }
 
     @Throws(IOException::class)
-    fun createImageFile() : File? {
-        val timestamp  = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+    fun createImageFile(): File? {
+        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val fileName = "JPEG_${timestamp}_"
         activity?.let {
-            val storageDir : File = activity!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            val storageDir: File = activity!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
             if (!storageDir.exists()) storageDir.mkdirs()
             val imageFile = File.createTempFile(fileName, ".jpg", storageDir)
             imageFilePath = imageFile.absolutePath
@@ -274,6 +242,7 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
         return null
 
     }
+
     fun setScaledBitmap(): Bitmap {
         val imageViewWidth = ivAddCategory.width
         val imageViewHeight = ivAddCategory.height
@@ -282,7 +251,7 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
         BitmapFactory.decodeFile(imageFilePath, bmOptions)
         val bitmapWidth = bmOptions.outWidth
         val bitmapHeight = bmOptions.outHeight
-        val scaleFactor = Math.min(bitmapWidth/imageViewWidth, bitmapHeight/imageViewHeight)
+        val scaleFactor = Math.min(bitmapWidth / imageViewWidth, bitmapHeight / imageViewHeight)
         bmOptions.inJustDecodeBounds = false
         bmOptions.inSampleSize = scaleFactor
         return BitmapFactory.decodeFile(imageFilePath, bmOptions)

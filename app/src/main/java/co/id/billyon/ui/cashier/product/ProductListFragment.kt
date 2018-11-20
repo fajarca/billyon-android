@@ -13,20 +13,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
 import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentProductListBinding
 import co.id.billyon.db.entity.Products
 import co.id.billyon.ui.cashier.addproduct.AddProductFragmentArgs
+import co.id.billyon.ui.cashier.dashboard.DashboardFragmentDirections
 import co.id.billyon.util.handlers.BillyonClickHandlers
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
 class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.ProductList {
-
-
-
     lateinit var binding: FragmentProductListBinding
     private val adapter = ProductsRecyclerAdapter(arrayListOf(), this)
     private lateinit var viewModel: ProductListViewModel
@@ -76,4 +75,12 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     override fun onProductSelected(product: Products) {
        
     }
+
+    override fun onFabAddProductPressed(view: View) {
+        val action = ProductListFragmentDirections.actionLaunchAddProduct()
+        action.setStoreId(storeId)
+        action.setCategoryId(categoryId)
+        findNavController().navigate(action)
+    }
+
 }

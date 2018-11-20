@@ -22,7 +22,7 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
     val isLoading = ObservableField<Boolean>()
     val data = MutableLiveData<List<PostsResponse>>()
     val compositeDisposable = CompositeDisposable()
-    val isInsertCategorySuccessful = MutableLiveData<Boolean>()
+    val addCategoryMessage = MutableLiveData<String>()
     val _categoriesProducts = MutableLiveData<List<CategoryWithProducts>>()
 
     /*fun loadAllProducts() {
@@ -119,17 +119,15 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
     }
 
     fun insertCategory(category: Category) {
-        isInsertCategorySuccessful.value = false
         compositeDisposable += Completable.fromCallable { repository.insertCategory(category) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableCompletableObserver() {
                     override fun onComplete() {
-                        isInsertCategorySuccessful.value = true
                     }
 
                     override fun onError(e: Throwable) {
-                        isInsertCategorySuccessful.value = false
+                        addCategoryMessage.value = "Unable to add new category ${e.message}"
                     }
                 })
     }
