@@ -11,6 +11,9 @@ data class Category(
         @ColumnInfo(name = "category_name")
         var categoryName: String,
 
+        @ColumnInfo(name = "image_path")
+        var categoryImagePath : String,
+
         @ColumnInfo(name = "store_id")
         var storeId: Long,
 

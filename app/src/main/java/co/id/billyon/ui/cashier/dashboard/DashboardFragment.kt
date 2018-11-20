@@ -24,14 +24,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import co.id.billyon.R
 import co.id.billyon.adapter.CategoryRecyclerAdapter
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
+import co.id.billyon.db.entity.Category
 import co.id.billyon.db.entity.CategoryWithProducts
 import co.id.billyon.util.REQUEST_IMAGE_CAPTURE
+import co.id.billyon.util.Utils
 import co.id.billyon.util.handlers.BillyonClickHandlers
 import com.bumptech.glide.Glide
 import com.karumi.dexter.Dexter
@@ -118,7 +121,6 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
         viewModel.insertAllCategories(categories)*/
 
         //viewModel.loadPosts()
-        //viewModel.deleteAllProduct()
         /*  val currentTimestampAsId = Utils.getCurrentTimestampAsId()
           val currentTimestamp = Utils.getCurrentTimeStamp()
           val product = Products(currentTimestampAsId, 1, 1, "/haha", "Kopi Susu Keluarga", 100, 80, 12000, 8000, true,true,currentTimestamp,currentTimestamp)
@@ -168,23 +170,29 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
     fun displayCreateCategoryDialog() {
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_add_category, null, false)
 
-        val path = "/storage/emulated/0/Android/data/co.id.billyon/files/Pictures/JPEG_20181120_050429_4034703531751475390.jpg"
-        val file = File(path)
-        val uri = Uri.fromFile(file)
-
         ivAddCategory = view.findViewById(R.id.ivAddCategory)
-        Glide.with(this).load(uri).into(ivAddCategory)
+        val btnAddCategory = view.findViewById<Button>(R.id.btnAddCategory)
+        val etCategoryName = view.findViewById<TextView>(R.id.etCategoryName)
+
 
         ivAddCategory.setOnClickListener { view ->
             view?.let {
                 takePictureIntent()
             }
         }
-
-        val btnAddCategory = view.findViewById<Button>(R.id.btnAddCategory)
+        
         val alertDialog = AlertDialog.Builder(activity)
         alertDialog.setView(view)
-        alertDialog.show()
+        val dialog = alertDialog.create()
+        dialog.show()
+
+        btnAddCategory.setOnClickListener {
+            val timestamp = Utils.getCurrentTimeStamp()
+            val categoryName = etCategoryName.text.toString().trim()
+            val category = Category(categoryName, imageFilePath,2, true, true, timestamp, timestamp)
+            viewModel.insertCategory(category)
+            dialog.dismiss()
+        }
     }
 
 
@@ -216,7 +224,6 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
                 REQUEST_IMAGE_CAPTURE -> {
 
                     ivAddCategory.setImageBitmap(setScaledBitmap())
-                    val a = imageFilePath
 
                 }
             }
@@ -251,14 +258,6 @@ class DashboardFragment : Fragment(), BillyonClickHandlers.Dashboard, CategoryRe
         }
 
     }
-    fun saveOnInternalStorage(fileName : String) {
-        val file = File(activity?.filesDir, fileName)
-    }
-    fun loadFromIntenalStorage(fileName : String) {
-        val directory = activity?.filesDir
-        val file = File(directory,fileName)
-    }
-
 
     @Throws(IOException::class)
     fun createImageFile() : File? {

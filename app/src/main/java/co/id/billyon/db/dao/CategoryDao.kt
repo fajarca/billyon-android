@@ -12,7 +12,7 @@ interface CategoryDao {
     @Query("SELECT * FROM category")
     fun getAllCategory(): Flowable<List<Category>>
 
-    @Query("select a.category_id, a.category_name,a.store_id, count(b.name) as count from category a left join products b on a.category_id = b.category_id group by a.category_id, a.category_name,a.store_id")
+    @Query("select a.category_id, a.category_name,a.image_path,a.store_id, count(b.name) as count from category a left join products b on a.category_id = b.category_id group by a.category_id, a.category_name,a.store_id")
     fun getAllCategoryWithProductCount(): Flowable<List<CategoryWithProducts>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

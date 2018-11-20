@@ -9,7 +9,7 @@ object Utils {
     fun getCurrentTimestampAsId() = SimpleDateFormat("yyyyMMddHHmmssSSS", Locale.US).format(Date()).toLong()
 
     @JvmStatic
-    fun getCurrentTimeStamp() = SimpleDateFormat("YYYY-MM-dd HH:mm:ss", Locale.US).format(Date())
+    fun getCurrentTimeStamp() = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).format(Date())
 
     /**
      * Because the external storage might be unavailable—such as when the user has mounted the storage

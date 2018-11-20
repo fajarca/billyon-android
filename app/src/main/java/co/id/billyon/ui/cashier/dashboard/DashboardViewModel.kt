@@ -118,7 +118,23 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
                 })
     }
 
-    fun insertAllCategories(categories: List<Category>) {
+    fun insertCategory(category: Category) {
+        isInsertCategorySuccessful.value = false
+        compositeDisposable += Completable.fromCallable { repository.insertCategory(category) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableCompletableObserver() {
+                    override fun onComplete() {
+                        isInsertCategorySuccessful.value = true
+                    }
+
+                    override fun onError(e: Throwable) {
+                        isInsertCategorySuccessful.value = false
+                    }
+                })
+    }
+
+    /*fun insertAllCategories(categories: List<Category>) {
         isInsertCategorySuccessful.value = false
         compositeDisposable += Completable.fromCallable { repository.insertAllCategories(categories) }
                 .subscribeOn(Schedulers.io())
@@ -133,7 +149,8 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
                     }
                 })
 
-    }
+    }*/
+
 
     override fun onCleared() {
         super.onCleared()
