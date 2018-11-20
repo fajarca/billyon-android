@@ -7,10 +7,13 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import co.id.billyon.R
@@ -40,29 +43,54 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector,NavControll
     lateinit var toolbar : Toolbar
     lateinit var bottomNavigationView: BottomNavigationView
     lateinit var binding : ActivityMainBinding
+    private lateinit var navController: NavController
+    private val isCashier = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        val navHostFragment= supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        val inflater = navHostFragment.navController.navInflater
+        val graph = inflater.inflate(R.navigation.main_nav)
+        if (isCashier) {
+            binding.bottomNavigationView.inflateMenu(R.menu.menu_cashier)
+            graph.startDestination = R.id.fragmentCashierDashboard
+        } else {
+            binding.bottomNavigationView.inflateMenu(R.menu.menu_owner)
+            graph.startDestination = R.id.fragmentDashboard
+        }
+        navHostFragment.navController.graph = graph
+        navController = navHostFragment.navController
         setupToolbar()
-        setupNavigation()
+        binding.bottomNavigationView.setupWithNavController(navController)
+        //navController.addOnNavigatedListener(this)
     }
 
     private fun setupToolbar() {
         toolbar = binding.toolbar.toolbar
         setSupportActionBar(toolbar)
+        setupActionBarWithNavController(navController)
     }
 
-    private fun setupNavigation() {
-        val navController = findNavController(R.id.nav_host)
+    /*private fun setupNavigation() {
         bottomNavigationView = binding.bottomNavigationView
-        //When we navigate to a new screen, we would like to update the Toolbar’s title
-        setupActionBarWithNavController(navController)
+
+        if (isCashier) {
+            bottomNavigationView.inflateMenu(R.menu.menu_cashier)
+            navGraph.startDestination = R.id.fragmentCashierDashboard
+        }  else {
+            bottomNavigationView.inflateMenu(R.menu.menu_owner)
+            navGraph.startDestination = R.id.fragmentDashboard
+        }
+        navController.graph = navGraph
         bottomNavigationView.setupWithNavController(navController)
         navController.addOnNavigatedListener(this)
-    }
 
+    }
+*/
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host).navigateUp()
 
     override fun onNavigated(controller: NavController, destination: NavDestination) {

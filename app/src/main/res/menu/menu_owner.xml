@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@id/fragmentDashboard"
+        android:icon="@drawable/ic_action_dashboard"
+        android:title="@string/label_dashboard" />
+
+    <item
+        android:id="@id/fragmentAddEmployee"
+        android:icon="@drawable/ic_action_employee"
+        android:title="@string/label_employee" />
+    <item
+        android:id="@id/fragmentReport"
+        android:icon="@drawable/ic_action_report"
+        android:title="@string/label_report" />
+    <item
+        android:id="@id/fragmentProfile"
+        android:icon="@drawable/ic_action_profile"
+        android:title="@string/label_profile" />
+
+</menu>
