@@ -1,9 +1,6 @@
 package co.id.billyon.di.module
 
-import co.id.billyon.api.ApiService
 import co.id.billyon.db.BillyonDatabase
-import co.id.billyon.db.dao.CategoryDao
-import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.di.NetManager
 import co.id.billyon.repository.cashier.dashboard.DashboardLocalDataSource
 import co.id.billyon.repository.cashier.dashboard.DashboardRemoteDataSource

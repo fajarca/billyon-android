@@ -48,6 +48,7 @@
                 android:id="@+id/etProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:minLength="@{5}"
                 android:hint="@string/hint_product_name" />
         </android.support.design.widget.TextInputLayout>
 
@@ -64,6 +65,7 @@
                 android:id="@+id/etDisplayPrice"
                 android:layout_width="match_parent"
                 android:inputType="number"
+                app:minLength="@{5}"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_display_price" />
         </android.support.design.widget.TextInputLayout>

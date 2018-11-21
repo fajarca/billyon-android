@@ -42,9 +42,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     @Inject @field:Use(HELLO)
     lateinit var infoHello : Info
 
-    lateinit var toolbar : Toolbar
-    lateinit var bottomNavigationView: BottomNavigationView
-    lateinit var binding : ActivityMainBinding
+    private lateinit var toolbar : Toolbar
+    private lateinit var binding : ActivityMainBinding
     private lateinit var navController: NavController
     private val isCashier = true
 
@@ -83,6 +82,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         binding.bottomNavigationView.setupWithNavController(navController)
         navController.addOnNavigatedListener(navigationListener)
     }
+
     val navigationListener = NavController.OnNavigatedListener { controller, destination ->
         when(destination.id) {
 
@@ -100,22 +100,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         }
     }
-    /*private fun setupNavigation() {
-        bottomNavigationView = binding.bottomNavigationView
-
-        if (isCashier) {
-            bottomNavigationView.inflateMenu(R.menu.menu_cashier)
-            navGraph.startDestination = R.id.fragmentCashierDashboard
-        }  else {
-            bottomNavigationView.inflateMenu(R.menu.menu_owner)
-            navGraph.startDestination = R.id.fragmentDashboard
-        }
-        navController.graph = navGraph
-        bottomNavigationView.setupWithNavController(navController)
-        navController.addOnNavigatedListener(this)
-
-    }
-*/
     override fun onSupportNavigateUp() = navController.navigateUp()
 
 }

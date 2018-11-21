@@ -4,7 +4,19 @@ import android.arch.persistence.room.*
 import co.id.billyon.util.Converters
 import java.util.*
 
-@Entity(tableName = "products",indices = arrayOf(Index(value = "name",name = "idx_name")))
+@Entity(tableName = "products",
+        indices = arrayOf(
+                Index(value = "name",name = "idx_name")
+        ),
+        foreignKeys = arrayOf(
+                ForeignKey(
+                        entity = Category::class,
+                        parentColumns = arrayOf("category_id"),
+                        childColumns = arrayOf("category_id"),
+                        onDelete = ForeignKey.CASCADE
+                )
+        )
+)
 data class Products(
 
         @PrimaryKey
