@@ -1,101 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.other.login.LoginFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="co.id.billyon.ui.other.login.LoginViewModel"/>
+    </data>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/labelSubHeading"
-        app:layout_constraintTop_toBottomOf="@+id/labelSubHeading">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.other.login.LoginFragment">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/etEmail"
-            android:layout_width="match_parent"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilEmail"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_username"
-            android:drawablePadding="@dimen/padding8dp"
-            android:hint="@string/hint_email"
-            android:inputType="textEmailAddress"
-            android:singleLine="true" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/labelSubHeading"
+            app:layout_constraintTop_toBottomOf="@+id/labelSubHeading">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/tilEmail"
-        app:layout_constraintStart_toStartOf="@+id/tilEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tilEmail">
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_username"
+                android:drawablePadding="@dimen/padding8dp"
+                android:hint="@string/hint_email"
+                android:text="@={vm._usernameValue}"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/etPasssword"
-            android:layout_width="match_parent"
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilPassword"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_password"
-            android:drawablePadding="@dimen/padding8dp"
-            android:drawableStart="@drawable/ic_password"
-            android:singleLine="true" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/tilEmail"
+            app:layout_constraintStart_toStartOf="@+id/tilEmail"
+            app:layout_constraintTop_toBottomOf="@+id/tilEmail">
 
-    <Button
-        android:id="@+id/btnLogin"
-        style="@style/BillyonTheme.Button.Rounded"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/label_login"
-        app:layout_constraintEnd_toEndOf="@+id/labelSubHeading"
-        app:layout_constraintStart_toStartOf="@+id/labelSubHeading"
-        app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etPasssword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_password"
+                android:drawablePadding="@dimen/padding8dp"
+                android:drawableStart="@drawable/ic_password"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:id="@+id/labelRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Don't have an account yet? Sign up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin" />
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/BillyonTheme.Button.Rounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/label_login"
+            app:layout_constraintEnd_toEndOf="@+id/labelSubHeading"
+            app:layout_constraintStart_toStartOf="@+id/labelSubHeading"
+            app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
 
-    <TextView
-        android:id="@+id/labelHeading"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/circular_family"
-        android:gravity="center_horizontal"
-        android:text="Sign in to Billyon."
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/labelRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="Don't have an account yet? Sign up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+            app:layout_constraintStart_toStartOf="@+id/btnLogin" />
 
-    <TextView
-        android:id="@+id/labelSubHeading"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_horizontal"
-        android:text="Let's count that bill - \nin easy and convenient way."
-        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-        android:textColor="@color/grey_700"
-        app:layout_constraintEnd_toEndOf="@+id/labelHeading"
-        app:layout_constraintStart_toStartOf="@+id/labelHeading"
-        app:layout_constraintTop_toBottomOf="@+id/labelHeading" />
+        <TextView
+            android:id="@+id/labelHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/circular_family"
+            android:gravity="center_horizontal"
+            android:text="Sign in to Billyon."
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/labelSubHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:text="Let's count that bill - \nin easy and convenient way."
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/grey_700"
+            app:layout_constraintEnd_toEndOf="@+id/labelHeading"
+            app:layout_constraintStart_toStartOf="@+id/labelHeading"
+            app:layout_constraintTop_toBottomOf="@+id/labelHeading" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

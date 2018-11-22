@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         if (isCashier) {
             binding.bottomNavigationView.inflateMenu(R.menu.menu_cashier)
-            graph.startDestination = R.id.fragmentCashierDashboard
+            graph.startDestination = R.id.fragmentLogin
         } else {
             binding.bottomNavigationView.inflateMenu(R.menu.menu_owner)
             graph.startDestination = R.id.fragmentDashboard
