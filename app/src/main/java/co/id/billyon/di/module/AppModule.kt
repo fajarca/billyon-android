@@ -3,6 +3,7 @@ package co.id.billyon.di.module
 import android.app.Application
 import android.arch.persistence.room.Room
 import android.content.Context
+import android.content.SharedPreferences
 import co.id.billyon.BillyonApp
 import co.id.billyon.api.ApiService
 import co.id.billyon.db.BillyonDatabase
@@ -10,6 +11,7 @@ import co.id.billyon.di.Info
 import co.id.billyon.util.DATABASE_NAME
 import co.id.billyon.util.HELLO
 import co.id.billyon.util.LOVE
+import co.id.billyon.util.PREF_NAME
 import co.id.billyon.util.annotation.Use
 import dagger.Module
 import dagger.Provides
@@ -45,4 +47,12 @@ class AppModule {
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit) = retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun providesPreference(app : BillyonApp) : SharedPreferences  = app.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+
+    @Provides
+    @Singleton
+    fun providesSharedPreference(sharedPreferences: SharedPreferences) : SharedPreferences.Editor = sharedPreferences.edit()
 }

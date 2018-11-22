@@ -1,5 +1,7 @@
 package co.id.billyon.ui.other.main
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -14,11 +16,13 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import co.id.billyon.R
 import co.id.billyon.databinding.ActivityMainBinding
 import co.id.billyon.di.Info
+import co.id.billyon.ui.other.login.LoginViewModel
 import co.id.billyon.util.HELLO
 import co.id.billyon.util.LOVE
 import co.id.billyon.util.annotation.Use
@@ -46,23 +50,36 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private lateinit var binding : ActivityMainBinding
     private lateinit var navController: NavController
     private val isCashier = true
+    private val isLoggedIn = true
+    private lateinit var viewModel: LoginViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
 
         val navHostFragment= supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.main_nav)
 
-        if (isCashier) {
-            binding.bottomNavigationView.inflateMenu(R.menu.menu_cashier)
-            graph.startDestination = R.id.fragmentLogin
+        viewModel.isLoggedIn = isLoggedIn
+
+        if (viewModel.isLoggedIn) {
+            //findNavController().navigate(R.id.actionLaunchCashierDashboard)
+            if (isCashier) {
+                binding.bottomNavigationView.inflateMenu(R.menu.menu_cashier)
+                graph.startDestination = R.id.fragmentCashierDashboard
+            } else {
+                binding.bottomNavigationView.inflateMenu(R.menu.menu_owner)
+                graph.startDestination = R.id.fragmentDashboard
+            }
         } else {
             binding.bottomNavigationView.inflateMenu(R.menu.menu_owner)
-            graph.startDestination = R.id.fragmentDashboard
+            graph.startDestination = R.id.fragmentLogin
         }
 
         navHostFragment.navController.graph = graph

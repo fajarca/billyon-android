@@ -91,12 +91,17 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="288" />
+                            <option name="x" value="18" />
+                            <option name="y" value="276" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="actionLaunchCashierDashboard">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="actionLaunchOwnerDashboard">
                               <value>
                                 <LayoutPositions />
@@ -150,8 +155,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="264" />
-                            <option name="y" value="291" />
+                            <option name="x" value="270" />
+                            <option name="y" value="443" />
                           </Point>
                         </option>
                         <option name="myPositions">

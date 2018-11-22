@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
 import co.id.billyon.databinding.FragmentLoginBinding
