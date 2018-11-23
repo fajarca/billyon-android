@@ -11,7 +11,7 @@ import java.util.*
         foreignKeys = arrayOf(
                 ForeignKey(
                         entity = Category::class,
-                        parentColumns = arrayOf("category_id"),
+                        parentColumns = arrayOf("id"),
                         childColumns = arrayOf("category_id"),
                         onDelete = ForeignKey.CASCADE
                 )
@@ -20,7 +20,7 @@ import java.util.*
 data class Products(
 
         @PrimaryKey
-        @ColumnInfo(name = "product_id")
+        @ColumnInfo(name = "id")
         var id: Long,
 
         @ColumnInfo(name = "store_id")

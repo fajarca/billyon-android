@@ -4,7 +4,7 @@ import android.arch.persistence.room.ColumnInfo
 
 data class CategoryWithProducts(
 
-        @ColumnInfo(name = "category_id")
+        @ColumnInfo(name = "id")
         var id: Long = 0,
 
         @ColumnInfo(name = "category_name")

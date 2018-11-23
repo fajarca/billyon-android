@@ -31,6 +31,6 @@ data class Category(
 
 ) {
         @PrimaryKey(autoGenerate = true)
-        @ColumnInfo(name = "category_id")
+        @ColumnInfo(name = "id")
         var id: Long = 0
 }
