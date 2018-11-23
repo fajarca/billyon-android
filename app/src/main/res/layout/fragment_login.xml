@@ -25,13 +25,14 @@
             app:layout_constraintStart_toStartOf="@+id/labelSubHeading"
             app:layout_constraintTop_toBottomOf="@+id/labelSubHeading">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_username"
                 android:drawablePadding="@dimen/padding8dp"
                 android:hint="@string/hint_email"
+                app:minLength="@{6}"
                 android:text="@={vm._usernameValue}"
                 android:inputType="textEmailAddress"
                 android:singleLine="true" />
@@ -51,7 +52,9 @@
                 android:id="@+id/etPasssword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:minLength="@{6}"
                 android:hint="@string/hint_password"
+                android:text="@={vm._passwordValue}"
                 android:drawablePadding="@dimen/padding8dp"
                 android:drawableStart="@drawable/ic_password"
                 android:singleLine="true" />
@@ -63,6 +66,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:onClick="@{()-> vm.onLoginPressed()}"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:text="@string/label_login"

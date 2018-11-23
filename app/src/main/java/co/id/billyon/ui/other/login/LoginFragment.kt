@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
@@ -33,11 +34,11 @@ class LoginFragment : Fragment() {
 
     @Inject
     @field:Use(LOVE)
-    lateinit var infoLove : Info
+    lateinit var infoLove: Info
 
     @Inject
     @field:Use(HELLO)
-    lateinit var infoHello : Info
+    lateinit var infoHello: Info
 
     private lateinit var viewModel: LoginViewModel
     @Inject
@@ -51,6 +52,7 @@ class LoginFragment : Fragment() {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
@@ -62,23 +64,24 @@ class LoginFragment : Fragment() {
 
         }
 
-        viewModel.usernameValue.observe(this, Observer { data -> Log.v(TAG, "Username $data") })
+
+
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       /* labelRegister.setOnClickListener {
-            val action = LoginFragmentDirections.actionLaunchRegister()
-            val navController = Navigation.findNavController(view)
-            navController.navigate(action)
-        }
-        btnLogin.setOnClickListener {
-            val action = LoginFragmentDirections.actionLaunchOwnerDashboard()
-            val navController = Navigation.findNavController(view)
-            navController.navigate(action)
-        }*/
+        /* labelRegister.setOnClickListener {
+             val action = LoginFragmentDirections.actionLaunchRegister()
+             val navController = Navigation.findNavController(view)
+             navController.navigate(action)
+         }
+         btnLogin.setOnClickListener {
+             val action = LoginFragmentDirections.actionLaunchOwnerDashboard()
+             val navController = Navigation.findNavController(view)
+             navController.navigate(action)
+         }*/
     }
 
 

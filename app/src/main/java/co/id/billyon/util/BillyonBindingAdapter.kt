@@ -41,8 +41,8 @@ fun minLength(view : TextInputEditText, minLength : Int) {
     }
 
 }
-
-/*@BindingAdapter("app:required","app:minLength",requireAll = true)
+/*
+@BindingAdapter("app:required","app:minLength",requireAll = true)
 fun isFieldRequired(view : TextInputEditText, isRequired : Boolean, minLength: Int) {
     if (isRequired){
 
@@ -66,9 +66,9 @@ fun isFieldRequired(view : TextInputEditText, isRequired : Boolean, minLength: I
         })
 
     }
-}
-
-@BindingAdapter("app:errorMessage")
-fun errorMessage(view : TextInputLayout, errorMessage : String) {
-    view.error = errorMessage
 }*/
+
+@BindingAdapter("app:errMessage")
+fun errorMessage(view : TextInputLayout, errorMessage : String?) {
+    view.error = errorMessage
+}

@@ -32,25 +32,16 @@ import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
-
-
     @Inject
     lateinit var dispatchingAndroidInjector : DispatchingAndroidInjector<Fragment>
 
     override fun supportFragmentInjector() = dispatchingAndroidInjector
 
-    @Inject
-    @field:Use(LOVE)
-    lateinit var infoLove : Info
-
-    @Inject @field:Use(HELLO)
-    lateinit var infoHello : Info
-
     private lateinit var toolbar : Toolbar
     private lateinit var binding : ActivityMainBinding
     private lateinit var navController: NavController
     private val isCashier = true
-    private val isLoggedIn = true
+    private val isLoggedIn = false
     private lateinit var viewModel: LoginViewModel
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -69,7 +60,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         viewModel.isLoggedIn = isLoggedIn
 
         if (viewModel.isLoggedIn) {
-            //findNavController().navigate(R.id.actionLaunchCashierDashboard)
             if (isCashier) {
                 binding.bottomNavigationView.inflateMenu(R.menu.menu_cashier)
                 graph.startDestination = R.id.fragmentCashierDashboard
