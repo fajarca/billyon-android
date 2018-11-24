@@ -11,6 +11,7 @@ class DashboardRepository(private val localDataSource: DashboardLocalDataSource,
 
     fun getAllCategories() = localDataSource.getAllCategories()
     fun getAllCategoriesWithProductCount() = localDataSource.getAllCategoriesWithProductCount()
+    fun getAllCategoriesWithProduct() = localDataSource.getAllCategoriesWithProduct()
 
     fun deleteCategory(category: Category) = localDataSource.deleteCategory(category)
 

@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import co.id.billyon.db.entity.Category
+import co.id.billyon.db.entity.CategoryAndProducts
 import co.id.billyon.db.entity.CategoryWithProducts
 import co.id.billyon.db.entity.Products
 import co.id.billyon.model.PostsResponse
@@ -108,6 +109,29 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
                     override fun onNext(categories: List<CategoryWithProducts>?) {
                         isLoading.set(false)
                         _categoriesProducts.value = categories
+
+                    }
+
+                    override fun onError(t: Throwable?) {
+                        isLoading.set(true)
+                    }
+
+                })
+    }
+
+    fun getAll() {
+        isLoading.set(true)
+        compositeDisposable += repository.getAllCategoriesWithProduct()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSubscriber<List<CategoryAndProducts>>() {
+                    override fun onComplete() {
+                        isLoading.set(false)
+                    }
+
+                    override fun onNext(categories: List<CategoryAndProducts>?) {
+                        isLoading.set(false)
+
 
                     }
 

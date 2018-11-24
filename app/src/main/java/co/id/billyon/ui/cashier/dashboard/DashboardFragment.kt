@@ -86,6 +86,7 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
         }
 
         viewModel.getAllCategories()
+        viewModel.getAll()
         viewModel._categoriesProducts.observe(this, Observer { data ->
             data?.let {
                 categoryAdapter.refreshData(it)

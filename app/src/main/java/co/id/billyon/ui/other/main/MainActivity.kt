@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private lateinit var binding : ActivityMainBinding
     private lateinit var navController: NavController
     private val isCashier = true
-    private val isLoggedIn = false
+    private val isLoggedIn = true
     private lateinit var viewModel: LoginViewModel
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

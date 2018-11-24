@@ -26,6 +26,10 @@ class RepositoryModule {
 
     @Provides
     @Singleton
+    fun providesCategoryAndProductsDao (db:BillyonDatabase) = db.categoryAndProductsDao()
+
+    @Provides
+    @Singleton
     fun provideProductRepository(localDataSource : ProductLocalDataSource, remoteDataSource: ProductRemoteDataSource, netManager: NetManager) = ProductRepository(localDataSource, remoteDataSource, netManager)
 
     @Provides

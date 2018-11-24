@@ -2,6 +2,7 @@ package co.id.billyon.db
 
 import android.arch.persistence.room.*
 import android.content.Context
+import co.id.billyon.db.dao.CategoryAndProductsDao
 import co.id.billyon.db.dao.CategoryDao
 import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.db.entity.Category
@@ -16,6 +17,7 @@ abstract class BillyonDatabase : RoomDatabase() {
 
     abstract fun productDao() : ProductsDao
     abstract fun categoryDao() : CategoryDao
+    abstract fun categoryAndProductsDao() : CategoryAndProductsDao
 
     companion object {
         @Volatile

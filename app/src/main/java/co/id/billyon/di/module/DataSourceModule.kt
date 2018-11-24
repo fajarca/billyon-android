@@ -1,6 +1,7 @@
 package co.id.billyon.di.module
 
 import co.id.billyon.api.ApiService
+import co.id.billyon.db.dao.CategoryAndProductsDao
 import co.id.billyon.db.dao.CategoryDao
 import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.repository.cashier.dashboard.DashboardLocalDataSource
@@ -16,7 +17,7 @@ class DataSourceModule {
 
     @Provides
     @Singleton
-    fun providesDashboardLocalDataSource(categoryDao: CategoryDao) = DashboardLocalDataSource(categoryDao)
+    fun providesDashboardLocalDataSource(categoryDao: CategoryDao, categoryProductDao : CategoryAndProductsDao) = DashboardLocalDataSource(categoryDao,categoryProductDao)
 
     @Provides
     @Singleton
