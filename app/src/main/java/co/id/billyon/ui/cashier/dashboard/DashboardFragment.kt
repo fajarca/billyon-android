@@ -123,7 +123,9 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
         super.onAttach(context)
     }
 
-    override fun onCategorySelected(category: CategoryWithProducts) = launchProductDetails(category)
+    override fun onCategorySelected(category: CategoryWithProducts) {
+        viewModel.deleteCategory(category.id)
+    }
     override fun onCategoryImageSelected(category: CategoryWithProducts) = displayCreateCategoryDialog()
 
     fun launchProductDetails(category: CategoryWithProducts) {

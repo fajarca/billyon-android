@@ -156,6 +156,20 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
                 })
     }
 
+    fun deleteCategory(categoryId: Long)  {
+        compositeDisposable += Completable.fromCallable { repository.deleteCategory(categoryId) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableCompletableObserver() {
+                    override fun onComplete() {
+                    }
+
+                    override fun onError(e: Throwable) {
+                        addCategoryMessage.value = "Unable to delete category ${e.message}"
+                    }
+                })
+    }
+
     /*fun insertAllCategories(categories: List<Category>) {
         isInsertCategorySuccessful.value = false
         compositeDisposable += Completable.fromCallable { repository.insertAllCategories(categories) }

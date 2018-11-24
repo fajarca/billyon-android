@@ -20,8 +20,8 @@ interface CategoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(categories: List<Category>)
 
-    @Delete
-    fun delete(category: Category)
+    @Query("DELETE FROM category where id = :categoryId")
+    fun delete(categoryId: Long)
 
     @Query("DELETE FROM category")
     fun deleteAll()

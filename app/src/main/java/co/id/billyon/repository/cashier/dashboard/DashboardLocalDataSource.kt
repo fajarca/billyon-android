@@ -14,5 +14,5 @@ class DashboardLocalDataSource @Inject constructor(private val categoryDao : Cat
     fun insertCategory(category : Category) = categoryDao.insert(category)
     fun insertAllCategory(categories : List<Category>) = categoryDao.insertAll(categories)
 
-    fun deleteCategory(category: Category) = categoryDao.delete(category)
+    fun deleteCategory(categoryId: Long) = categoryDao.delete(categoryId)
 }
