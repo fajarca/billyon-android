@@ -1,5 +1,6 @@
 package co.id.billyon.di.module
 
+import co.id.billyon.ui.cashier.addcategory.AddCategoryFragment
 import co.id.billyon.ui.cashier.addproduct.AddProductFragment
 import co.id.billyon.ui.cashier.dashboard.DashboardFragment
 import co.id.billyon.ui.cashier.product.ProductListFragment
@@ -17,4 +18,6 @@ abstract class FragmentModule {
     abstract fun contributesAddProductFragment() : AddProductFragment
     @ContributesAndroidInjector
     abstract fun contributesProductListFragment() : ProductListFragment
+    @ContributesAndroidInjector
+    abstract fun contributesAddCategoryFragment() : AddCategoryFragment
 }

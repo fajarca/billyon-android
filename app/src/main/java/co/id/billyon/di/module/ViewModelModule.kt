@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import co.id.billyon.di.ViewModelFactory
 import co.id.billyon.di.ViewModelKey
+import co.id.billyon.ui.cashier.addcategory.AddCategoryViewModel
 import co.id.billyon.ui.cashier.addproduct.AddProductViewModel
 import co.id.billyon.ui.cashier.dashboard.DashboardViewModel
 import co.id.billyon.ui.cashier.product.ProductListViewModel
@@ -38,5 +39,9 @@ abstract class ViewModelModule {
     @ViewModelKey(ProductListViewModel::class)
     internal abstract fun providesProductListViewModel(viewModel: ProductListViewModel) : ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddCategoryViewModel::class)
+    internal abstract fun providesAddCategoryViewModel(viewModel: AddCategoryViewModel) : ViewModel
     //Add more ViewModels here
 }

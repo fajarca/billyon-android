@@ -8,6 +8,18 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="fragmentAddCategory">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="814" />
+                            <option name="y" value="-460" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="fragmentAddEmployee">
                     <value>
                       <LayoutPositions>
@@ -64,6 +76,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="actionLaunchAddCategory">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="actionLaunchProductList">
                               <value>
                                 <LayoutPositions />
@@ -122,8 +139,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="942" />
-                            <option name="y" value="-174" />
+                            <option name="x" value="823" />
+                            <option name="y" value="-32" />
                           </Point>
                         </option>
                         <option name="myPositions">

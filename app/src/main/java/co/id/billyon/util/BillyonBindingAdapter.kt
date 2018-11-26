@@ -31,7 +31,7 @@ fun minLength(view : TextInputEditText, minLength : Int) {
 
             override fun onTextChanged(sequence: CharSequence, start: Int, before: Int, count: Int) {
                 if (sequence.length < minLength) {
-                    view.error = "Tidak boleh kurang dari $minLength karakter"
+                    view.error = "${view.hint} tidak boleh kurang dari $minLength karakter"
                 } else {
                     view.error = null
                 }
@@ -69,6 +69,13 @@ fun isFieldRequired(view : TextInputEditText, isRequired : Boolean, minLength: I
 }*/
 
 @BindingAdapter("app:errMessage")
-fun errorMessage(view : TextInputLayout, errorMessage : String?) {
-    view.error = errorMessage
+fun errorMessage(view : TextInputLayout, isError : Boolean) {
+    if (isError) {
+        view.error = "${view.hint} tidak boleh kosong"
+        view.isErrorEnabled = true
+    } else {
+        view.error = null
+        view.isErrorEnabled = false
+    }
+
 }
