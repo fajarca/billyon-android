@@ -132,6 +132,7 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
         val action = DashboardFragmentDirections.actionLaunchProductList()
         action.setStoreId(category.storeId.toInt())
         action.setCategoryId(category.id.toInt())
+        action.setCategoryName(category.categoryName)
         findNavController().navigate(action)
     }
 

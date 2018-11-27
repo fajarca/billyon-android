@@ -103,19 +103,13 @@
         <action
             android:id="@+id/actionLaunchProductList"
             app:destination="@id/fragmentProductList"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_exit_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@+id/fragmentCashierDashboard" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/actionLaunchAddCategory"
             app:destination="@id/fragmentAddCategory"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/fragmentCashierDashboard" />
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAddProduct"
@@ -130,6 +124,10 @@
             android:name="storeId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <argument
+            android:name="categoryName"
+            android:defaultValue="@string/product"
+            app:argType="string"/>
         <action
             android:id="@+id/actionLaunchProductList"
             app:destination="@id/fragmentProductList"
@@ -149,14 +147,14 @@
             android:name="storeId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <argument
+            android:name="categoryName"
+            android:defaultValue="@string/product"
+            app:argType="string" />
         <action
             android:id="@+id/actionLaunchAddProduct"
-            app:destination="@id/fragmentAddProduct"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@+id/fragmentProductList" />
+            app:destination="@id/fragmentAddProduct" />
+
     </fragment>
 
 </navigation>

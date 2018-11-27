@@ -9,6 +9,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentProductListBinding
 import co.id.billyon.db.entity.Products
 import co.id.billyon.ui.cashier.addproduct.AddProductFragmentArgs
+import co.id.billyon.ui.cashier.dashboard.DashboardFragment
 import co.id.billyon.ui.cashier.dashboard.DashboardFragmentDirections
 import co.id.billyon.util.handlers.BillyonClickHandlers
 import dagger.android.support.AndroidSupportInjection
@@ -36,6 +38,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
 
     private var categoryId : Int = 0
     private var storeId : Int = 0
+    private var categoryName : String = ""
 
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
@@ -65,9 +68,12 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
         categoryId = passedArgument.categoryId
         storeId = passedArgument.storeId
+        categoryName = passedArgument.categoryName
 
         viewModel.findProduct(categoryId)
 
+        val toolbar = activity?.findViewById<Toolbar>(R.id.toolbar)
+        toolbar?.title = categoryName
         return binding.root
     }
 
