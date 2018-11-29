@@ -13,7 +13,8 @@ import java.util.*
                         entity = Category::class,
                         parentColumns = arrayOf("id"),
                         childColumns = arrayOf("category_id"),
-                        onDelete = ForeignKey.CASCADE
+                        onDelete = ForeignKey.CASCADE,
+                        onUpdate = ForeignKey.CASCADE
                 )
         )
 )

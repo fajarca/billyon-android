@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="product"
-            type="co.id.billyon.db.entity.Products"/>
+            type="co.id.billyon.db.entity.Products" />
     </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/margin8dp"
-        android:background="@color/grey_500"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/grey_500">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/layoutProduct"
@@ -25,10 +25,13 @@
 
             <ImageView
                 android:id="@+id/ivProduct"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/rectangle"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,19 +40,18 @@
                 style="@style/BillyonTheme.Text.Circular.Bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
-                android:maxLines="2"
-                android:minLines="2"
                 android:ellipsize="end"
-                android:gravity="center"
+                android:maxLines="1"
+                android:minLines="1"
                 android:text="@{String.valueOf(product.name)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivProduct"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toEndOf="@+id/ivProduct"
+                app:layout_constraintTop_toTopOf="@+id/ivProduct"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Kopi Susu" />
 
             <TextView
                 android:id="@+id/tvProductPrice"
@@ -57,13 +59,35 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:singleLine="true"
                 android:text="@{String.valueOf(product.displayPrice)}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
                 app:layout_constraintEnd_toEndOf="@+id/tvProductName"
                 app:layout_constraintStart_toStartOf="@+id/tvProductName"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+                app:layout_constraintTop_toBottomOf="@+id/tvProductName"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="14000" />
+
+            <include
+                android:id="@+id/contentQuantityPicker"
+                layout="@layout/quantity_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
+                app:layout_constraintEnd_toEndOf="@+id/tvProductPrice"
+                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice" />
+
+            <include
+                android:id="@+id/contentQuantityPickerButton"
+                layout="@layout/quantity_picker_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
+                app:layout_constraintEnd_toEndOf="@+id/tvProductPrice"
+                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice" />
 
         </android.support.constraint.ConstraintLayout>
 

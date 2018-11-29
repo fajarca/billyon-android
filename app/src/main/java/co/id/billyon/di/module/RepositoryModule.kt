@@ -3,6 +3,9 @@ package co.id.billyon.di.module
 import android.content.SharedPreferences
 import co.id.billyon.db.BillyonDatabase
 import co.id.billyon.di.NetManager
+import co.id.billyon.repository.cashier.carts.CartsLocalDataSource
+import co.id.billyon.repository.cashier.carts.CartsRemoteDataSource
+import co.id.billyon.repository.cashier.carts.CartsRepository
 import co.id.billyon.repository.cashier.dashboard.DashboardLocalDataSource
 import co.id.billyon.repository.cashier.dashboard.DashboardRemoteDataSource
 import co.id.billyon.repository.cashier.dashboard.DashboardRepository
@@ -26,6 +29,10 @@ class RepositoryModule {
 
     @Provides
     @Singleton
+    fun provideCartsDao(db: BillyonDatabase) = db.cartsDao()
+
+    @Provides
+    @Singleton
     fun providesCategoryAndProductsDao (db:BillyonDatabase) = db.categoryAndProductsDao()
 
     @Provides
@@ -39,4 +46,9 @@ class RepositoryModule {
     @Provides
     @Singleton
     fun provideLoginRepository(editor: SharedPreferences.Editor, preferences: SharedPreferences) = LoginRepository(editor, preferences)
+
+
+    @Provides
+    @Singleton
+    fun provideCartsRepository(localDataSource : CartsLocalDataSource, remoteDataSource: CartsRemoteDataSource, netManager: NetManager) = CartsRepository(localDataSource, remoteDataSource, netManager)
 }

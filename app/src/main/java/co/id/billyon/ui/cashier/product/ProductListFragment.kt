@@ -9,6 +9,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
 import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentProductListBinding
+import co.id.billyon.db.entity.Carts
 import co.id.billyon.db.entity.Products
 import co.id.billyon.ui.cashier.addproduct.AddProductFragmentArgs
 import co.id.billyon.ui.cashier.dashboard.DashboardFragment
@@ -36,9 +38,9 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private var categoryId : Int = 0
-    private var storeId : Int = 0
-    private var categoryName : String = ""
+    private var categoryId: Int = 0
+    private var storeId: Int = 0
+    private var categoryName: String = ""
 
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
@@ -56,14 +58,16 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
             vm = viewModel
             binding.executePendingBindings()
 
-            recyclerView.layoutManager = GridLayoutManager(activity,2)
+            recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
             recyclerView.adapter = adapter
         }
 
 
-        viewModel.products.observe(this, Observer { products-> products?.let {
-            adapter.replaceData(it)
-        } })
+        viewModel.products.observe(this, Observer { products ->
+            products?.let {
+                adapter.replaceData(it)
+            }
+        })
 
         val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
         categoryId = passedArgument.categoryId
@@ -78,8 +82,22 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     }
 
 
-    override fun onProductSelected(product: Products) {
-       
+    override fun onAddProductPressed(product: Products) {
+        val cart = Carts(product.id, product.storeId, 1)
+        viewModel.addToCart(cart)
+    }
+
+    override fun onRemoveProductPressed(product: Products) {
+        val cart = Carts(product.id, product.storeId, 1)
+        viewModel.deleteFromCart(cart)
+    }
+
+    override fun onAddQtyPressed(product: Products) {
+        viewModel.updateQuatity(product.id,2)
+    }
+
+    override fun onRemoveQtyPressed(product: Products) {
+        viewModel.updateQuatity(product.id,1)
     }
 
     override fun onFabAddProductPressed(view: View) {
