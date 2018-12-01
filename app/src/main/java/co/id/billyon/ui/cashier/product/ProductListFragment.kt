@@ -7,6 +7,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
@@ -75,9 +76,13 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         categoryName = passedArgument.categoryName
 
         viewModel.findProduct(categoryId)
+        viewModel.findAllCart()
 
         val toolbar = activity?.findViewById<Toolbar>(R.id.toolbar)
         toolbar?.title = categoryName
+        val bottomNav = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNav?.visibility = View.GONE
+
         return binding.root
     }
 

@@ -3,6 +3,7 @@ package co.id.billyon.ui.cashier.product
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
+import android.databinding.ObservableLong
 import co.id.billyon.db.entity.Carts
 import co.id.billyon.db.entity.CategoryWithProducts
 import co.id.billyon.db.entity.Products
@@ -21,6 +22,8 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
     val isLoading = ObservableField<Boolean>()
     val compositeDisposable = CompositeDisposable()
     val products = MutableLiveData<List<Products>>()
+    var itemCount = ObservableField<String>()
+    var totalPrice = ObservableLong()
 
     fun findProduct(categoryId : Int) {
         isLoading.set(true)
@@ -42,6 +45,30 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
                     }
 
                 })
+    }
+
+    fun findAllCart() {
+        compositeDisposable += cartRepo.findAll()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSubscriber<List<Carts>>() {
+                    override fun onComplete() {
+                        isLoading.set(false)
+                    }
+
+                    override fun onNext(data: List<Carts>?) {
+                        isLoading.set(false)
+                        itemCount.set("${data?.size} product")
+                        totalPrice.set(4000)
+                    }
+
+                    override fun onError(t: Throwable?) {
+                        isLoading.set(false)
+                    }
+
+                })
+
+
     }
 
     fun addToCart(cart : Carts) {

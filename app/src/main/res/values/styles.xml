@@ -59,6 +59,12 @@
         <item name="android:textColor">@color/grey_700</item>
     </style>
 
+    <style name="BillyonTheme.Text.Circular.Bold.White" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/circular_family</item>
+        <item name="android:textSize">@dimen/textSize16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 
     <style name="BillyonTheme.Text.Circular.Normal" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/circular_family</item>
