@@ -1,6 +1,7 @@
 package co.id.billyon.adapter
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import co.id.billyon.databinding.RvItemProductBinding
@@ -27,8 +28,17 @@ class ProductsRecyclerAdapter(private var products: List<Products>,
             listener?.let {
                 //binding.root.setOnClickListener({ _ -> listener.onProductSelected(product) })
                 binding.contentQuantityPickerButton.layoutAdd.setOnClickListener({ _ -> listener.onAddProductPressed(product) })
-                binding.contentQuantityPicker.ivAdd.setOnClickListener({ _ -> listener.onAddQtyPressed(product) })
+                val current = binding.contentQuantityPicker.tvCounter.text.toString().trim().toInt()
+                Log.v("TAG", "Current $current")
+                binding.contentQuantityPicker.ivAdd.setOnClickListener {
+                    val next = current + 1
+                    binding.contentQuantityPicker.tvCounter.text = "$next"
+                    Log.v("TAG", "Next $next")
+                    listener.onAddQtyPressed(current,product)
+                }
+                //binding.contentQuantityPicker.ivAdd.setOnClickListener({ _ -> listener.onAddQtyPressed(count,product) })
                 binding.contentQuantityPicker.ivRemove.setOnClickListener({ _ -> listener.onRemoveQtyPressed(product) })
+
             }
             binding.executePendingBindings()
         }
@@ -39,7 +49,7 @@ class ProductsRecyclerAdapter(private var products: List<Products>,
     interface OnProductClickListener {
         fun onAddProductPressed(product: Products)
         fun onRemoveProductPressed(product: Products)
-        fun onAddQtyPressed(product: Products)
+        fun onAddQtyPressed(quantity : Int, product: Products)
         fun onRemoveQtyPressed(product: Products)
     }
 

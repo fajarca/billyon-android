@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="category"
-            type="co.id.billyon.db.entity.CategoryWithProducts"/>
+            type="co.id.billyon.db.entity.join.CategoryWithProducts"/>
     </data>
 
     <android.support.v7.widget.CardView

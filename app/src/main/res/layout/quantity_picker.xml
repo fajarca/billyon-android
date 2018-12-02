@@ -47,7 +47,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/ivAdd"
             app:layout_constraintStart_toEndOf="@+id/ivRemove"
             app:layout_constraintTop_toTopOf="@+id/ivAdd"
-            tools:text="19" />
+            android:text="1" />
     </android.support.constraint.ConstraintLayout>
 
 </layout>

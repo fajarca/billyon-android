@@ -9,7 +9,6 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
@@ -23,14 +22,12 @@ import co.id.billyon.databinding.FragmentProductListBinding
 import co.id.billyon.db.entity.Carts
 import co.id.billyon.db.entity.Products
 import co.id.billyon.ui.cashier.addproduct.AddProductFragmentArgs
-import co.id.billyon.ui.cashier.dashboard.DashboardFragment
-import co.id.billyon.ui.cashier.dashboard.DashboardFragmentDirections
-import co.id.billyon.util.handlers.BillyonClickHandlers
+import co.id.billyon.util.Utils
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
-class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener, BillyonClickHandlers.ProductList {
+class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickListener {
     lateinit var binding: FragmentProductListBinding
     private val adapter = ProductsRecyclerAdapter(arrayListOf(), this)
     private lateinit var viewModel: ProductListViewModel
@@ -53,13 +50,13 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProductListViewModel::class.java)
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_list, container, false)
-        binding.handlers = this
 
         binding.apply {
             vm = viewModel
+            fragment = this@ProductListFragment
             binding.executePendingBindings()
 
-            recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
+            recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             recyclerView.adapter = adapter
         }
 
@@ -76,7 +73,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         categoryName = passedArgument.categoryName
 
         viewModel.findProduct(categoryId)
-        viewModel.findAllCart()
+        viewModel.findAllCart(false)
 
         val toolbar = activity?.findViewById<Toolbar>(R.id.toolbar)
         toolbar?.title = categoryName
@@ -88,24 +85,25 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
 
 
     override fun onAddProductPressed(product: Products) {
-        val cart = Carts(product.id, product.storeId, 1)
-        viewModel.addToCart(cart)
+       /* val cart = Carts(product.id, product.storeId, 1, 1, false, Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
+        viewModel.addToCart(cart)*/
     }
 
     override fun onRemoveProductPressed(product: Products) {
-        val cart = Carts(product.id, product.storeId, 1)
-        viewModel.deleteFromCart(cart)
+        /*val cart = Carts(product.id, product.storeId, 1, 1, false, Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
+        viewModel.deleteFromCart(cart)*/
     }
 
-    override fun onAddQtyPressed(product: Products) {
-        viewModel.updateQuatity(product.id,2)
+    override fun onAddQtyPressed(quantity: Int, product: Products) {
+        //viewModel.updateQuatity(product.id, 2)
+        Toast.makeText(activity, "$quantity", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRemoveQtyPressed(product: Products) {
-        viewModel.updateQuatity(product.id,1)
+        //viewModel.updateQuatity(product.id, 1)
     }
 
-    override fun onFabAddProductPressed(view: View) {
+    fun onFabAddProductPressed() {
         val action = ProductListFragmentDirections.actionLaunchAddProduct()
         action.setStoreId(storeId)
         action.setCategoryId(categoryId)

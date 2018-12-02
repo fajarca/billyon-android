@@ -1,40 +1,21 @@
 package co.id.billyon.ui.cashier.dashboard
 
 
-import android.app.Activity
-import android.app.AlertDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.content.Intent
 import android.databinding.DataBindingUtil
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.support.v4.app.Fragment
-import android.support.v4.content.FileProvider
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.*
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import co.id.billyon.R
 import co.id.billyon.adapter.CategoryRecyclerAdapter
 import co.id.billyon.databinding.FragmentCashierDashboardBinding
-import co.id.billyon.db.entity.Category
-import co.id.billyon.db.entity.CategoryWithProducts
-import co.id.billyon.util.REQUEST_IMAGE_CAPTURE
-import co.id.billyon.util.Utils
-import co.id.billyon.util.handlers.BillyonClickHandlers
-import com.bumptech.glide.Glide
+import co.id.billyon.db.entity.join.CategoryWithProducts
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -43,11 +24,6 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.PermissionRequestErrorListener
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import dagger.android.support.AndroidSupportInjection
-import java.io.File
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
-import java.util.jar.Manifest
 import javax.inject.Inject
 
 

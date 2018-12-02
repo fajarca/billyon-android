@@ -1,10 +1,9 @@
 package co.id.billyon.di.module
 
 import co.id.billyon.api.ApiService
-import co.id.billyon.db.dao.CartsDao
-import co.id.billyon.db.dao.CategoryAndProductsDao
-import co.id.billyon.db.dao.CategoryDao
-import co.id.billyon.db.dao.ProductsDao
+import co.id.billyon.db.dao.*
+import co.id.billyon.db.dao.join.CartsAndCartProductsDao
+import co.id.billyon.db.dao.join.CategoryAndProductsDao
 import co.id.billyon.repository.cashier.carts.CartsLocalDataSource
 import co.id.billyon.repository.cashier.carts.CartsRemoteDataSource
 import co.id.billyon.repository.cashier.dashboard.DashboardLocalDataSource
@@ -36,7 +35,7 @@ class DataSourceModule {
 
     @Provides
     @Singleton
-    fun providesCartsLocalDataSource(cartDao: CartsDao) = CartsLocalDataSource(cartDao)
+    fun providesCartsLocalDataSource(cartDao: CartsDao, cartsAndCartProductsDao: CartsAndCartProductsDao) = CartsLocalDataSource(cartDao, cartsAndCartProductsDao)
 
     @Provides
     @Singleton

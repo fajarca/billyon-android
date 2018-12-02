@@ -2,12 +2,10 @@ package co.id.billyon.ui.cashier.dashboard
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import co.id.billyon.db.entity.Category
-import co.id.billyon.db.entity.CategoryAndProducts
-import co.id.billyon.db.entity.CategoryWithProducts
-import co.id.billyon.db.entity.Products
+import co.id.billyon.db.entity.join.CategoryAndProducts
+import co.id.billyon.db.entity.join.CategoryWithProducts
 import co.id.billyon.model.PostsResponse
 import co.id.billyon.repository.cashier.dashboard.DashboardRepository
 import co.id.billyon.util.extensions.plusAssign

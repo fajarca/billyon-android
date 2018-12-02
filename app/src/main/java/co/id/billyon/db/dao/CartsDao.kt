@@ -13,9 +13,6 @@ interface CartsDao {
     @Update
     fun update(cart: Carts)
 
-    @Query("UPDATE carts SET quantity = :quantity WHERE product_id = :productId")
-    fun updateQuantity(productId: Long, quantity : Int)
-
     @Delete
     fun delete(cart: Carts)
 

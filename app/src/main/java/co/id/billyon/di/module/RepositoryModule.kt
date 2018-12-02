@@ -19,6 +19,8 @@ import javax.inject.Singleton
 
 @Module
 class RepositoryModule {
+
+    //DAO
     @Provides
     @Singleton
     fun provideProductDao(db: BillyonDatabase) = db.productDao()
@@ -33,8 +35,19 @@ class RepositoryModule {
 
     @Provides
     @Singleton
+    fun provideCartProductsDao(db: BillyonDatabase) = db.cartProductDao()
+
+    @Provides
+    @Singleton
     fun providesCategoryAndProductsDao (db:BillyonDatabase) = db.categoryAndProductsDao()
 
+    @Provides
+    @Singleton
+    fun providesCartsAndProductsDao (db:BillyonDatabase) = db.cartsAndProductDao()
+
+
+
+    // REPOSITORY
     @Provides
     @Singleton
     fun provideProductRepository(localDataSource : ProductLocalDataSource, remoteDataSource: ProductRemoteDataSource, netManager: NetManager) = ProductRepository(localDataSource, remoteDataSource, netManager)

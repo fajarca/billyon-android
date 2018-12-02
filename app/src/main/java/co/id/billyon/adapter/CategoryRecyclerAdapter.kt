@@ -1,18 +1,10 @@
 package co.id.billyon.adapter
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import co.id.billyon.databinding.RvItemCategoryBinding
-import co.id.billyon.databinding.RvItemProductBinding
-import co.id.billyon.db.entity.Category
-import co.id.billyon.db.entity.CategoryWithProducts
-import co.id.billyon.db.entity.Products
-import co.id.billyon.generated.callback.OnClickListener
-import co.id.billyon.model.Product
-import java.util.ArrayList
+import co.id.billyon.db.entity.join.CategoryWithProducts
 
 class CategoryRecyclerAdapter(private var categories: List<CategoryWithProducts>,
                               private val listener: OnCategoryClickListener)

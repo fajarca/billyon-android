@@ -1,24 +1,24 @@
 package co.id.billyon.db.entity
 
 import android.arch.persistence.room.*
+import co.id.billyon.util.Converters
 
-@Entity(tableName = "carts",
-        foreignKeys = arrayOf(
-                ForeignKey(
-                        entity = Products::class,
-                        parentColumns = arrayOf("id"),
-                        childColumns = arrayOf("product_id"),
-                        onDelete = ForeignKey.CASCADE,
-                        onUpdate = ForeignKey.CASCADE
-                )
-        ))
+@Entity(tableName = "carts")
 data class Carts(
-        @ColumnInfo(name = "product_id")
-        var productId : Long,
-        @ColumnInfo(name = "store_id")
-        var storeId : Int,
-        @ColumnInfo(name = "quantity")
-        var quantity : Int
+        //Equals to cashier id
+        @ColumnInfo(name = "user_id")
+        var userId : Long,
+        @TypeConverters(Converters::class)
+        @ColumnInfo(name = "is_finished")
+        var isFinished : Boolean,
+        @TypeConverters(Converters::class)
+        @ColumnInfo(name = "need_synced")
+        var need_synced: Boolean,
+        @ColumnInfo(name = "created_date")
+        var createdDate: String,
+        @ColumnInfo(name = "updated_date")
+        var updatedDate: String
+
 
 ) {
         @PrimaryKey(autoGenerate = true)

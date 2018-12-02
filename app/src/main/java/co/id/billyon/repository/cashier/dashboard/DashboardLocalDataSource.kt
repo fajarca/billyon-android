@@ -1,6 +1,6 @@
 package co.id.billyon.repository.cashier.dashboard
 
-import co.id.billyon.db.dao.CategoryAndProductsDao
+import co.id.billyon.db.dao.join.CategoryAndProductsDao
 import co.id.billyon.db.dao.CategoryDao
 import co.id.billyon.db.entity.Category
 import javax.inject.Inject

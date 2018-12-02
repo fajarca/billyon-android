@@ -8,7 +8,7 @@ class CartsRepository(private val localDataSource: CartsLocalDataSource, private
     fun insertCart(cart : Carts) = localDataSource.insert(cart)
     fun delete(cart : Carts) = localDataSource.delete(cart)
     fun update(cart: Carts) = localDataSource.update(cart)
-    fun updateQuantity(productId: Long, quantity : Int) = localDataSource.updateQuantity(productId,quantity)
-    fun findAll() = localDataSource.findAll()
+    //fun updateQuantity(productId: Long, quantity : Int) = localDataSource.updateQuantity(productId,quantity)
+    fun findAll(isFinished : Boolean) = localDataSource.findAll(isFinished)
 
 }

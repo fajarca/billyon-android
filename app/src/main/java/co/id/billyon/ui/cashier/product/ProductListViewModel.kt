@@ -2,10 +2,11 @@ package co.id.billyon.ui.cashier.product
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import android.databinding.ObservableLong
 import co.id.billyon.db.entity.Carts
-import co.id.billyon.db.entity.CategoryWithProducts
+import co.id.billyon.db.entity.join.CartsAndCartProducts
 import co.id.billyon.db.entity.Products
 import co.id.billyon.repository.cashier.carts.CartsRepository
 import co.id.billyon.repository.cashier.product.ProductRepository
@@ -24,6 +25,8 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
     val products = MutableLiveData<List<Products>>()
     var itemCount = ObservableField<String>()
     var totalPrice = ObservableLong()
+    var showAddToCart = ObservableBoolean()
+    var showQtyPicker = ObservableBoolean()
 
     fun findProduct(categoryId : Int) {
         isLoading.set(true)
@@ -47,19 +50,20 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
                 })
     }
 
-    fun findAllCart() {
-        compositeDisposable += cartRepo.findAll()
+    fun findAllCart(isFinished : Boolean) {
+        compositeDisposable += cartRepo.findAll(isFinished)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSubscriber<List<Carts>>() {
+                .subscribeWith(object :DisposableSubscriber<List<CartsAndCartProducts>>() {
                     override fun onComplete() {
                         isLoading.set(false)
                     }
 
-                    override fun onNext(data: List<Carts>?) {
+                    override fun onNext(data: List<CartsAndCartProducts>?) {
                         isLoading.set(false)
-                        itemCount.set("${data?.size} product")
+                        itemCount.set("${data?.size} items")
                         totalPrice.set(4000)
+                        //products.value = data
                     }
 
                     override fun onError(t: Throwable?) {
@@ -77,7 +81,8 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableCompletableObserver() {
                     override fun onComplete() {
-
+                        showAddToCart.set(false)
+                        showQtyPicker.set(true)
                     }
 
                     override fun onError(e: Throwable) {
@@ -101,7 +106,7 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
                 })
     }
 
-    fun updateQuatity(productId : Long, quantity : Int) {
+    /*fun updateQuatity(productId : Long, quantity : Int) {
         compositeDisposable += Completable.fromCallable { cartRepo.updateQuantity(productId, quantity) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -114,7 +119,7 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
 
                     }
                 })
-    }
+    }*/
 
     override fun onCleared() {
         super.onCleared()
