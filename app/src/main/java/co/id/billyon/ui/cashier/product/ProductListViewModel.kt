@@ -36,7 +36,13 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
     var showQtyPicker = ObservableBoolean()
     var TAG = ProductListViewModel::class.java.simpleName
 
-    fun findActiveCartId(isFinished: Boolean, productId: Long, storeId: Long, quantity: Int) {
+    /**
+     * If there are no active cart (cart with "is_finished" = 0),
+     * we have to create a new cart before add new products into it
+     *
+     * If there is an active cart. We should insert products into it
+     */
+    fun addToCart(isFinished: Boolean, productId: Long, storeId: Long, quantity: Int) {
         compositeDisposable += cartRepo.findActiveCartId(isFinished)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -68,8 +74,9 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
                     }
 
                     override fun onNext(data: List<CartsAndCartProducts>?) {
+                        val count = data?.get(0)?.products?.size
                         isLoading.set(false)
-                        itemCount.set("${data?.size} items")
+                        itemCount.set("$count items")
                         totalPrice.set(4000)
                         //products.value = data
                     }
@@ -166,26 +173,6 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
                 })
     }
 
-    /*fun addToCart(cashierId: Long, productId: Long, storeId: Long, quantity: Int) {
-        val activeCartId = findActiveCartId(false)
-        //No active cart found, create a new cart before adding new product
-        if (activeCartId == -1L) {
-
-            //Create new cart
-            val cart = Carts(cashierId, false, true, Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
-            val cartId = createCart(cart)
-
-            //Add the product to the cart
-            val product = CartProducts(productId, storeId, cartId, quantity, true, Utils.getCurrentTimeStamp())
-            addProductToCart(product)
-
-        } else {
-            //Add the product to the existing cart
-            val product = CartProducts(productId, storeId, activeCartId, quantity, true, Utils.getCurrentTimeStamp())
-            addProductToCart(product)
-        }
-
-    }*/
 
     override fun onCleared() {
         super.onCleared()

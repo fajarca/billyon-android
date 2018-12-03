@@ -88,7 +88,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     override fun onAddProductPressed(product: Products) {
         /* val cart = Carts(1, false, true,  Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
          viewModel.createCart(cart)*/
-        viewModel.findActiveCartId(false, product.id, product.storeId.toLong(), 2)
+        viewModel.addToCart(false, product.id, product.storeId.toLong(), 2)
     }
 
     override fun onRemoveProductPressed(product: Products) {
