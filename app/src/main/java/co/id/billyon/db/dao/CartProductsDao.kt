@@ -20,7 +20,7 @@ interface CartProductsDao {
     @Query("SELECT * FROM cart_products")
     fun findAll() : Flowable<List<CartProducts>>
 
-    /*@Query("UPDATE carts_products SET quantity = :quantity ")
-    fun updateQuantity(productId : Long, quantity : Int)*/
+    @Query("UPDATE cart_products SET quantity = :quantity WHERE product_id = :productId")
+    fun updateQuantity(productId : Long, quantity : Int)
 
 }

@@ -24,9 +24,9 @@ data class CartProducts(
         @ColumnInfo(name = "product_id")
         var productId : Long,
         @ColumnInfo(name = "store_id")
-        var storeId : Int,
+        var storeId : Long,
         @ColumnInfo(name = "carts_id")
-        var cashierId : Int,
+        var cartsId : Long,
         @ColumnInfo(name = "quantity")
         var quantity : Int,
         @TypeConverters(Converters::class)

@@ -19,7 +19,7 @@ class DataSourceModule {
 
     @Provides
     @Singleton
-    fun providesDashboardLocalDataSource(categoryDao: CategoryDao, categoryProductDao : CategoryAndProductsDao) = DashboardLocalDataSource(categoryDao,categoryProductDao)
+    fun providesDashboardLocalDataSource(categoryDao: CategoryDao, categoryProductDao: CategoryAndProductsDao) = DashboardLocalDataSource(categoryDao, categoryProductDao)
 
     @Provides
     @Singleton
@@ -35,7 +35,7 @@ class DataSourceModule {
 
     @Provides
     @Singleton
-    fun providesCartsLocalDataSource(cartDao: CartsDao, cartsAndCartProductsDao: CartsAndCartProductsDao) = CartsLocalDataSource(cartDao, cartsAndCartProductsDao)
+    fun providesCartsLocalDataSource(cartDao: CartsDao, cartProductsDao: CartProductsDao, cartsAndCartProductsDao: CartsAndCartProductsDao) = CartsLocalDataSource(cartDao, cartProductsDao, cartsAndCartProductsDao)
 
     @Provides
     @Singleton
