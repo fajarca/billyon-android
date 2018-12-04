@@ -8,6 +8,7 @@ import android.databinding.ObservableLong
 import android.util.Log
 import co.id.billyon.db.entity.CartProducts
 import co.id.billyon.db.entity.Carts
+import co.id.billyon.db.entity.ItemTotalPrice
 import co.id.billyon.db.entity.Products
 import co.id.billyon.db.entity.join.CartsAndCartProducts
 import co.id.billyon.repository.cashier.carts.CartsRepository
@@ -42,61 +43,51 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
      *
      * If there is an active cart. We should insert products into it
      */
-    fun addToCart(isFinished: Boolean, productId: Long, storeId: Long, quantity: Int) {
+    fun addToCart(isFinished: Boolean, productId: Long, quantity: Int) {
         compositeDisposable += cartRepo.findActiveCartId(isFinished)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess {
                     //Add product to active cart
-                    val product = CartProducts(productId, storeId, it, quantity, true, Utils.getCurrentTimeStamp())
+                    val product = CartProducts(productId, it, quantity, true, Utils.getCurrentTimeStamp())
                     addProductToCart(product)
                 }
                 .doOnError {
-                    Log.v(TAG, "FindAciveCartId error ${it.message}")
                 }
                 .doOnComplete {
                     //Active cart not found. Create a new one
                     val cart = Carts(1, false, true, Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
-                    createCart(cart, productId, storeId, quantity)
-
-                    Log.v(TAG, "FindAciveCartId complete (not found)")
+                    createCart(cart, productId, quantity)
                 }
                 .subscribe()
     }
 
-    fun findAllCart(isFinished: Boolean) {
-        compositeDisposable += cartRepo.findAll(isFinished)
+    fun findAllProductsOnCart() {
+        compositeDisposable += cartRepo.findAllProductsOnCart()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSubscriber<List<CartsAndCartProducts>>() {
-                    override fun onComplete() {
-                        isLoading.set(false)
-                    }
-
-                    override fun onNext(data: List<CartsAndCartProducts>?) {
-                        val count = data?.get(0)?.products?.size
-                        isLoading.set(false)
-                        itemCount.set("$count items")
-                        totalPrice.set(4000)
-                        //products.value = data
-                    }
-
-                    override fun onError(t: Throwable?) {
-                        isLoading.set(false)
-                    }
-
-                })
-
+                .doOnComplete {
+                    isLoading.set(false)
+                }
+                .doOnNext {
+                    isLoading.set(false)
+                    itemCount.set("${it.itemCount} items")
+                    totalPrice.set(it.totalPrice)
+                }
+                .doOnError {
+                    isLoading.set(false)
+                }
+                .subscribe()
 
     }
 
-    fun createCart(cart: Carts, productId: Long, storeId: Long, quantity: Int) {
+    fun createCart(cart: Carts, productId: Long, quantity: Int) {
         compositeDisposable += Single.fromCallable { cartRepo.createCart(cart) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess {
                     //Add the product into the cart
-                    val product = CartProducts(productId, storeId, it, quantity, true, Utils.getCurrentTimeStamp())
+                    val product = CartProducts(productId, it, quantity, true, Utils.getCurrentTimeStamp())
                     addProductToCart(product)
                 }
                 .doOnError {

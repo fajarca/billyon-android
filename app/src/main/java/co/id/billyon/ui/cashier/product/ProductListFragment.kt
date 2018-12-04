@@ -73,7 +73,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         categoryName = passedArgument.categoryName
 
         viewModel.findProduct(categoryId)
-        viewModel.findAllCart(false)
+        viewModel.findAllProductsOnCart()
 
 
         val toolbar = activity?.findViewById<Toolbar>(R.id.toolbar)
@@ -88,7 +88,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     override fun onAddProductPressed(product: Products) {
         /* val cart = Carts(1, false, true,  Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
          viewModel.createCart(cart)*/
-        viewModel.addToCart(false, product.id, product.storeId.toLong(), 2)
+        viewModel.addToCart(false, product.id, 1)
     }
 
     override fun onRemoveProductPressed(product: Products) {

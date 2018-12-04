@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c19778c5-ab5e-42d3-99b5-8ce3b575e180" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/ItemTotalPrice.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -27,6 +28,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/join/CartsAndCartProductsDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/join/CartsAndCartProductsDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/CartProducts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/CartProducts.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsLocalDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsLocalDataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt" afterDir="false" />
     </list>
@@ -54,8 +59,8 @@
       <file leaf-file-name="ProductListFragment.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
+            <state relative-caret-position="444">
+              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
             </state>
           </provider>
         </entry>
@@ -63,8 +68,8 @@
       <file leaf-file-name="ProductListViewModel.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="72" column="44" lean-forward="true" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+            <state relative-caret-position="206">
+              <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
               <folding>
                 <element signature="e#5595#6335#0" />
                 <element signature="e#6390#6847#0" />
@@ -77,8 +82,8 @@
       <file leaf-file-name="CartsRepository.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsRepository.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+            <state relative-caret-position="270">
+              <caret line="18" column="74" selection-start-line="18" selection-start-column="74" selection-end-line="18" selection-end-column="74" />
               <folding>
                 <element signature="e#48#163#0" expanded="true" />
               </folding>
@@ -89,8 +94,8 @@
       <file leaf-file-name="CartsLocalDataSource.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsLocalDataSource.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
+            <state relative-caret-position="105">
+              <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -98,8 +103,8 @@
       <file leaf-file-name="CartsAndCartProductsDao.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/join/CartsAndCartProductsDao.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+            <state relative-caret-position="105">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -4424,8 +4429,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/CategoryWithProducts.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/CategoryAndAllProduct.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/CategoryAndAllProductDao.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/CategoryAndAllProduct.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/CategoryAndProductsDao.kt" />
@@ -4468,11 +4471,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/join/CartsAndCartProducts.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/BillyonDatabase.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/DataSourceModule.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsLocalDataSource.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/CartProductsDao.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsRepository.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/CartProducts.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/CartsDao.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/CartProducts.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/ItemTotalPrice.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/join/CartsAndCartProductsDao.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsLocalDataSource.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsRepository.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt" />
       </list>
@@ -4492,6 +4497,62 @@
       <pane id="AndroidView">
         <subPane>
           <expand>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="join" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="join" type="462c0819:PsiDirectoryNode" />
+            </path>
             <path>
               <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
@@ -4736,7 +4797,7 @@
       <window_info id="Structure" order="1" sideWeight="0.5030303" side_tool="true" weight="0.24964234" />
       <window_info anchor="right" id="Device File Explorer" order="3" sideWeight="0.5030303" side_tool="true" weight="0.3297568" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4985694" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4985694" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Assistant" order="4" weight="0.3297568" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -4791,49 +4852,42 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt</url>
-          <line>98</line>
+          <line>89</line>
           <properties />
           <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt</url>
-          <line>102</line>
+          <line>93</line>
           <properties />
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt</url>
+          <line>74</line>
+          <properties />
+          <option name="timeStamp" value="139" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt</url>
           <line>77</line>
           <properties />
-          <option name="timeStamp" value="133" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt</url>
-          <line>72</line>
-          <properties />
-          <option name="timeStamp" value="134" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt</url>
-          <line>84</line>
-          <properties />
-          <option name="timeStamp" value="135" />
+          <option name="timeStamp" value="140" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="136" />
+      <option name="time" value="141" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/addcategory/AddCategoryFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/product/ProductRemoteDataSource.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -5103,34 +5157,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/join/CategoryWithProducts.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/join/CategoryAndProducts.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/join/CategoryAndProductsDao.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/join/CartsAndCartProducts.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding>
-            <element signature="e#38#254#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5151,13 +5181,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/CartProductsDao.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" column="87" selection-start-line="22" selection-start-column="87" selection-end-line="22" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/adapter/ProductsRecyclerAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
@@ -5172,16 +5195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/CartProducts.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding>
-            <element signature="e#33#108#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/CartsDao.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -5192,41 +5205,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/join/CartsAndCartProducts.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="e#38#254#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/join/CategoryAndProducts.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/join/CategoryWithProducts.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/ItemTotalPrice.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/CartProductsDao.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="87" selection-start-line="22" selection-start-column="87" selection-end-line="22" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/join/CartsAndCartProductsDao.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsLocalDataSource.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/CartProducts.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="38" lean-forward="true" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+          <folding>
+            <element signature="e#33#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsRepository.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+        <state relative-caret-position="270">
+          <caret line="18" column="74" selection-start-line="18" selection-start-column="74" selection-end-line="18" selection-end-column="74" />
           <folding>
             <element signature="e#48#163#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/carts/CartsLocalDataSource.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/join/CartsAndCartProductsDao.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
+        <state relative-caret-position="444">
+          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="72" column="44" lean-forward="true" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+        <state relative-caret-position="206">
+          <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
           <folding>
             <element signature="e#5595#6335#0" />
             <element signature="e#6390#6847#0" />

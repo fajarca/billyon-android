@@ -23,8 +23,6 @@ import co.id.billyon.util.Converters
 data class CartProducts(
         @ColumnInfo(name = "product_id")
         var productId : Long,
-        @ColumnInfo(name = "store_id")
-        var storeId : Long,
         @ColumnInfo(name = "carts_id")
         var cartsId : Long,
         @ColumnInfo(name = "quantity")

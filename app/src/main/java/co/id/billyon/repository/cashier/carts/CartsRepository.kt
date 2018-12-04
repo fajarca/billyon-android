@@ -15,4 +15,6 @@ class CartsRepository(private val localDataSource: CartsLocalDataSource, private
     fun addProductToCart(cart : CartProducts) = localDataSource.addProductToCart(cart)
     fun deleteProductFromCart(cart : CartProducts) = localDataSource.deleteProductFromCart(cart)
     fun updateProductQuantity(productId: Long, quantity : Int) = localDataSource.updateProductQuantity(productId,quantity)
+
+    fun findAllProductsOnCart()  = localDataSource.findAllProductsOnCart()
 }

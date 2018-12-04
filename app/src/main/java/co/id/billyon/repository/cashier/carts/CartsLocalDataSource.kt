@@ -20,4 +20,5 @@ class CartsLocalDataSource @Inject constructor(private val dao: CartsDao, privat
 
     //fun updateQuantity(productId: Long, quantity : Int) = cartProductDaoCart.updateQuantity(productId, quantity)
     fun findAll(isFinished : Boolean) = cartAndCartProductDao.getCartsAndProducts(isFinished)
+    fun findAllProductsOnCart()  = cartAndCartProductDao.getItemCountAndTotalPrice()
 }
