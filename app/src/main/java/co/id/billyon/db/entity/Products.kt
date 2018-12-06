@@ -2,11 +2,10 @@ package co.id.billyon.db.entity
 
 import android.arch.persistence.room.*
 import co.id.billyon.util.Converters
-import java.util.*
 
 @Entity(tableName = "products",
         indices = arrayOf(
-                Index(value = "name",name = "idx_name")
+                Index(value = "name", name = "idx_name")
         ),
         foreignKeys = arrayOf(
                 ForeignKey(
@@ -55,8 +54,14 @@ data class Products(
 
         var created_date: String,
 
-        var updated_date: String
+        var updated_date: String,
 
+        @Ignore
+        var showAddToCartButton : Boolean = true,
+        @Ignore
+        var showQuantityPicker : Boolean = false
 
-)
+) {
+        constructor() : this(0, 0, 0, "", "",  0,  0,  0,  0,  false, false, "", "", true, false)
+}
 

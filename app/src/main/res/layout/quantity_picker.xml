@@ -6,11 +6,12 @@
     <data>
         <import type="android.view.View"/>
         <variable
-            name="vm"
-            type="co.id.billyon.ui.cashier.product.ProductListViewModel"/>
+            name="product"
+            type="co.id.billyon.db.entity.Products" />
     </data>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutQuantityPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -42,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            style="@style/BillyonTheme.Text.Circular.Normal"
+            style="@style/BillyonTheme.Text.Circular.Bold"
             android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/ivAdd"
             app:layout_constraintStart_toEndOf="@+id/ivRemove"

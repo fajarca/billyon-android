@@ -61,11 +61,12 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         }
 
 
-        viewModel.products.observe(this, Observer { products ->
-            products?.let {
-                adapter.replaceData(it)
-            }
-        })
+        viewModel.products.observe(this,
+                Observer { products ->
+                    products?.let {
+                        adapter.replaceData(it)
+                    }
+                })
 
         val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
         categoryId = passedArgument.categoryId
@@ -85,7 +86,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     }
 
 
-    override fun onAddProductPressed(product: Products) {
+    override fun onAddProductPressed(product: Products, position: Int) {
         /* val cart = Carts(1, false, true,  Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
          viewModel.createCart(cart)*/
         viewModel.addToCart(false, product.id, 1)
@@ -97,12 +98,11 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     }
 
     override fun onAddQtyPressed(quantity: Int, product: Products) {
-        //viewModel.updateQuatity(product.id, 2)
-        Toast.makeText(activity, "$quantity", Toast.LENGTH_SHORT).show()
+        viewModel.updateQuantity(product.id, quantity)
     }
 
-    override fun onRemoveQtyPressed(product: Products) {
-        //viewModel.updateQuatity(product.id, 1)
+    override fun onRemoveQtyPressed(quantity: Int, product: Products) {
+        viewModel.updateQuantity(product.id, quantity)
     }
 
     fun onFabAddProductPressed() {

@@ -3,6 +3,7 @@ package co.id.billyon.adapter
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import co.id.billyon.databinding.RvItemProductBinding
 import co.id.billyon.db.entity.Products
@@ -19,26 +20,37 @@ class ProductsRecyclerAdapter(private var products: List<Products>,
 
     override fun getItemCount() = products.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(products[position], listener)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(products[position], position, listener)
 
     class ViewHolder(private val binding: RvItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Products, listener: OnProductClickListener?) {
+        fun bind(product: Products, position: Int, listener: OnProductClickListener?) {
             binding.product = product
             listener?.let {
-                //binding.root.setOnClickListener({ _ -> listener.onProductSelected(product) })
-                binding.contentQuantityPickerButton.layoutAdd.setOnClickListener({ _ -> listener.onAddProductPressed(product) })
-                val current = binding.contentQuantityPicker.tvCounter.text.toString().trim().toInt()
-                Log.v("TAG", "Current $current")
+                binding.contentQuantityPickerButton.layoutAdd.setOnClickListener(
+                        { _ ->
+                            listener.onAddProductPressed(product, position)
+                            binding.contentQuantityPickerButton.layoutAdd.visibility = View.GONE
+                            binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.VISIBLE
+                        }
+                )
+                var current = binding.contentQuantityPicker.tvCounter.text.toString().trim().toInt()
                 binding.contentQuantityPicker.ivAdd.setOnClickListener {
-                    val next = current + 1
-                    binding.contentQuantityPicker.tvCounter.text = "$next"
-                    Log.v("TAG", "Next $next")
-                    listener.onAddQtyPressed(current,product)
+                    current += 1
+                    binding.contentQuantityPicker.tvCounter.text = "$current"
+                    listener.onAddQtyPressed(current, product)
                 }
-                //binding.contentQuantityPicker.ivAdd.setOnClickListener({ _ -> listener.onAddQtyPressed(count,product) })
-                binding.contentQuantityPicker.ivRemove.setOnClickListener({ _ -> listener.onRemoveQtyPressed(product) })
+                binding.contentQuantityPicker.ivRemove.setOnClickListener {
+                    current += -1
+                    binding.contentQuantityPicker.tvCounter.text = "$current"
 
+                    if (current == 0) {
+                        binding.contentQuantityPickerButton.layoutAdd.visibility = View.VISIBLE
+                        binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.GONE
+                    }
+
+                    listener.onRemoveQtyPressed(current, product)
+                }
             }
             binding.executePendingBindings()
         }
@@ -47,15 +59,16 @@ class ProductsRecyclerAdapter(private var products: List<Products>,
     }
 
     interface OnProductClickListener {
-        fun onAddProductPressed(product: Products)
+        fun onAddProductPressed(product: Products, position: Int)
         fun onRemoveProductPressed(product: Products)
-        fun onAddQtyPressed(quantity : Int, product: Products)
-        fun onRemoveQtyPressed(product: Products)
+        fun onAddQtyPressed(quantity: Int, product: Products)
+        fun onRemoveQtyPressed(quantity: Int, product: Products)
     }
 
-    fun replaceData(products : List<Products> ) {
+    fun replaceData(products: List<Products>) {
         this.products = products
         notifyDataSetChanged()
     }
+
 
 }

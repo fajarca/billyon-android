@@ -8,21 +8,15 @@ import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import co.id.billyon.R
 import co.id.billyon.databinding.FragmentAddProductBinding
-import co.id.billyon.db.entity.Category
 import co.id.billyon.db.entity.Products
-import co.id.billyon.util.handlers.BillyonClickHandlers
 import co.id.billyon.util.Utils
+import co.id.billyon.util.handlers.BillyonClickHandlers
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -89,7 +83,7 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
 
         val currentTimestampAsId = Utils.getCurrentTimestampAsId()
         val currentTimestamp = Utils.getCurrentTimeStamp()
-        val product = Products(currentTimestampAsId, storeId, categoryId, imagePath, productName, productQty.toInt(), productMinQty.toInt(), productDisplayPrice.toLong(), productActualPrice.toLong(), true, true, currentTimestamp, currentTimestamp)
+        val product = Products(currentTimestampAsId, storeId, categoryId, imagePath, productName, productQty.toInt(), productMinQty.toInt(), productDisplayPrice.toLong(), productActualPrice.toLong(), true, true, currentTimestamp, currentTimestamp, true,false)
 
         vm.insertProduct(product)
     }

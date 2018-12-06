@@ -6,8 +6,8 @@
     <data>
         <import type="android.view.View"/>
         <variable
-            name="vm"
-            type="co.id.billyon.ui.cashier.product.ProductListViewModel"/>
+            name="product"
+            type="co.id.billyon.db.entity.Products" />
     </data>
 
     <android.support.constraint.ConstraintLayout

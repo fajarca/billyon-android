@@ -73,11 +73,13 @@
                 layout="@layout/quantity_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tvProductPrice"
-                app:layout_constraintTop_toBottomOf="@+id/contentQuantityPickerButton" />
+                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
+                app:layout_constraintVertical_bias="0.0"
+                bind:product="@{product}" />
 
             <include
                 android:id="@+id/contentQuantityPickerButton"
@@ -87,7 +89,9 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
                 app:layout_constraintEnd_toEndOf="@+id/tvProductPrice"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice" />
+                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
+                app:layout_constraintVertical_bias="0.0"
+                bind:product="@{product}" />
 
         </android.support.constraint.ConstraintLayout>
 
