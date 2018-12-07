@@ -11,6 +11,7 @@ import co.id.billyon.db.entity.Carts
 import co.id.billyon.db.entity.ItemTotalPrice
 import co.id.billyon.db.entity.Products
 import co.id.billyon.db.entity.join.CartsAndCartProducts
+import co.id.billyon.db.entity.join.ProductsAndCartProduct
 import co.id.billyon.repository.cashier.carts.CartsRepository
 import co.id.billyon.repository.cashier.product.ProductRepository
 import co.id.billyon.util.Utils
@@ -30,7 +31,7 @@ import javax.inject.Inject
 class ProductListViewModel @Inject constructor(private val productRepo: ProductRepository, private val cartRepo: CartsRepository) : ViewModel() {
     val isLoading = ObservableField<Boolean>()
     val compositeDisposable = CompositeDisposable()
-    val products = MutableLiveData<List<Products>>()
+    val products = MutableLiveData<List<ProductsAndCartProduct>>()
     var itemCount = ObservableField<String>()
     var totalPrice = ObservableLong()
     var showAddToCart = ObservableBoolean()
@@ -117,12 +118,12 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
         compositeDisposable += productRepo.findProductFromCategory(categoryId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSubscriber<List<Products>>() {
+                .subscribeWith(object : DisposableSubscriber<List<ProductsAndCartProduct>?>() {
                     override fun onComplete() {
                         isLoading.set(false)
                     }
 
-                    override fun onNext(data: List<Products>?) {
+                    override fun onNext(data: List<ProductsAndCartProduct>?) {
                         isLoading.set(false)
                         products.value = data
                     }
@@ -151,6 +152,21 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
 
     fun updateQuantity(productId: Long, quantity: Int) {
         compositeDisposable += Completable.fromCallable { cartRepo.updateProductQuantity(productId, quantity) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableCompletableObserver() {
+                    override fun onComplete() {
+
+                    }
+
+                    override fun onError(e: Throwable) {
+
+                    }
+                })
+    }
+
+    fun deleteFromCart(productId: Long) {
+        compositeDisposable += Completable.fromCallable { cartRepo.deleteProductFromCart(productId) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableCompletableObserver() {

@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="product"
-            type="co.id.billyon.db.entity.Products" />
+            type="co.id.billyon.db.entity.join.ProductsAndCartProduct" />
     </data>
 
     <android.support.constraint.ConstraintLayout

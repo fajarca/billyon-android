@@ -21,6 +21,7 @@ import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.FragmentProductListBinding
 import co.id.billyon.db.entity.Carts
 import co.id.billyon.db.entity.Products
+import co.id.billyon.db.entity.join.ProductsAndCartProduct
 import co.id.billyon.ui.cashier.addproduct.AddProductFragmentArgs
 import co.id.billyon.util.Utils
 import dagger.android.support.AndroidSupportInjection
@@ -64,7 +65,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         viewModel.products.observe(this,
                 Observer { products ->
                     products?.let {
-                        adapter.replaceData(it)
+                       adapter.replaceData(it)
                     }
                 })
 
@@ -86,23 +87,20 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     }
 
 
-    override fun onAddProductPressed(product: Products, position: Int) {
-        /* val cart = Carts(1, false, true,  Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
-         viewModel.createCart(cart)*/
-        viewModel.addToCart(false, product.id, 1)
+    override fun onAddProductPressed(product: ProductsAndCartProduct, position: Int) {
+        viewModel.addToCart(false, product.productId, 1)
     }
 
-    override fun onRemoveProductPressed(product: Products) {
-        /*val cart = Carts(product.id, product.storeId, 1, 1, false, Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
-        viewModel.deleteFromCart(cart)*/
+    override fun onRemoveProductPressed(product: ProductsAndCartProduct) {
+        viewModel.deleteFromCart(product.productId)
     }
 
-    override fun onAddQtyPressed(quantity: Int, product: Products) {
-        viewModel.updateQuantity(product.id, quantity)
+    override fun onAddQtyPressed(quantity: Int, product: ProductsAndCartProduct) {
+        viewModel.updateQuantity(product.productId, quantity)
     }
 
-    override fun onRemoveQtyPressed(quantity: Int, product: Products) {
-        viewModel.updateQuantity(product.id, quantity)
+    override fun onRemoveQtyPressed(quantity: Int, product: ProductsAndCartProduct) {
+        viewModel.updateQuantity(product.productId, quantity)
     }
 
     fun onFabAddProductPressed() {

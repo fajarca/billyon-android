@@ -11,6 +11,10 @@ import android.widget.ImageView
 import co.id.billyon.R
 import com.bumptech.glide.Glide
 import java.io.File
+import java.lang.NumberFormatException
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
 
 @BindingAdapter("loadImage")
 fun loadImage(view: ImageView, imagePath: String) {
@@ -58,6 +62,51 @@ fun shouldShowErrorMessages(view: TextInputLayout, required: Boolean) {
 @BindingAdapter("error")
 fun shouldShowError(view: TextInputLayout, errorMessage: String?) {
     view.error = errorMessage
+}
+
+@BindingAdapter("addThousandSeparator")
+fun addThousandSeparator(view : TextInputEditText, price : Long) {
+    view.addTextChangedListener(object : TextWatcher {
+
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+        }
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+        }
+        override fun afterTextChanged(s: Editable?) {
+
+            view.removeTextChangedListener(this)
+            try {
+
+                var originalString : String = s.toString()
+
+                //Remove comma
+                if (originalString.contains(".")) {
+                    originalString = originalString.replace(".", "")
+                }
+
+                var longValue = originalString.toLong()
+
+                val formatter = NumberFormat.getInstance(Locale.GERMAN) as DecimalFormat
+                formatter.applyPattern("#,###,###,###")
+
+                val formattedString : String = formatter.format(longValue)
+
+
+                view.setText(formattedString)
+                view.setSelection(view.text!!.length)
+
+
+            } catch (e : NumberFormatException) {
+                e.printStackTrace()
+            }
+
+            view.addTextChangedListener(this)
+        }
+
+    })
 }
 
 

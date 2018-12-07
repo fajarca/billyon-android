@@ -1,6 +1,8 @@
 package co.id.billyon.util
 
 import android.os.Environment
+import java.text.DecimalFormat
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,5 +24,13 @@ object Utils {
     /* Checks if external storage is available for read and write */
     fun isExternalStorageWritable(): Boolean {
         return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
+    }
+
+    @JvmStatic
+    fun addThousandSeparator(value : Long) : String {
+        var formatter = NumberFormat.getInstance(Locale.GERMAN) as DecimalFormat
+        formatter.applyPattern("#,###,###,###")
+
+        return formatter.format(value)
     }
 }

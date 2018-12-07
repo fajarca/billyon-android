@@ -8,10 +8,6 @@
         <import type="android.view.View" />
 
         <variable
-            name="handlers"
-            type="co.id.billyon.util.handlers.BillyonClickHandlers.AddProduct" />
-
-        <variable
             name="vm"
             type="co.id.billyon.ui.cashier.addproduct.AddProductViewModel" />
     </data>
@@ -48,7 +44,6 @@
                 android:id="@+id/etProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:minLength="@{5}"
                 android:hint="@string/hint_product_name" />
         </android.support.design.widget.TextInputLayout>
 
@@ -64,8 +59,8 @@
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/etDisplayPrice"
                 android:layout_width="match_parent"
-                android:inputType="number"
-                app:minLength="@{5}"
+                android:inputType="numberDecimal"
+                addThousandSeparator="@{0}"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_display_price" />
         </android.support.design.widget.TextInputLayout>
@@ -83,6 +78,7 @@
                 android:id="@+id/etActualPrice"
                 android:layout_width="match_parent"
                 android:inputType="number"
+                addThousandSeparator="@{0}"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_actual_price" />
         </android.support.design.widget.TextInputLayout>

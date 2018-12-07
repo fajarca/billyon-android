@@ -2,6 +2,7 @@ package co.id.billyon.ui.cashier.addproduct
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.databinding.ObservableField
 import co.id.billyon.db.entity.Products
 import co.id.billyon.repository.cashier.product.ProductRepository
 import co.id.billyon.util.extensions.plusAssign
@@ -15,6 +16,7 @@ import javax.inject.Inject
 class AddProductViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
     val isInsertSuccessful = MutableLiveData<Boolean>()
     val compositeDisposable = CompositeDisposable()
+    var productName = ObservableField<String>()
 
     fun insertProduct(product: Products) {
         isInsertSuccessful.value = false

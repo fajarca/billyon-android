@@ -5,6 +5,7 @@
 
     <data>
         <import type="android.view.View"/>
+        <import type="co.id.billyon.util.Utils"/>
         <variable
             name="vm"
             type="co.id.billyon.ui.cashier.product.ProductListViewModel"/>
@@ -33,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{String.valueOf(vm.totalPrice)}"
+            android:text="@{Utils.addThousandSeparator(vm.totalPrice)}"
             style="@style/BillyonTheme.Text.Circular.Bold.White"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintStart_toEndOf="@+id/tvItemCount"

@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import co.id.billyon.databinding.RvItemProductBinding
 import co.id.billyon.db.entity.Products
+import co.id.billyon.db.entity.join.ProductsAndCartProduct
 
-class ProductsRecyclerAdapter(private var products: List<Products>,
+class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>,
                               private val listener: OnProductClickListener)
     : RecyclerView.Adapter<ProductsRecyclerAdapter.ViewHolder>() {
 
@@ -24,8 +25,18 @@ class ProductsRecyclerAdapter(private var products: List<Products>,
 
     class ViewHolder(private val binding: RvItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Products, position: Int, listener: OnProductClickListener?) {
+        fun bind(product: ProductsAndCartProduct, position: Int, listener: OnProductClickListener?) {
             binding.product = product
+
+            if (product.quantity > 0) {
+                hideAddToCart()
+                showQuantityPicker(product.quantity)
+            } else {
+                showAddToCart()
+                hideQuantityPicker()
+            }
+
+            var current = binding.contentQuantityPicker.tvCounter.text.toString().trim().toInt()
             listener?.let {
                 binding.contentQuantityPickerButton.layoutAdd.setOnClickListener(
                         { _ ->
@@ -34,20 +45,26 @@ class ProductsRecyclerAdapter(private var products: List<Products>,
                             binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.VISIBLE
                         }
                 )
-                var current = binding.contentQuantityPicker.tvCounter.text.toString().trim().toInt()
+
                 binding.contentQuantityPicker.ivAdd.setOnClickListener {
-                    current += 1
-                    binding.contentQuantityPicker.tvCounter.text = "$current"
-                    listener.onAddQtyPressed(current, product)
+                    //Make sure the selected quantity never exceeds the product stock
+                    if (current < product.stock) {
+                        current += 1
+                        binding.contentQuantityPicker.tvCounter.text = current.toString()
+                        listener.onAddQtyPressed(current, product)
+                    }
+
                 }
                 binding.contentQuantityPicker.ivRemove.setOnClickListener {
-                    current += -1
-                    binding.contentQuantityPicker.tvCounter.text = "$current"
+                    current -= 1
 
-                    if (current == 0) {
+                    if (current == 0 || current < 0) {
+                        listener.onRemoveProductPressed(product)
                         binding.contentQuantityPickerButton.layoutAdd.visibility = View.VISIBLE
                         binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.GONE
                     }
+
+                    binding.contentQuantityPicker.tvCounter.text = current.toString()
 
                     listener.onRemoveQtyPressed(current, product)
                 }
@@ -56,16 +73,34 @@ class ProductsRecyclerAdapter(private var products: List<Products>,
         }
 
 
+        fun showAddToCart() {
+            binding.contentQuantityPickerButton.layoutAdd.visibility = View.VISIBLE
+        }
+
+        fun hideAddToCart() {
+            binding.contentQuantityPickerButton.layoutAdd.visibility = View.GONE
+        }
+
+        fun showQuantityPicker(quantity: Int) {
+            binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.VISIBLE
+            binding.contentQuantityPicker.tvCounter.text = "$quantity"
+        }
+
+        fun hideQuantityPicker() {
+            binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.GONE
+        }
     }
+
+
 
     interface OnProductClickListener {
-        fun onAddProductPressed(product: Products, position: Int)
-        fun onRemoveProductPressed(product: Products)
-        fun onAddQtyPressed(quantity: Int, product: Products)
-        fun onRemoveQtyPressed(quantity: Int, product: Products)
+        fun onAddProductPressed(product: ProductsAndCartProduct, position: Int)
+        fun onRemoveProductPressed(product: ProductsAndCartProduct)
+        fun onAddQtyPressed(quantity: Int, product: ProductsAndCartProduct)
+        fun onRemoveQtyPressed(quantity: Int, product: ProductsAndCartProduct)
     }
 
-    fun replaceData(products: List<Products>) {
+    fun replaceData(products: List<ProductsAndCartProduct>) {
         this.products = products
         notifyDataSetChanged()
     }

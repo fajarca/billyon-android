@@ -15,7 +15,7 @@ class CartsLocalDataSource @Inject constructor(private val dao: CartsDao, privat
     fun findActiveCartId(isFinished: Boolean) = dao.findActiveCartId(isFinished)
 
     fun addProductToCart(cart : CartProducts) = cartProductDao.insert(cart)
-    fun deleteProductFromCart(cart : CartProducts) = cartProductDao.delete(cart)
+    fun deleteProductFromCart(productId : Long) = cartProductDao.delete(productId)
     fun updateProductQuantity(productId: Long, quantity : Int) = cartProductDao.updateQuantity(productId,quantity)
 
     //fun updateQuantity(productId: Long, quantity : Int) = cartProductDaoCart.updateQuantity(productId, quantity)

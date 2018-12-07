@@ -16,12 +16,12 @@ import co.id.billyon.R
 import co.id.billyon.databinding.FragmentAddProductBinding
 import co.id.billyon.db.entity.Products
 import co.id.billyon.util.Utils
-import co.id.billyon.util.handlers.BillyonClickHandlers
+import co.id.billyon.util.extensions.removeAllThousandSeparator
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
-class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
+class AddProductFragment : Fragment(){
     private lateinit var binding: FragmentAddProductBinding
     private lateinit var vm: AddProductViewModel
     @Inject
@@ -40,24 +40,9 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
         // Inflate the layout for this fragment
         vm = ViewModelProviders.of(this, viewModelFactory).get(AddProductViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_product, container, false)
-
-        binding.handlers = this
-        binding.contentAddProduct.handlers = this
-
-
+        binding.fragment = this
 
         vm.isInsertSuccessful.observe(this, Observer { findNavController().popBackStack()})
-
-
-        //vm.getAllCategory()
-
-       /* vm._categories.observe(this, Observer { data ->
-            data?.let {
-                val adapter = ArrayAdapter<Category>(activity, R.layout.support_simple_spinner_dropdown_item, data)
-                binding.contentAddProduct.spinner.adapter = adapter
-                adapter.notifyDataSetChanged()
-            }
-        })*/
 
         val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
         categoryId = passedArgument.categoryId
@@ -73,17 +58,17 @@ class AddProductFragment : Fragment(), BillyonClickHandlers.AddProduct {
 
     }
 
-    override fun onButtonSaveProductPressed(view: View) {
+    fun onButtonSaveProductPressed() {
         val imagePath = "/haha"
         val productName = binding.contentAddProduct.etProductName.text.toString().trim()
         val productQty = binding.contentAddProduct.etQuantity.text.toString()
         val productMinQty = binding.contentAddProduct.etMinQuantity.text.toString()
-        val productDisplayPrice = binding.contentAddProduct.etDisplayPrice.text.toString()
-        val productActualPrice = binding.contentAddProduct.etActualPrice.text.toString()
+        val productDisplayPrice = binding.contentAddProduct.etDisplayPrice.text.toString().removeAllThousandSeparator()
+        val productActualPrice = binding.contentAddProduct.etActualPrice.text.toString().removeAllThousandSeparator()
 
         val currentTimestampAsId = Utils.getCurrentTimestampAsId()
         val currentTimestamp = Utils.getCurrentTimeStamp()
-        val product = Products(currentTimestampAsId, storeId, categoryId, imagePath, productName, productQty.toInt(), productMinQty.toInt(), productDisplayPrice.toLong(), productActualPrice.toLong(), true, true, currentTimestamp, currentTimestamp, true,false)
+        val product = Products(currentTimestampAsId, storeId, categoryId, imagePath, productName, productQty.toInt(), productMinQty.toInt(), productDisplayPrice, productActualPrice, true, true, currentTimestamp, currentTimestamp, true,false)
 
         vm.insertProduct(product)
     }

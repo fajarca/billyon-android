@@ -7,15 +7,21 @@
     <data>
 
         <import type="android.view.View" />
+        <import type="co.id.billyon.util.Utils"/>
 
         <variable
             name="product"
-            type="co.id.billyon.db.entity.Products" />
+            type="co.id.billyon.db.entity.join.ProductsAndCartProduct" />
     </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/margin8dp"
+        app:cardElevation="1dp"
+        android:layout_marginLeft="@dimen/margin16dp"
+        android:layout_marginRight="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin8dp"
         android:background="@color/grey_500">
 
         <android.support.constraint.ConstraintLayout
@@ -28,9 +34,11 @@
                 android:id="@+id/ivProduct"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/rectangle"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,12 +47,12 @@
                 style="@style/BillyonTheme.Text.Circular.Bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:minLines="1"
-                android:text="@{String.valueOf(product.name)}"
+                android:text="@{String.valueOf(product.productName)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivProduct"
@@ -60,7 +68,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:singleLine="true"
-                android:text="@{String.valueOf(product.displayPrice)}"
+                android:text="@{Utils.addThousandSeparator(product.displayPrice)}"
                 app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
                 app:layout_constraintEnd_toEndOf="@+id/tvProductName"
                 app:layout_constraintStart_toStartOf="@+id/tvProductName"
@@ -72,13 +80,12 @@
                 android:id="@+id/contentQuantityPicker"
                 layout="@layout/quantity_picker"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
                 app:layout_constraintEnd_toEndOf="@+id/tvProductPrice"
                 app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
-                app:layout_constraintVertical_bias="0.0"
                 bind:product="@{product}" />
 
             <include

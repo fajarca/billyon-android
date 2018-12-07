@@ -14,8 +14,8 @@ interface CartProductsDao {
     @Update
     fun update(cart: CartProducts)
 
-    @Delete
-    fun delete(cart: CartProducts)
+    @Query("DELETE FROM cart_products WHERE product_id = :productId")
+    fun delete(productId: Long)
 
     @Query("SELECT * FROM cart_products")
     fun findAll() : Flowable<List<CartProducts>>
