@@ -1,12 +1,13 @@
 package co.id.billyon.adapter
 
 import android.support.v7.widget.RecyclerView
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.id.billyon.databinding.RvItemProductBinding
-import co.id.billyon.db.entity.Products
 import co.id.billyon.db.entity.join.ProductsAndCartProduct
 
 class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>,
@@ -16,15 +17,22 @@ class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = RvItemProductBinding.inflate(layoutInflater, parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(binding, EditTextListener())
     }
 
     override fun getItemCount() = products.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(products[position], position, listener)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int)  {
+        holder.bind(products[position], position, listener)
+        holder.editTextListener.updatePosition(position, products[position].stock, holder.getBinding(), listener, products[position])
+    }
 
-    class ViewHolder(private val binding: RvItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: RvItemProductBinding, val editTextListener: EditTextListener) : RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            binding.contentQuantityPicker.etCounter.addTextChangedListener(editTextListener)
+        }
+        fun getBinding() = binding
         fun bind(product: ProductsAndCartProduct, position: Int, listener: OnProductClickListener?) {
             binding.product = product
 
@@ -36,7 +44,8 @@ class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>
                 hideQuantityPicker()
             }
 
-            var current = binding.contentQuantityPicker.tvCounter.text.toString().trim().toInt()
+            var current = binding.contentQuantityPicker.etCounter.text.toString().trim().toInt()
+
             listener?.let {
                 binding.contentQuantityPickerButton.layoutAdd.setOnClickListener(
                         { _ ->
@@ -45,15 +54,18 @@ class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>
                             binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.VISIBLE
                         }
                 )
-
                 binding.contentQuantityPicker.ivAdd.setOnClickListener {
                     //Make sure the selected quantity never exceeds the product stock
                     if (current < product.stock) {
                         current += 1
-                        binding.contentQuantityPicker.tvCounter.text = current.toString()
+                        binding.contentQuantityPicker.etCounter.setText(current.toString())
+                        binding.contentQuantityPicker.etCounter.setSelection(current.toString().length)
                         listener.onAddQtyPressed(current, product)
                     }
 
+                }
+                binding.contentQuantityPicker.etCounter.setOnClickListener {
+                    listener.onCustomQtyPressed(current, product)
                 }
                 binding.contentQuantityPicker.ivRemove.setOnClickListener {
                     current -= 1
@@ -64,12 +76,16 @@ class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>
                         binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.GONE
                     }
 
-                    binding.contentQuantityPicker.tvCounter.text = current.toString()
+                    binding.contentQuantityPicker.etCounter.setText(current.toString())
+                    binding.contentQuantityPicker.etCounter.setSelection(current.toString().length)
 
                     listener.onRemoveQtyPressed(current, product)
                 }
             }
+
+
             binding.executePendingBindings()
+
         }
 
 
@@ -83,7 +99,8 @@ class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>
 
         fun showQuantityPicker(quantity: Int) {
             binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.VISIBLE
-            binding.contentQuantityPicker.tvCounter.text = "$quantity"
+            binding.contentQuantityPicker.etCounter.setText(quantity.toString())
+            binding.contentQuantityPicker.etCounter.setSelection(quantity.toString().length)
         }
 
         fun hideQuantityPicker() {
@@ -91,13 +108,51 @@ class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>
         }
     }
 
+    class EditTextListener : TextWatcher {
+        var position = 0
+        var stock = 0
+        var binding : RvItemProductBinding? = null
+        var listener : OnProductClickListener? = null
+        var product : ProductsAndCartProduct? = null
 
+
+        fun updatePosition(position: Int, stock: Int, binding: RvItemProductBinding, listener: OnProductClickListener, product: ProductsAndCartProduct) {
+            this.position = position
+            this.stock = stock
+            this.binding = binding
+            this.listener = listener
+            this.product = product
+        }
+        override fun afterTextChanged(text: Editable) {
+                if (!text.isEmpty()) {
+                    if (text.toString().toInt() > stock) {
+                        binding?.contentQuantityPicker?.etCounter?.setText(stock.toString())
+                    } else {
+                      //  listener?.onQuantityTyped(text.toString().toInt(),product!!)
+                    }
+                } else {
+                    binding?.contentQuantityPicker?.etCounter?.setError("Tidak boleh kosong")
+                }
+                Log.v("TAG", "$text on position $position" )
+        }
+
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+        }
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+        }
+
+    }
 
     interface OnProductClickListener {
         fun onAddProductPressed(product: ProductsAndCartProduct, position: Int)
         fun onRemoveProductPressed(product: ProductsAndCartProduct)
         fun onAddQtyPressed(quantity: Int, product: ProductsAndCartProduct)
         fun onRemoveQtyPressed(quantity: Int, product: ProductsAndCartProduct)
+        fun onQuantityTyped(quantity: Int, product: ProductsAndCartProduct)
+        fun onCustomQtyPressed(quantity: Int, product: ProductsAndCartProduct)
     }
 
     fun replaceData(products: List<ProductsAndCartProduct>) {

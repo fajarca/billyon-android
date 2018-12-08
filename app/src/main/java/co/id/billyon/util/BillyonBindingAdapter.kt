@@ -4,14 +4,12 @@ import android.databinding.BindingAdapter
 import android.net.Uri
 import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
-import android.support.v4.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.ImageView
 import co.id.billyon.R
 import com.bumptech.glide.Glide
 import java.io.File
-import java.lang.NumberFormatException
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*

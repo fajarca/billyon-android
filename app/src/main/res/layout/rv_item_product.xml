@@ -40,7 +40,8 @@
                 android:background="@drawable/rectangle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tvProductName"
@@ -80,9 +81,7 @@
                 android:id="@+id/contentQuantityPicker"
                 layout="@layout/quantity_picker"
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_marginTop="8dp"
-                android:visibility="invisible"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
                 app:layout_constraintEnd_toEndOf="@+id/tvProductPrice"
                 app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"

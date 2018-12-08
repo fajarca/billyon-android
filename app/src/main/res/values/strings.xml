@@ -43,6 +43,7 @@
     <string name="hint_min_quantity">Min Quantity</string>
     <string name="save">SAVE</string>
     <string name="hint_category_name">Category Name</string>
+    <string name="cancel">Cancel</string>
 
 
 </resources>

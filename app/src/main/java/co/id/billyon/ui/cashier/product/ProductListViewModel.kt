@@ -1,11 +1,15 @@
 package co.id.billyon.ui.cashier.product
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
+import android.databinding.ObservableInt
 import android.databinding.ObservableLong
 import android.util.Log
+import co.id.billyon.R
+import co.id.billyon.data.ProductUIModel
 import co.id.billyon.db.entity.CartProducts
 import co.id.billyon.db.entity.Carts
 import co.id.billyon.db.entity.ItemTotalPrice
@@ -37,6 +41,19 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
     var showAddToCart = ObservableBoolean()
     var showQtyPicker = ObservableBoolean()
     var TAG = ProductListViewModel::class.java.simpleName
+
+    private var _isQuantityValid = MutableLiveData<ProductUIModel>()
+    private var _isDialogDismissed = MutableLiveData<Boolean>()
+
+    val isQuantityValid: LiveData<ProductUIModel>
+        get() = _isQuantityValid
+
+    val isDialogDismissed : LiveData<Boolean>
+        get() = _isDialogDismissed
+
+    var quantity = ObservableField<String>()
+    var errorQuantity = ObservableField<String>()
+
 
     /**
      * If there are no active cart (cart with "is_finished" = 0),
@@ -178,6 +195,32 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
 
                     }
                 })
+    }
+
+    fun resetQtyState() {
+        errorQuantity.set(null)
+        _isDialogDismissed.value = true
+    }
+    fun validateQty(productId: Long, quantity: String, remainingStock: Int) {
+
+
+        if (quantity.isEmpty()) {
+            errorQuantity.set("Quantity cannot be empty")
+            _isQuantityValid.value = ProductUIModel(false,0, 0)
+        } else {
+            errorQuantity.set(null)
+            if (quantity.toInt() == 0) {
+                errorQuantity.set("Quantity cannot be zero")
+                _isQuantityValid.value = ProductUIModel(false,0, 0)
+            } else if (quantity.toInt() > remainingStock) {
+                errorQuantity.set("Sorry, only $remainingStock units of this item are available")
+                _isQuantityValid.value = ProductUIModel(false,0, 0)
+            } else {
+                errorQuantity.set(null)
+                _isQuantityValid.value = ProductUIModel(true, productId, quantity.toInt())
+            }
+
+        }
     }
 
 

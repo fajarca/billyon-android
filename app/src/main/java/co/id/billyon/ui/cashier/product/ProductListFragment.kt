@@ -9,6 +9,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.*
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
 import co.id.billyon.adapter.ProductsRecyclerAdapter
+import co.id.billyon.databinding.DialogCustomQuantityBinding
 import co.id.billyon.databinding.FragmentProductListBinding
 import co.id.billyon.db.entity.Carts
 import co.id.billyon.db.entity.Products
@@ -39,6 +41,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     private var categoryId: Int = 0
     private var storeId: Int = 0
     private var categoryName: String = ""
+    private lateinit var dialog : AlertDialog
 
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
@@ -57,6 +60,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
 
         binding.apply {
             vm = viewModel
+
             binding.executePendingBindings()
 
             recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
@@ -71,6 +75,25 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
                     }
                 })
 
+        viewModel.isQuantityValid.observe(this,
+                Observer { isValid ->
+                    isValid?.let {
+                        if (it.isValid) {
+                            dismissDialog()
+                            viewModel.updateQuantity(it.productId, it.quantity)
+                        }
+                    }
+                })
+
+        viewModel.isDialogDismissed.observe(this,
+                Observer { shouldDismiss ->
+                    shouldDismiss?.let {
+                        if (it) {
+                            dismissDialog()
+                        }
+                    }
+                })
+
         val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
         categoryId = passedArgument.categoryId
         storeId = passedArgument.storeId
@@ -78,6 +101,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
 
         viewModel.findProduct(categoryId)
         viewModel.findAllProductsOnCart()
+
 
 
         val toolbar = activity?.findViewById<Toolbar>(R.id.toolbar)
@@ -103,6 +127,32 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
 
     override fun onRemoveQtyPressed(quantity: Int, product: ProductsAndCartProduct) {
         viewModel.updateQuantity(product.productId, quantity)
+    }
+
+    override fun onQuantityTyped(quantity: Int, product: ProductsAndCartProduct) {
+        viewModel.updateQuantity(product.productId, quantity)
+    }
+    override fun onCustomQtyPressed(quantity: Int, product: ProductsAndCartProduct) {
+        val binding = DataBindingUtil.inflate(LayoutInflater.from(activity), R.layout.dialog_custom_quantity,null,false) as DialogCustomQuantityBinding
+        binding.vm = viewModel
+        binding.etEnterQuantity.setText(quantity.toString())
+        binding.etEnterQuantity.setSelection(quantity.toString().length)
+
+        binding.btnAdd.setOnClickListener {
+            val newQty = binding.etEnterQuantity.text.toString().trim()
+            viewModel.validateQty(product.productId, newQty, product.stock)
+        }
+
+
+        val builder = AlertDialog.Builder(activity!!)
+        builder.setView(binding.root)
+
+        dialog = builder.create()
+        dialog.show()
+    }
+
+    fun dismissDialog() {
+        dialog.dismiss()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater) {
