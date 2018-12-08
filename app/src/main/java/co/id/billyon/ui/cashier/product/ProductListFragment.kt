@@ -129,9 +129,6 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         viewModel.updateQuantity(product.productId, quantity)
     }
 
-    override fun onQuantityTyped(quantity: Int, product: ProductsAndCartProduct) {
-        viewModel.updateQuantity(product.productId, quantity)
-    }
     override fun onCustomQtyPressed(quantity: Int, product: ProductsAndCartProduct) {
         val binding = DataBindingUtil.inflate(LayoutInflater.from(activity), R.layout.dialog_custom_quantity,null,false) as DialogCustomQuantityBinding
         binding.vm = viewModel
