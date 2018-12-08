@@ -83,7 +83,7 @@
 
             <Button
                 android:id="@+id/btnMonthTarget"
-                style="@style/BillyonTheme.Button.Rounded.Small"
+                style="@style/BillyonTheme.Button.Rounded.Green"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -95,7 +95,7 @@
 
             <Button
                 android:id="@+id/btnWeekTarget"
-                style="@style/BillyonTheme.Button.Rounded.Small"
+                style="@style/BillyonTheme.Button.Rounded.Green"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -107,7 +107,7 @@
 
             <Button
                 android:id="@+id/btnDailyTarget"
-                style="@style/BillyonTheme.Button.Rounded.Small"
+                style="@style/BillyonTheme.Button.Rounded.Green"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

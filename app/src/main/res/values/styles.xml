@@ -26,7 +26,14 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <style name="BillyonTheme.Button.Rounded" parent="Widget.AppCompat.Button.Borderless">
+    <style name="BillyonTheme.Button.Rounded.DeepOrange" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:colorButtonNormal">@color/deep_orange_500</item>
+        <item name="android:background">@drawable/rounded_button_deep_orange</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+
+    </style>
+
+    <style name="BillyonTheme.Button.Rounded.Green" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:colorButtonNormal">@color/colorAccent</item>
         <item name="android:background">@drawable/rounded_button</item>
         <item name="android:textColor">@color/colorPrimary</item>
@@ -64,6 +71,20 @@
         <item name="android:textSize">@dimen/textSize16sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="BillyonTheme.Text.Circular.Bold.Grey" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/circular_family</item>
+        <item name="android:textSize">@dimen/textSize16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey_400</item>
+    </style>
+
+    <style name="BillyonTheme.Text.Circular.Bold.DeepOrange" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/circular_family</item>
+        <item name="android:textSize">@dimen/textSize16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/deep_orange_400</item>
     </style>
 
     <style name="BillyonTheme.Text.Circular.Normal" parent="android:Widget.TextView">

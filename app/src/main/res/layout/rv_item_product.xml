@@ -62,7 +62,7 @@
 
             <TextView
                 android:id="@+id/tvProductPrice"
-                style="@style/BillyonTheme.Text.Circular.Normal"
+                style="@style/BillyonTheme.Text.Circular.Bold.DeepOrange"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

@@ -57,7 +57,6 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
 
         binding.apply {
             vm = viewModel
-            fragment = this@ProductListFragment
             binding.executePendingBindings()
 
             recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)

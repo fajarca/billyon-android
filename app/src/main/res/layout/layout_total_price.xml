@@ -11,49 +11,63 @@
             type="co.id.billyon.ui.cashier.product.ProductListViewModel"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:padding="@dimen/margin16dp"
-        android:background="@drawable/rounded_rectangle"
+        app:cardElevation="@dimen/elevation4dp"
+
         android:layout_height="wrap_content">
 
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="@dimen/margin16dp"
+            android:background="@color/white"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvItemCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.itemCount}"
-            app:layout_constraintBottom_toBottomOf="@+id/tvTotalPrice"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvTotalPrice"
-            style="@style/BillyonTheme.Text.Circular.Bold.White"
-            tools:text="1 item" />
 
-        <TextView
-            android:id="@+id/tvTotalPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@{Utils.addThousandSeparator(vm.totalPrice)}"
-            style="@style/BillyonTheme.Text.Circular.Bold.White"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-            app:layout_constraintStart_toEndOf="@+id/tvItemCount"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
-            tools:text="| 22.960" />
+            <TextView
+                android:id="@+id/tvItemCount"
+                style="@style/BillyonTheme.Text.Circular.Normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.itemCount}"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTotalPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/button"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="1 item" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_shopping_basket" />
+            <TextView
+                android:id="@+id/tvTotalPrice"
+                style="@style/BillyonTheme.Text.Circular.Bold.DeepOrange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{Utils.addThousandSeparator(vm.totalPrice)}"
+                app:layout_constraintBottom_toBottomOf="@+id/button"
+                app:layout_constraintStart_toStartOf="@+id/tvItemCount"
+                app:layout_constraintTop_toBottomOf="@+id/tvItemCount"
+                tools:text="22.960" />
 
-    </android.support.constraint.ConstraintLayout>
+            <Button
+                android:id="@+id/button"
+                style="@style/BillyonTheme.Button.Rounded.DeepOrange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/label_checkout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:minHeight="36dp"
+                android:maxHeight="36dp"
+                android:includeFontPadding="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
 
 
 
