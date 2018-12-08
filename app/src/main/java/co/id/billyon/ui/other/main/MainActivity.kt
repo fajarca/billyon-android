@@ -94,8 +94,18 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         when(destination.id) {
 
 
-            R.id.fragmentRegister, R.id.fragmentLogin, R.id.fragmentAddProduct -> {
+            R.id.fragmentRegister, R.id.fragmentLogin -> {
                 toolbar.visibility = View.GONE
+                binding.bottomNavigationView.visibility = View.GONE
+            }
+
+            R.id.fragmentAddProduct -> {
+                toolbar.visibility = View.VISIBLE
+                binding.bottomNavigationView.visibility = View.GONE
+            }
+
+            R.id.fragmentProductList -> {
+                toolbar.visibility = View.VISIBLE
                 binding.bottomNavigationView.visibility = View.GONE
             }
 

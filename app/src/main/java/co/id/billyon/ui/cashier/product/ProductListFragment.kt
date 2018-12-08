@@ -11,9 +11,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
@@ -24,6 +22,7 @@ import co.id.billyon.db.entity.Products
 import co.id.billyon.db.entity.join.ProductsAndCartProduct
 import co.id.billyon.ui.cashier.addproduct.AddProductFragmentArgs
 import co.id.billyon.util.Utils
+import com.karumi.dexter.Dexter
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -46,6 +45,10 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         super.onAttach(context)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProductListViewModel::class.java)
@@ -103,11 +106,21 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         viewModel.updateQuantity(product.productId, quantity)
     }
 
-    fun onFabAddProductPressed() {
-        val action = ProductListFragmentDirections.actionLaunchAddProduct()
-        action.setStoreId(storeId)
-        action.setCategoryId(categoryId)
-        findNavController().navigate(action)
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_add_product, menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.menu_add_product -> {
+                val action = ProductListFragmentDirections.actionLaunchAddProduct()
+                action.setStoreId(storeId)
+                action.setCategoryId(categoryId)
+                findNavController().navigate(action)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

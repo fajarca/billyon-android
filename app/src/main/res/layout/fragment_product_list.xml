@@ -26,19 +26,6 @@
             tools:listitem="@layout/rv_item_product"
             android:scrollbars="vertical" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:onClick="@{()->fragment.onFabAddProductPressed()}"
-            android:src="@drawable/ic_add_product"
-            app:fabSize="mini"
-            app:layout_constraintBottom_toTopOf="@+id/contentTotalPrice"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_action_store" />
-
         <include
             android:id="@+id/contentTotalPrice"
             layout="@layout/layout_total_price"
