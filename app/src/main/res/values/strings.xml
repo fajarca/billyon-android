@@ -13,8 +13,9 @@
     <string name="label_employee">Employee</string>
     <string name="label_add_product">Add Product</string>
     <string name="label_category">Add Category</string>
-    <string name="label_add">Add</string>
     <string name="label_checkout">Checkout</string>
+    <string name="label_stock">Initial stock</string>
+    <string name="label_min_stock">Minimal stock</string>
 
     <string name="hint_password">Password</string>
     <string name="hint_email">Email</string>
@@ -44,6 +45,8 @@
     <string name="save">SAVE</string>
     <string name="hint_category_name">Category Name</string>
     <string name="cancel">Cancel</string>
+    <string name="enter_quantity">Enter Quantity</string>
+    <string name="label_add">Add</string>
 
 
 </resources>

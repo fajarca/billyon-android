@@ -209,15 +209,19 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
             _isQuantityValid.value = ProductUIModel(false,0, 0)
         } else {
             errorQuantity.set(null)
-            if (quantity.toInt() == 0) {
-                errorQuantity.set("Quantity cannot be zero")
-                _isQuantityValid.value = ProductUIModel(false,0, 0)
-            } else if (quantity.toInt() > remainingStock) {
-                errorQuantity.set("Sorry, only $remainingStock units of this item are available")
-                _isQuantityValid.value = ProductUIModel(false,0, 0)
-            } else {
-                errorQuantity.set(null)
-                _isQuantityValid.value = ProductUIModel(true, productId, quantity.toInt())
+            when {
+                quantity.toInt() == 0 -> {
+                    errorQuantity.set("Quantity cannot be zero")
+                    _isQuantityValid.value = ProductUIModel(false,0, 0)
+                }
+                quantity.toInt() > remainingStock -> {
+                    errorQuantity.set("Sorry, only $remainingStock units of this item are available")
+                    _isQuantityValid.value = ProductUIModel(false,0, 0)
+                }
+                else -> {
+                    errorQuantity.set(null)
+                    _isQuantityValid.value = ProductUIModel(true, productId, quantity.toInt())
+                }
             }
 
         }

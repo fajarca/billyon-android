@@ -5,11 +5,6 @@
     <data>
 
         <import type="android.view.View" />
-
-        <variable
-            name="fragment"
-            type="co.id.billyon.ui.cashier.addproduct.AddProductFragment"/>
-
         <variable
             name="vm"
             type="co.id.billyon.ui.cashier.addproduct.AddProductViewModel" />
@@ -35,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/save"
-            android:onClick="@{()->fragment.onButtonSaveProductPressed()}"
+            android:onClick="@{()->vm.validateAddProduct()}"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </android.support.constraint.ConstraintLayout>

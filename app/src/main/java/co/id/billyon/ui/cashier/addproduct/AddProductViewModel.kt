@@ -1,11 +1,13 @@
 package co.id.billyon.ui.cashier.addproduct
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import co.id.billyon.db.entity.Products
 import co.id.billyon.repository.cashier.product.ProductRepository
 import co.id.billyon.util.extensions.plusAssign
+import co.id.billyon.util.extensions.removeAllThousandSeparator
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -16,7 +18,25 @@ import javax.inject.Inject
 class AddProductViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
     val isInsertSuccessful = MutableLiveData<Boolean>()
     val compositeDisposable = CompositeDisposable()
+
     var productName = ObservableField<String>()
+    val errorProductName = ObservableField<String>()
+
+    var displayPrice = ObservableField<String>()
+    val errorDisplayPrice = ObservableField<String>()
+
+    var actualPrice = ObservableField<String>()
+    val errorActualPrice = ObservableField<String>()
+
+    var initialStock = ObservableField<String>()
+    val errorInitialStock = ObservableField<String>()
+
+    var minStock = ObservableField<String>()
+    val errorMinStock = ObservableField<String>()
+
+    private val _isAddProductValid = MutableLiveData<Boolean>()
+    val isAddProductValid : LiveData<Boolean>
+        get() = _isAddProductValid
 
     fun insertProduct(product: Products) {
         isInsertSuccessful.value = false
@@ -47,6 +67,94 @@ class AddProductViewModel @Inject constructor(private val repository: ProductRep
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { }
+    }
+
+    fun validateAddProduct() {
+
+        if (!isValidProductName()) {
+            _isAddProductValid.value = false
+            return
+        }
+
+        if (!isValidDisplayPrice()) {
+            _isAddProductValid.value = false
+            return
+        }
+
+        if (!isValidActualPrice()) {
+            _isAddProductValid.value = false
+            return
+        }
+
+        if (!isValidInitialStock()) {
+            _isAddProductValid.value = false
+            return
+        }
+
+        if (!isValidMinimalStock()) {
+            _isAddProductValid.value = false
+            return
+        }
+
+        _isAddProductValid.value = true
+
+    }
+
+    private fun isValidProductName() : Boolean {
+        if (productName.get().isNullOrEmpty()) {
+            errorProductName.set("Product name can't be empty")
+            return false
+        } else {
+            errorProductName.set(null)
+        }
+        return true
+    }
+
+    private fun isValidDisplayPrice() : Boolean {
+        if (displayPrice.get().isNullOrEmpty()) {
+            errorDisplayPrice.set("Display price can't be empty")
+            return false
+        } else {
+            errorDisplayPrice.set(null)
+        }
+        return true
+    }
+
+    /**
+     * Display price cannot be bigger than actual price
+     */
+    private fun isValidActualPrice() : Boolean {
+        if (actualPrice.get().isNullOrEmpty()) {
+            errorActualPrice.set("Actual price can't be empty")
+            return false
+        } else if (displayPrice.get().toString().trim().removeAllThousandSeparator() < actualPrice.get().toString().trim().removeAllThousandSeparator()) {
+            errorActualPrice.set("Display price should be bigger than actual price")
+            return false
+        } else {
+            errorActualPrice.set(null)
+        }
+        return true
+    }
+
+
+    private fun isValidInitialStock() : Boolean {
+        if (initialStock.get().isNullOrEmpty()) {
+            errorInitialStock.set("Initial stock can't be empty")
+            return false
+        } else {
+            errorInitialStock.set(null)
+        }
+        return true
+    }
+
+    private fun isValidMinimalStock() : Boolean {
+        if (minStock.get().isNullOrEmpty()) {
+            errorMinStock.set("Minimal stock can't be empty")
+            return false
+        }  else {
+            errorMinStock.set(null)
+        }
+        return true
     }
 
     override fun onCleared() {

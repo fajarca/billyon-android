@@ -148,7 +148,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         dialog.show()
     }
 
-    fun dismissDialog() {
+    private fun dismissDialog() {
         dialog.dismiss()
     }
 

@@ -40,9 +40,18 @@ class AddProductFragment : Fragment(){
         // Inflate the layout for this fragment
         vm = ViewModelProviders.of(this, viewModelFactory).get(AddProductViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_product, container, false)
-        binding.fragment = this
+        binding.vm = vm
 
         vm.isInsertSuccessful.observe(this, Observer { findNavController().popBackStack()})
+        vm.isAddProductValid.observe(this,
+                Observer {
+                    it?.let {
+                        if (it) {
+                            addProduct()
+                        }
+                    }
+                }
+        )
 
         val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
         categoryId = passedArgument.categoryId
@@ -52,25 +61,20 @@ class AddProductFragment : Fragment(){
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-    }
-
-    fun onButtonSaveProductPressed() {
+    private fun addProduct() {
         val imagePath = "/haha"
         val productName = binding.contentAddProduct.etProductName.text.toString().trim()
-        val productQty = binding.contentAddProduct.etQuantity.text.toString()
-        val productMinQty = binding.contentAddProduct.etMinQuantity.text.toString()
-        val productDisplayPrice = binding.contentAddProduct.etDisplayPrice.text.toString().removeAllThousandSeparator()
-        val productActualPrice = binding.contentAddProduct.etActualPrice.text.toString().removeAllThousandSeparator()
+        val productInitialStock = binding.contentAddProduct.etInitialStock.text.toString().trim().toInt()
+        val productMinStock = binding.contentAddProduct.etMinStock.text.toString().trim().toInt()
+        val productDisplayPrice = binding.contentAddProduct.etDisplayPrice.text.toString().trim().removeAllThousandSeparator()
+        val productActualPrice = binding.contentAddProduct.etActualPrice.text.toString().trim().removeAllThousandSeparator()
 
         val currentTimestampAsId = Utils.getCurrentTimestampAsId()
         val currentTimestamp = Utils.getCurrentTimeStamp()
-        val product = Products(currentTimestampAsId, storeId, categoryId, imagePath, productName, productQty.toInt(), productMinQty.toInt(), productDisplayPrice, productActualPrice, true, true, currentTimestamp, currentTimestamp, true,false)
+        val product = Products(currentTimestampAsId, storeId, categoryId, imagePath, productName, productInitialStock, productMinStock, productDisplayPrice, productActualPrice, true, true, currentTimestamp, currentTimestamp, true,false)
 
         vm.insertProduct(product)
     }
+
 
 }
