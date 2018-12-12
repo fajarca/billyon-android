@@ -1,14 +1,15 @@
 package co.id.billyon.repository.cashier.login
 
-import android.content.SharedPreferences
-import co.id.billyon.util.PREF_KEY_LOGIN
+import co.id.billyon.di.NetManager
 import javax.inject.Inject
 
-class LoginRepository @Inject constructor(private val editor: SharedPreferences.Editor, private val preferences: SharedPreferences) {
+class LoginRepository @Inject constructor(private val localDataSource: LoginLocalDataSource, private val remoteDataSource: LoginRemoteDataSource, private val netManager: NetManager) {
 
-    fun setLoggedIn(isLoggedIn : Boolean) {
-        editor.putBoolean(PREF_KEY_LOGIN, isLoggedIn)
-        editor.apply()
-    }
-    fun isLoggedIn() = preferences.getBoolean(PREF_KEY_LOGIN, false)
+    fun setLoggedIn(isLoggedIn : Boolean) = localDataSource.setLoggedIn(isLoggedIn)
+    fun isLoggedIn() = localDataSource.isLoggedIn()
+    fun setAsCashier(isCashier : Boolean) = localDataSource.setAsCashier(isCashier)
+    fun isCashier() = localDataSource.isCashier()
+
+    fun login(username : String, password : String) = remoteDataSource.login(username, password)
+
 }

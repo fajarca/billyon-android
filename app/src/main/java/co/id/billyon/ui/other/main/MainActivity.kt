@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private lateinit var binding : ActivityMainBinding
     private lateinit var navController: NavController
     private val isCashier = true
-    private val isLoggedIn = true
+    private val isLoggedIn = false
     private lateinit var viewModel: LoginViewModel
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -57,10 +57,11 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.main_nav)
 
-        viewModel.isLoggedIn = isLoggedIn
+        val a = viewModel.isLoggedIn
+        val b = viewModel.isCashier
 
         if (viewModel.isLoggedIn) {
-            if (isCashier) {
+            if (viewModel.isCashier) {
                 binding.bottomNavigationView.inflateMenu(R.menu.menu_cashier)
                 graph.startDestination = R.id.fragmentCashierDashboard
             } else {

@@ -9,6 +9,8 @@ import co.id.billyon.repository.cashier.carts.CartsRepository
 import co.id.billyon.repository.cashier.dashboard.DashboardLocalDataSource
 import co.id.billyon.repository.cashier.dashboard.DashboardRemoteDataSource
 import co.id.billyon.repository.cashier.dashboard.DashboardRepository
+import co.id.billyon.repository.cashier.login.LoginLocalDataSource
+import co.id.billyon.repository.cashier.login.LoginRemoteDataSource
 import co.id.billyon.repository.cashier.login.LoginRepository
 import co.id.billyon.repository.cashier.product.ProductLocalDataSource
 import co.id.billyon.repository.cashier.product.ProductRemoteDataSource
@@ -58,7 +60,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideLoginRepository(editor: SharedPreferences.Editor, preferences: SharedPreferences) = LoginRepository(editor, preferences)
+    fun provideLoginRepository(localDataSource : LoginLocalDataSource, remoteDataSource : LoginRemoteDataSource, netManager: NetManager) = LoginRepository(localDataSource, remoteDataSource, netManager)
 
 
     @Provides

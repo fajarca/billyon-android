@@ -6,24 +6,35 @@ import android.arch.lifecycle.ViewModel
 import android.databinding.BaseObservable
 import android.databinding.Bindable
 import android.databinding.ObservableBoolean
+import android.databinding.ObservableField
 import android.text.TextUtils
+import android.util.Log
+import co.id.billyon.model.LoginResponse
 import co.id.billyon.repository.cashier.login.LoginRepository
+import co.id.billyon.util.extensions.plusAssign
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(private val repository: LoginRepository) : ViewModel() {
+    val compositeDisposable = CompositeDisposable()
 
-    val _usernameValue = MutableLiveData<String>()
-    val _passwordValue = MutableLiveData<String>()
-    private val _loginSuccess = MutableLiveData<Boolean>()
+    var username = ObservableField<String>()
+    var errorUsername = ObservableField<String>()
+    var password = ObservableField<String>()
+    var errorPassword = ObservableField<String>()
+    var isLoading = ObservableBoolean()
 
-    val loginSuccess: LiveData<Boolean>
-        get() = _loginSuccess
+    private val _isLoginSuccess = MutableLiveData<Boolean>()
+    private val _data = MutableLiveData<LoginResponse.Data>()
 
-    /* val usernameValue: LiveData<String>
-         get() = _usernameValue
+    val isLoginSuccess: LiveData<Boolean>
+        get() = _isLoginSuccess
 
-     val passwordValue: LiveData<String>
-         get() = _passwordValue*/
+    val data: LiveData<LoginResponse.Data>
+        get() = _data
 
     var isLoggedIn: Boolean
         get() = repository.isLoggedIn()
@@ -31,16 +42,67 @@ class LoginViewModel @Inject constructor(private val repository: LoginRepository
             repository.setLoggedIn(value)
         }
 
-    fun onLoginPressed() {
-        val username = _usernameValue.value
-        val password = _passwordValue.value
-
-        if (TextUtils.isEmpty(username)) {
-            _loginSuccess.value = false
-        } else if (TextUtils.isEmpty(password)) {
-            _loginSuccess.value = false
-        } else if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
-            _loginSuccess.value = true
+    var isCashier: Boolean
+        get() = repository.isCashier()
+        set(value) {
+            repository.setAsCashier(value)
         }
+
+    fun onLoginPressed() {
+        if (username.get().isNullOrEmpty()) {
+            errorUsername.set("Username can't be empty")
+            _isLoginSuccess.value = false
+            return
+        }
+
+        if (password.get().isNullOrEmpty()) {
+            errorPassword.set("Password can't be empty")
+            _isLoginSuccess.value = false
+            return
+        }
+
+        if (!username.get().isNullOrEmpty() && !password.get().isNullOrEmpty()) {
+            errorUsername.set(null)
+            errorPassword.set(null)
+            login(username.get(), password.get())
+        }
+
+    }
+
+
+    fun login(username: String?, password: String?) {
+        isLoading.set(true)
+        compositeDisposable += repository.login(username!!, password!!)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext {
+                    it?.let {
+
+                        if (!it.error) {
+                            _data.value = it.data
+                            _isLoginSuccess.value = true
+
+                            repository.setLoggedIn(true)
+                            repository.setAsCashier(it.data.users.roleId == 1) //role id 1 = cashier
+                        }
+
+                        isLoading.set(false)
+
+                    }
+                }
+                .doOnError {
+                    _isLoginSuccess.value = false
+                    isLoading.set(false)
+                }
+                .doOnComplete {
+                    isLoading.set(false)
+                }
+                .subscribe()
+
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
     }
 }

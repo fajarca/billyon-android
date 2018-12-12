@@ -8,9 +8,7 @@ import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
@@ -28,7 +26,6 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.PermissionRequestErrorListener
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import dagger.android.support.AndroidSupportInjection
-import org.w3c.dom.Text
 import javax.inject.Inject
 
 
@@ -38,6 +35,7 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
     lateinit var binding: FragmentCashierDashboardBinding
     private val categoryAdapter = CategoryRecyclerAdapter(arrayListOf(), this)
     private lateinit var viewModel: DashboardViewModel
+    private var storeId = 0
     private val TAG = DashboardFragment::class.java.simpleName
     private var cartCount : Int = 0
 
@@ -65,6 +63,10 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
             recyclerView.adapter = categoryAdapter
         }
 
+
+        val args = DashboardFragmentArgs.fromBundle(arguments)
+        storeId = args.storeId
+
         return binding.root
     }
 
@@ -86,6 +88,7 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
         })
 
         viewModel.addCategoryMessage.observe(this, Observer { Toast.makeText(activity, it, Toast.LENGTH_LONG).show() })
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -148,7 +151,7 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
 
     fun launchAddCategory() {
         val action = DashboardFragmentDirections.actionLaunchAddCategory()
-        action.setStoreId(2)
+        action.setStoreId(storeId)
         findNavController().navigate(action)
     }
 

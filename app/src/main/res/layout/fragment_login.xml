@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
+            error="@{vm.errorUsername}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/labelSubHeading"
             app:layout_constraintTop_toBottomOf="@+id/labelSubHeading">
@@ -32,8 +33,7 @@
                 android:drawableStart="@drawable/ic_username"
                 android:drawablePadding="@dimen/padding8dp"
                 android:hint="@string/hint_email"
-                app:minLength="@{6}"
-                android:text="@={vm._usernameValue}"
+                android:text="@={vm.username}"
                 android:inputType="textEmailAddress"
                 android:singleLine="true" />
 
@@ -43,6 +43,7 @@
             android:id="@+id/tilPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            error="@{vm.errorPassword}"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/tilEmail"
             app:layout_constraintStart_toStartOf="@+id/tilEmail"
@@ -52,9 +53,9 @@
                 android:id="@+id/etPasssword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:minLength="@{6}"
                 android:hint="@string/hint_password"
-                android:text="@={vm._passwordValue}"
+                android:inputType="textPassword"
+                android:text="@={vm.password}"
                 android:drawablePadding="@dimen/padding8dp"
                 android:drawableStart="@drawable/ic_password"
                 android:singleLine="true" />
@@ -66,9 +67,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:onClick="@{()-> vm.onLoginPressed()}"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:visibility="@{vm.isLoading ? View.GONE : View.VISIBLE}"
             android:layout_marginEnd="32dp"
+            android:onClick="@{()-> vm.onLoginPressed()}"
             android:text="@string/label_login"
             app:layout_constraintEnd_toEndOf="@+id/labelSubHeading"
             app:layout_constraintStart_toStartOf="@+id/labelSubHeading"
@@ -112,6 +114,19 @@
             app:layout_constraintEnd_toEndOf="@+id/labelHeading"
             app:layout_constraintStart_toStartOf="@+id/labelHeading"
             app:layout_constraintTop_toBottomOf="@+id/labelHeading" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="@{vm.isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

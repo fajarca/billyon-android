@@ -74,8 +74,8 @@
         <action
             android:id="@+id/actionLaunchCashierDashboard"
             app:destination="@id/fragmentCashierDashboard"
-            app:enterAnim="@anim/nav_default_pop_exit_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
@@ -110,6 +110,10 @@
             app:destination="@id/fragmentAddCategory"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
+        <argument
+            android:name="storeId"
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAddProduct"

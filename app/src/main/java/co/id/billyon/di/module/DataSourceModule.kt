@@ -1,5 +1,6 @@
 package co.id.billyon.di.module
 
+import android.content.SharedPreferences
 import co.id.billyon.api.ApiService
 import co.id.billyon.db.dao.*
 import co.id.billyon.db.dao.join.CartsAndCartProductsDao
@@ -8,6 +9,8 @@ import co.id.billyon.repository.cashier.carts.CartsLocalDataSource
 import co.id.billyon.repository.cashier.carts.CartsRemoteDataSource
 import co.id.billyon.repository.cashier.dashboard.DashboardLocalDataSource
 import co.id.billyon.repository.cashier.dashboard.DashboardRemoteDataSource
+import co.id.billyon.repository.cashier.login.LoginLocalDataSource
+import co.id.billyon.repository.cashier.login.LoginRemoteDataSource
 import co.id.billyon.repository.cashier.product.ProductLocalDataSource
 import co.id.billyon.repository.cashier.product.ProductRemoteDataSource
 import dagger.Module
@@ -16,6 +19,14 @@ import javax.inject.Singleton
 
 @Module
 class DataSourceModule {
+
+    @Provides
+    @Singleton
+    fun providesLoginLocalDataSource(editor: SharedPreferences.Editor, preferences: SharedPreferences) = LoginLocalDataSource(editor, preferences)
+
+    @Provides
+    @Singleton
+    fun providesLoginRemoteDataSource(apiService: ApiService) = LoginRemoteDataSource(apiService)
 
     @Provides
     @Singleton

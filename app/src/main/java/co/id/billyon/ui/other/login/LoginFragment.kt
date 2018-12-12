@@ -8,25 +8,20 @@ import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
-import co.id.billyon.databinding.FragmentCashierDashboardBinding
 import co.id.billyon.databinding.FragmentLoginBinding
 import co.id.billyon.di.Info
 import co.id.billyon.ui.cashier.dashboard.DashboardFragment
-import co.id.billyon.ui.cashier.dashboard.DashboardViewModel
 import co.id.billyon.util.HELLO
 import co.id.billyon.util.LOVE
 import co.id.billyon.util.annotation.Use
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 
@@ -72,16 +67,29 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /* labelRegister.setOnClickListener {
-             val action = LoginFragmentDirections.actionLaunchRegister()
-             val navController = Navigation.findNavController(view)
-             navController.navigate(action)
-         }
-         btnLogin.setOnClickListener {
-             val action = LoginFragmentDirections.actionLaunchOwnerDashboard()
-             val navController = Navigation.findNavController(view)
-             navController.navigate(action)
-         }*/
+
+        viewModel.isLoginSuccess.observe(this,
+                Observer {
+                    it?.let {
+                        if (it) {
+                            val action = LoginFragmentDirections.actionLaunchCashierDashboard()
+                            action.setStoreId(2)
+                            findNavController().navigate(action)
+
+                        } else {
+                            Toast.makeText(activity, "Username or password incorrect", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+        )
+
+        viewModel.data.observe(this,
+                Observer {
+                    it?.let {
+                        Log.v(TAG, "")
+                    }
+                }
+        )
     }
 
 
