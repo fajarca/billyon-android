@@ -23,4 +23,7 @@ interface CartProductsDao {
     @Query("UPDATE cart_products SET quantity = :quantity WHERE product_id = :productId")
     fun updateQuantity(productId : Long, quantity : Int)
 
+    @Query("SELECT SUM(quantity) FROM cart_products")
+    fun getProductCountOnCart() : Flowable<Int>
+
 }

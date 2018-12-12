@@ -1,5 +1,6 @@
 package co.id.billyon.ui.cashier.dashboard
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
@@ -10,6 +11,7 @@ import co.id.billyon.model.PostsResponse
 import co.id.billyon.repository.cashier.dashboard.DashboardRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
@@ -22,7 +24,13 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
     val data = MutableLiveData<List<PostsResponse>>()
     val compositeDisposable = CompositeDisposable()
     val addCategoryMessage = MutableLiveData<String>()
-    val _categoriesProducts = MutableLiveData<List<CategoryWithProducts>>()
+    private val _categories = MutableLiveData<List<CategoryWithProducts>>()
+    private val _productCountOnCart = MutableLiveData<Int>()
+
+    val categories : LiveData<List<CategoryWithProducts>>
+        get() = _categories
+    val productCountOnCart: LiveData<Int>
+        get() = _productCountOnCart
 
     /*fun loadAllProducts() {
         compositeDisposable += repository.getAllProduct()
@@ -106,7 +114,7 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
 
                     override fun onNext(categories: List<CategoryWithProducts>?) {
                         isLoading.set(false)
-                        _categoriesProducts.value = categories
+                        _categories.value = categories
 
                     }
 
@@ -115,6 +123,27 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
                     }
 
                 })
+    }
+
+    fun getProductCountOnCart() {
+        isLoading.set(true)
+        compositeDisposable += repository.getProductCountOnCart()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext {
+                    isLoading.set(false)
+                    it?.let {
+                        _productCountOnCart.value = it
+                    }
+
+                }
+                .doOnComplete {
+                    isLoading.set(false)
+                }
+                .doOnError {
+                    isLoading.set(false)
+                }
+                .subscribe()
     }
 
     fun getAll() {
@@ -154,7 +183,7 @@ class DashboardViewModel @Inject constructor(private val repository: DashboardRe
                 })
     }
 
-    fun deleteCategory(categoryId: Long)  {
+    fun deleteCategory(categoryId: Long) {
         compositeDisposable += Completable.fromCallable { repository.deleteCategory(categoryId) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

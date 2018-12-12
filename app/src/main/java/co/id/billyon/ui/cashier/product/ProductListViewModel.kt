@@ -38,8 +38,7 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
     val products = MutableLiveData<List<ProductsAndCartProduct>>()
     var itemCount = ObservableField<String>()
     var totalPrice = ObservableLong()
-    var showAddToCart = ObservableBoolean()
-    var showQtyPicker = ObservableBoolean()
+    var showCartCount = ObservableBoolean()
     var TAG = ProductListViewModel::class.java.simpleName
 
     private var _isQuantityValid = MutableLiveData<ProductUIModel>()
@@ -85,14 +84,23 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnComplete {
+                    showCartCount.set(false)
                     isLoading.set(false)
                 }
                 .doOnNext {
+
+                    if (it.itemCount == 0) {
+                        showCartCount.set(false)
+                    } else {
+                        showCartCount.set(true)
+                    }
+
                     isLoading.set(false)
                     itemCount.set("${it.itemCount} items")
                     totalPrice.set(it.totalPrice)
                 }
                 .doOnError {
+                    showCartCount.set(false)
                     isLoading.set(false)
                 }
                 .subscribe()

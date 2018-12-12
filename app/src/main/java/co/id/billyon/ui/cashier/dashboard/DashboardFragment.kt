@@ -8,8 +8,12 @@ import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.*
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
@@ -24,6 +28,7 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.PermissionRequestErrorListener
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import dagger.android.support.AndroidSupportInjection
+import org.w3c.dom.Text
 import javax.inject.Inject
 
 
@@ -34,6 +39,7 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
     private val categoryAdapter = CategoryRecyclerAdapter(arrayListOf(), this)
     private lateinit var viewModel: DashboardViewModel
     private val TAG = DashboardFragment::class.java.simpleName
+    private var cartCount : Int = 0
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -59,23 +65,52 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
             recyclerView.adapter = categoryAdapter
         }
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.getAllCategories()
         viewModel.getAll()
-        viewModel._categoriesProducts.observe(this, Observer { data ->
-            data?.let {
+        viewModel.categories.observe(this, Observer { categories ->
+            categories?.let {
                 categoryAdapter.refreshData(it)
             }
         })
 
-        viewModel.addCategoryMessage.observe(this, Observer { Toast.makeText(activity, it, Toast.LENGTH_LONG).show() })
+        viewModel.getProductCountOnCart()
+        viewModel.productCountOnCart.observe(this, Observer {
+            it?.let {
+                cartCount = it
+                activity?.invalidateOptionsMenu()
+            }
+        })
 
-        return binding.root
+        viewModel.addCategoryMessage.observe(this, Observer { Toast.makeText(activity, it, Toast.LENGTH_LONG).show() })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_dashboard, menu)
+
+        val menuItem = menu.findItem(R.id.menu_view_cart)
+        val actionView = menuItem.actionView
+
+        val tvBadgeCount = actionView.findViewById(R.id.tvCartCount) as TextView
+        val ivCount = actionView.findViewById(R.id.ivCart) as ImageView
+
+        tvBadgeCount.setOnClickListener {
+
+        }
+
+        ivCount.setOnClickListener {
+            Toast.makeText(activity, "Hola", Toast.LENGTH_SHORT).show()
+        }
+
+        displayBadge(tvBadgeCount)
+
+
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
@@ -97,7 +132,6 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
     }
 
     override fun onCategorySelected(category: CategoryWithProducts) {
-        //viewModel.deleteCategory(category.id)
         launchProductDetails(category)
     }
     override fun onCategoryImageSelected(category: CategoryWithProducts) {
@@ -143,6 +177,15 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
             Toast.makeText(activity, "Permission error ${error.toString()}", Toast.LENGTH_LONG).show()
         }
 
+    }
+
+    fun displayBadge(tvBadgeCount : TextView) {
+        if (cartCount == 0) {
+            tvBadgeCount.visibility = View.GONE
+        } else {
+            tvBadgeCount.visibility = View.VISIBLE
+            tvBadgeCount.text = cartCount.toString()
+        }
     }
 
 }

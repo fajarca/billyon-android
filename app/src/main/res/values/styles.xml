@@ -103,6 +103,11 @@
         <item name="android:textColor">@color/grey_500</item>
     </style>
 
+    <style name="BillyonTheme.EditText.Underline.Black" parent="Widget.AppCompat.EditText">
+        <item name="colorControlActivated">@color/grey_900</item>
+        <item name="colorControlNormal">@color/grey_900</item>
+    </style>
+
     <!--BottomNavigationView-->
     <style name="BillyonTheme.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
         <item name="fontFamily">@font/circularstdbook</item>

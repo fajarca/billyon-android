@@ -19,7 +19,7 @@ class DataSourceModule {
 
     @Provides
     @Singleton
-    fun providesDashboardLocalDataSource(categoryDao: CategoryDao, categoryProductDao: CategoryAndProductsDao) = DashboardLocalDataSource(categoryDao, categoryProductDao)
+    fun providesDashboardLocalDataSource(categoryDao: CategoryDao, categoryProductDao: CategoryAndProductsDao, cartProductsDao: CartProductsDao) = DashboardLocalDataSource(categoryDao, categoryProductDao, cartProductsDao)
 
     @Provides
     @Singleton

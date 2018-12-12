@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FAFAFA</color>
     <color name="colorPrimaryDark">@color/grey_400</color>
-    <color name="colorAccent">@color/teal_300</color>
+    <color name="colorAccent">#97DEC5</color>
 
     <color name="button_start_color">@color/grey_500</color>
     <color name="button_end_color">@color/grey_700</color>
@@ -20,6 +20,8 @@
     <color name="cyan_500">#00BCD4</color>
     <color name="cyan_700">#0097A7</color>
     <color name="cyan_900">#006064</color>
+
+    <color name="red_800">#c62828</color>
 
     <color name="grey_200">#F5F5F5</color>
     <color name="grey_300">#E0E0E0</color>
