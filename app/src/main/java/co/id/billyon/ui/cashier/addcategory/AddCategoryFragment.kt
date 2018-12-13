@@ -46,28 +46,38 @@ class AddCategoryFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_category, container, false)
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(AddCategoryViewModel::class.java)
         binding.vm = viewModel
         binding.fragment = this
         binding.setLifecycleOwner(this)
         binding.executePendingBindings()
 
-        viewModel.isValid.observe(this, Observer {
-            it?.let {
-                if (it) {
-                    val timestamp = Utils.getCurrentTimeStamp()
-                    val categoryName = binding.etCategoryName.text.toString().trim()
-                    val category = Category(categoryName, imageFilePath, 2, true, true, timestamp, timestamp)
-                    viewModel.insertCategory(category)
-                    findNavController().popBackStack()
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.isValid.observe(this,
+                Observer {
+                    it?.let {
+                        if (it) {
+                            val timestamp = Utils.getCurrentTimeStamp()
+                            val categoryName = binding.etCategoryName.text.toString().trim()
+                            val category = Category(categoryName, imageFilePath, 2, true, true, timestamp, timestamp)
+                            viewModel.insertCategory(category)
+                        }
+                    }
+                })
+        viewModel.data.observe(this,
+                Observer {
+                    it?.let {
+                        if (!it.error) {
+                            findNavController().popBackStack()
+                        }
+
+                    }
                 }
-            }
-        })
+        )
     }
 
     override fun onAttach(context: Context?) {

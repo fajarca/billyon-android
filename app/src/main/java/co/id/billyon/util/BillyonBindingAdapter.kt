@@ -24,9 +24,12 @@ import android.opengl.ETC1.getHeight
 
 @BindingAdapter("loadImage")
 fun loadImage(view: ImageView, imagePath: String) {
-    val file = File(imagePath)
-    val uri = Uri.fromFile(file)
-    Glide.with(view.context).load(uri).into(view)
+    if (!imagePath.isEmpty()) {
+        val file = File(imagePath)
+        val uri = Uri.fromFile(file)
+        Glide.with(view.context).load(uri).into(view)
+    }
+
 }
 
 @BindingAdapter("minLength")

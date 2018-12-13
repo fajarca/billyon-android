@@ -1,9 +1,6 @@
 package co.id.billyon.api
 
-import co.id.billyon.model.CategoryRequest
-import co.id.billyon.model.LoginRequest
-import co.id.billyon.model.LoginResponse
-import co.id.billyon.model.PostsResponse
+import co.id.billyon.model.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -15,6 +12,6 @@ interface ApiService {
     fun login(@Body request : LoginRequest) : Observable<LoginResponse>
 
     @POST("/category/add")
-    fun uploadCategory(@Body request: CategoryRequest) : Observable<CategoryRequest>
+    fun uploadCategory(@Body request: List<CategoryRequest>) : Observable<CategoryResponse>
 
 }

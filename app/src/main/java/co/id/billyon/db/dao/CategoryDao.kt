@@ -15,7 +15,7 @@ interface CategoryDao {
     fun getAllCategoryWithProductCount(): Flowable<List<CategoryWithProducts>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(category: Category)
+    fun insert(category: Category) : Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(categories: List<Category>)

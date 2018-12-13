@@ -3,15 +3,23 @@ package co.id.billyon.ui.cashier.addcategory
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
+import android.util.Log
+import co.id.billyon.db.entity.CartProducts
 import co.id.billyon.db.entity.Category
+import co.id.billyon.model.CategoryRequest
+import co.id.billyon.model.CategoryResponse
 import co.id.billyon.repository.cashier.dashboard.CategoryRepository
+import co.id.billyon.util.Utils
 import co.id.billyon.util.extensions.default
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
+import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -19,23 +27,49 @@ class AddCategoryViewModel @Inject constructor(private val repository: CategoryR
 
     var name = ObservableField<String>()
     var errorName = ObservableField<String>()
-    private val _isValid = MutableLiveData<Boolean>().default(false)
+    var isLoading = ObservableBoolean()
+
     private val compositeDisposable = CompositeDisposable()
+
+    private val _isValid = MutableLiveData<Boolean>().default(false)
+    private val _data = MutableLiveData<CategoryResponse>()
 
     val isValid: LiveData<Boolean>
         get() = _isValid
+    val data : LiveData<CategoryResponse>
+        get() = _data
+
 
     fun insertCategory(category: Category) {
-        compositeDisposable += Completable.fromCallable { repository.insertCategory(category) }
+        compositeDisposable += Single.fromCallable { repository.insertCategory(category) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableCompletableObserver() {
+                .subscribe { id ->
+                    uploadCategory(category)
+                }
+    }
+
+    fun uploadCategory(category: Category) {
+        isLoading.set(true)
+        val request = CategoryRequest(category.categoryName, category.categoryImagePath, category.storeId)
+        compositeDisposable += repository.uploadCategory(request)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<CategoryResponse>() {
                     override fun onComplete() {
+                        isLoading.set(false)
+                    }
+
+                    override fun onNext(data: CategoryResponse) {
+                       _data.value = data
+                        isLoading.set(false)
                     }
 
                     override fun onError(e: Throwable) {
-
+                        isLoading.set(false)
                     }
+
+
                 })
     }
 
