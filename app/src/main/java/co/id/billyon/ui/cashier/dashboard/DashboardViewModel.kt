@@ -6,8 +6,7 @@ import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import co.id.billyon.db.entity.Category
 import co.id.billyon.db.entity.join.CategoryWithProducts
-import co.id.billyon.model.PostsResponse
-import co.id.billyon.repository.cashier.dashboard.CategoryRepository
+import co.id.billyon.repository.cashier.category.CategoryRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -19,7 +18,6 @@ import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(private val repository: CategoryRepository) : ViewModel() {
     val isLoading = ObservableField<Boolean>()
-    val data = MutableLiveData<List<PostsResponse>>()
     val compositeDisposable = CompositeDisposable()
     val addCategoryMessage = MutableLiveData<String>()
     private val _categories = MutableLiveData<List<CategoryWithProducts>>()
@@ -29,76 +27,6 @@ class DashboardViewModel @Inject constructor(private val repository: CategoryRep
         get() = _categories
     val productCountOnCart: LiveData<Int>
         get() = _productCountOnCart
-
-    /*fun loadAllProducts() {
-        compositeDisposable += repository.getAllProduct()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSubscriber<List<Products>>() {
-                    override fun onComplete() {
-
-                    }
-
-                    override fun onNext(t: List<Products>?) {
-                        productsData.value = t
-                    }
-
-                    override fun onError(t: Throwable?) {
-
-                    }
-
-
-                })
-    }
-
-    fun loadPosts() {
-        isLoading.set(true)
-        compositeDisposable += repository.getAllPost()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<List<PostsResponse>>() {
-                    override fun onComplete() {
-                        isLoading.set(false)
-                    }
-
-                    override fun onNext(t: List<PostsResponse>) {
-                        data.value = t
-                        isLoading.set(false)
-                    }
-
-                    override fun onError(e: Throwable) {
-                        isLoading.set(false)
-                    }
-
-                })
-    }
-
-    fun getAllCategory() {
-        compositeDisposable += repository.getAllCategories()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableMaybeObserver<List<Category>>() {
-                    override fun onSuccess(categories: List<Category>) {
-                        if (categories.isEmpty()) {
-                            categoryEmpty.set(true)
-                        } else {
-                            categoryEmpty.set(false)
-                        }
-                        _categories.value = categories
-                        Log.v("tagg", "onSuccess, ${categories.size}")
-                    }
-
-                    override fun onComplete() {
-                        Log.v("tagg", "onComplete, no user found")
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Log.v("tagg", "onError, ${e.message}")
-                    }
-
-
-                })
-    }*/
 
     fun getAllCategories() {
         isLoading.set(true)

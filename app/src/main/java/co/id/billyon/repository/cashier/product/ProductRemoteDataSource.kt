@@ -5,7 +5,6 @@ import javax.inject.Inject
 
 class ProductRemoteDataSource @Inject constructor(private val apiService: ApiService) {
 
-    fun fetchPost() = apiService.getPosts()
 
 
 }

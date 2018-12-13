@@ -1,11 +1,9 @@
-package co.id.billyon.repository.cashier.dashboard
+package co.id.billyon.repository.cashier.category
 
 import co.id.billyon.api.ApiService
-import co.id.billyon.db.entity.Category
-import co.id.billyon.model.CategoryRequest
-import co.id.billyon.model.CategoryResponse
+import co.id.billyon.model.request.CategoryRequest
+import co.id.billyon.model.response.CategoryResponse
 import io.reactivex.Observable
-import java.util.*
 import javax.inject.Inject
 
 class CategoryRemoteDataSource @Inject constructor(private val apiService: ApiService) {

@@ -18,6 +18,4 @@ class ProductRepository(private val localDataSource: ProductLocalDataSource, pri
 
     fun findProductFromCategory(categoryId : Int) = localDataSource.findProductByCategoryId(categoryId)
 
-    fun getAllPost() = if (netManager.isConnectedToInternet) remoteDataSource.fetchPost() else remoteDataSource.fetchPost()
-
 }

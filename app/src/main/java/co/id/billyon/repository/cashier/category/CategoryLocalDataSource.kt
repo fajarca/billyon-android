@@ -1,4 +1,4 @@
-package co.id.billyon.repository.cashier.dashboard
+package co.id.billyon.repository.cashier.category
 
 import co.id.billyon.db.dao.CartProductsDao
 import co.id.billyon.db.dao.CategoryDao

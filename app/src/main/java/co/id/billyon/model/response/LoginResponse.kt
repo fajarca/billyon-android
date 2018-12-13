@@ -1,4 +1,4 @@
-package co.id.billyon.model
+package co.id.billyon.model.response
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,12 +1,13 @@
 package co.id.billyon.api
 
-import co.id.billyon.model.*
+import co.id.billyon.model.request.CategoryRequest
+import co.id.billyon.model.request.LoginRequest
+import co.id.billyon.model.response.CategoryResponse
+import co.id.billyon.model.response.LoginResponse
 import io.reactivex.Observable
 import retrofit2.http.*
 
 interface ApiService {
-    @GET("posts")
-    fun getPosts(): Observable<List<PostsResponse>>
 
     @POST("/user/login")
     fun login(@Body request : LoginRequest) : Observable<LoginResponse>

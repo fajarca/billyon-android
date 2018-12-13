@@ -12,9 +12,9 @@ import co.id.billyon.di.NetManager
 import co.id.billyon.repository.cashier.carts.CartsLocalDataSource
 import co.id.billyon.repository.cashier.carts.CartsRemoteDataSource
 import co.id.billyon.repository.cashier.carts.CartsRepository
-import co.id.billyon.repository.cashier.dashboard.CategoryLocalDataSource
-import co.id.billyon.repository.cashier.dashboard.CategoryRemoteDataSource
-import co.id.billyon.repository.cashier.dashboard.CategoryRepository
+import co.id.billyon.repository.cashier.category.CategoryLocalDataSource
+import co.id.billyon.repository.cashier.category.CategoryRemoteDataSource
+import co.id.billyon.repository.cashier.category.CategoryRepository
 import co.id.billyon.repository.cashier.login.LoginLocalDataSource
 import co.id.billyon.repository.cashier.login.LoginRemoteDataSource
 import co.id.billyon.repository.cashier.login.LoginRepository

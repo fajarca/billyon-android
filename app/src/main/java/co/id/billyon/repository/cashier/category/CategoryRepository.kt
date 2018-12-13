@@ -1,9 +1,9 @@
-package co.id.billyon.repository.cashier.dashboard
+package co.id.billyon.repository.cashier.category
 
 import co.id.billyon.db.entity.Category
 import co.id.billyon.di.NetManager
-import co.id.billyon.model.CategoryRequest
-import co.id.billyon.model.CategoryResponse
+import co.id.billyon.model.request.CategoryRequest
+import co.id.billyon.model.response.CategoryResponse
 import io.reactivex.Observable
 
 class CategoryRepository(private val localDataSource: CategoryLocalDataSource, private val remoteDataSource: CategoryRemoteDataSource, private val netManager: NetManager) {

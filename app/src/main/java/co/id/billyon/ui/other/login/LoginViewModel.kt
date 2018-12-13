@@ -3,18 +3,13 @@ package co.id.billyon.ui.other.login
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.databinding.BaseObservable
-import android.databinding.Bindable
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
-import android.text.TextUtils
-import android.util.Log
-import co.id.billyon.model.LoginResponse
+import co.id.billyon.model.response.LoginResponse
 import co.id.billyon.repository.cashier.login.LoginRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
