@@ -7,7 +7,7 @@ import android.databinding.ObservableField
 import co.id.billyon.db.entity.Category
 import co.id.billyon.db.entity.join.CategoryWithProducts
 import co.id.billyon.model.PostsResponse
-import co.id.billyon.repository.cashier.dashboard.DashboardRepository
+import co.id.billyon.repository.cashier.dashboard.CategoryRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject
 
-class DashboardViewModel @Inject constructor(private val repository: DashboardRepository) : ViewModel() {
+class DashboardViewModel @Inject constructor(private val repository: CategoryRepository) : ViewModel() {
     val isLoading = ObservableField<Boolean>()
     val data = MutableLiveData<List<PostsResponse>>()
     val compositeDisposable = CompositeDisposable()

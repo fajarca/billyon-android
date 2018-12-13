@@ -5,7 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import co.id.billyon.db.entity.Category
-import co.id.billyon.repository.cashier.dashboard.DashboardRepository
+import co.id.billyon.repository.cashier.dashboard.CategoryRepository
 import co.id.billyon.util.extensions.default
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
@@ -15,7 +15,7 @@ import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class AddCategoryViewModel @Inject constructor(private val repository: DashboardRepository) : ViewModel() {
+class AddCategoryViewModel @Inject constructor(private val repository: CategoryRepository) : ViewModel() {
 
     var name = ObservableField<String>()
     var errorName = ObservableField<String>()

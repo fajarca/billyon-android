@@ -12,9 +12,9 @@ import co.id.billyon.di.NetManager
 import co.id.billyon.repository.cashier.carts.CartsLocalDataSource
 import co.id.billyon.repository.cashier.carts.CartsRemoteDataSource
 import co.id.billyon.repository.cashier.carts.CartsRepository
-import co.id.billyon.repository.cashier.dashboard.DashboardLocalDataSource
-import co.id.billyon.repository.cashier.dashboard.DashboardRemoteDataSource
-import co.id.billyon.repository.cashier.dashboard.DashboardRepository
+import co.id.billyon.repository.cashier.dashboard.CategoryLocalDataSource
+import co.id.billyon.repository.cashier.dashboard.CategoryRemoteDataSource
+import co.id.billyon.repository.cashier.dashboard.CategoryRepository
 import co.id.billyon.repository.cashier.login.LoginLocalDataSource
 import co.id.billyon.repository.cashier.login.LoginRemoteDataSource
 import co.id.billyon.repository.cashier.login.LoginRepository
@@ -61,11 +61,11 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesDashboardLocalDataSource(categoryDao: CategoryDao, cartProductsDao: CartProductsDao) = DashboardLocalDataSource(categoryDao, cartProductsDao)
+    fun providesDashboardLocalDataSource(categoryDao: CategoryDao, cartProductsDao: CartProductsDao) = CategoryLocalDataSource(categoryDao, cartProductsDao)
 
     @Provides
     @Singleton
-    fun providesDashboardRemoteDataSource(apiService: ApiService) = DashboardRemoteDataSource(apiService)
+    fun providesDashboardRemoteDataSource(apiService: ApiService) = CategoryRemoteDataSource(apiService)
 
     @Provides
     @Singleton
@@ -91,7 +91,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideDashboardRepository(localDataSource: DashboardLocalDataSource, remoteDataSource: DashboardRemoteDataSource, netManager: NetManager) = DashboardRepository(localDataSource, remoteDataSource, netManager)
+    fun provideCategoryRepository(localDataSource: CategoryLocalDataSource, remoteDataSource: CategoryRemoteDataSource, netManager: NetManager) = CategoryRepository(localDataSource, remoteDataSource, netManager)
 
     @Provides
     @Singleton

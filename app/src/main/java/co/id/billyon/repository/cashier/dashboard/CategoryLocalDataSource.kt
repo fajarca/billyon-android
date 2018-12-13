@@ -5,7 +5,7 @@ import co.id.billyon.db.dao.CategoryDao
 import co.id.billyon.db.entity.Category
 import javax.inject.Inject
 
-class DashboardLocalDataSource @Inject constructor(private val categoryDao : CategoryDao, private val cartProductsDao: CartProductsDao) {
+class CategoryLocalDataSource @Inject constructor(private val categoryDao : CategoryDao, private val cartProductsDao: CartProductsDao) {
 
     fun getAllCategories() = categoryDao.getAllCategory()
     fun getAllCategoriesWithProductCount() = categoryDao.getAllCategoryWithProductCount()
