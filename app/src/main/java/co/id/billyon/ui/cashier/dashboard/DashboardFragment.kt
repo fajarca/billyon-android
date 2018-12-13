@@ -72,7 +72,6 @@ class DashboardFragment : Fragment(), CategoryRecyclerAdapter.OnCategoryClickLis
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.getAllCategories()
-        viewModel.getAll()
         viewModel.categories.observe(this, Observer { categories ->
             categories?.let {
                 categoryAdapter.refreshData(it)
