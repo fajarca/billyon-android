@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import co.id.billyon.api.ApiService
 import co.id.billyon.db.dao.*
 import co.id.billyon.db.dao.join.CartsAndCartProductsDao
-import co.id.billyon.db.dao.join.CategoryAndProductsDao
 import co.id.billyon.repository.cashier.carts.CartsLocalDataSource
 import co.id.billyon.repository.cashier.carts.CartsRemoteDataSource
 import co.id.billyon.repository.cashier.dashboard.DashboardLocalDataSource
@@ -30,7 +29,7 @@ class DataSourceModule {
 
     @Provides
     @Singleton
-    fun providesDashboardLocalDataSource(categoryDao: CategoryDao, categoryProductDao: CategoryAndProductsDao, cartProductsDao: CartProductsDao) = DashboardLocalDataSource(categoryDao, categoryProductDao, cartProductsDao)
+    fun providesDashboardLocalDataSource(categoryDao: CategoryDao, cartProductsDao: CartProductsDao) = DashboardLocalDataSource(categoryDao, cartProductsDao)
 
     @Provides
     @Singleton

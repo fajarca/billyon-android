@@ -41,10 +41,6 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesCategoryAndProductsDao (db:BillyonDatabase) = db.categoryAndProductsDao()
-
-    @Provides
-    @Singleton
     fun providesCartsAndProductsDao (db:BillyonDatabase) = db.cartsAndProductDao()
 
 

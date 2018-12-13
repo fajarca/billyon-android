@@ -5,13 +5,11 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import co.id.billyon.db.entity.Category
-import co.id.billyon.db.entity.join.CategoryAndProducts
 import co.id.billyon.db.entity.join.CategoryWithProducts
 import co.id.billyon.model.PostsResponse
 import co.id.billyon.repository.cashier.dashboard.DashboardRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver

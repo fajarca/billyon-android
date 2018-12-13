@@ -5,7 +5,6 @@ import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
 import co.id.billyon.db.dao.*
 import co.id.billyon.db.dao.join.CartsAndCartProductsDao
-import co.id.billyon.db.dao.join.CategoryAndProductsDao
 import co.id.billyon.db.entity.CartProducts
 import co.id.billyon.db.entity.Carts
 import co.id.billyon.db.entity.Category
@@ -23,7 +22,7 @@ abstract class BillyonDatabase : RoomDatabase() {
     abstract fun cartProductDao() : CartProductsDao
 
     abstract fun cartsAndProductDao() : CartsAndCartProductsDao
-    abstract fun categoryAndProductsDao() : CategoryAndProductsDao
+
 
 
 }
