@@ -7,6 +7,8 @@ import javax.inject.Inject
 class ProductLocalDataSource @Inject constructor(private val productsDao: ProductsDao) {
 
     fun getAllProduct() =  productsDao.getAll()
+    fun getAllUnsyncronizedProduct() = productsDao.getAllUnsyncronizedProduct()
+
     fun findProductByCategoryId(categoryId : Int) = productsDao.getProductByCategoryId(categoryId)
 
     fun insertProduct(product: Products) = productsDao.insert(product)

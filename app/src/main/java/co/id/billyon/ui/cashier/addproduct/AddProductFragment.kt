@@ -21,13 +21,13 @@ import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 
-class AddProductFragment : Fragment(){
+class AddProductFragment : Fragment() {
     private lateinit var binding: FragmentAddProductBinding
     private lateinit var vm: AddProductViewModel
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private var categoryId : Int = 0
-    private var storeId : Int = 0
+    private var categoryId: Int = 0
+    private var storeId: Int = 0
 
 
     override fun onAttach(context: Context?) {
@@ -42,7 +42,25 @@ class AddProductFragment : Fragment(){
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_product, container, false)
         binding.vm = vm
 
-        vm.isInsertSuccessful.observe(this, Observer { findNavController().popBackStack()})
+        val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
+        categoryId = passedArgument.categoryId
+        storeId = passedArgument.storeId
+
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        vm.getAllUnsyncronizedProduct()
+
+        vm.isInsertSuccessful.observe(this,
+                Observer {
+                    findNavController().popBackStack()
+                }
+        )
+
         vm.isAddProductValid.observe(this,
                 Observer {
                     it?.let {
@@ -52,13 +70,6 @@ class AddProductFragment : Fragment(){
                     }
                 }
         )
-
-        val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
-        categoryId = passedArgument.categoryId
-        storeId = passedArgument.storeId
-
-
-        return binding.root
     }
 
     private fun addProduct() {
@@ -71,7 +82,7 @@ class AddProductFragment : Fragment(){
 
         val currentTimestampAsId = Utils.getCurrentTimestampAsId()
         val currentTimestamp = Utils.getCurrentTimeStamp()
-        val product = Products(currentTimestampAsId, storeId, categoryId, imagePath, productName, productInitialStock, productMinStock, productDisplayPrice, productActualPrice, true, true, currentTimestamp, currentTimestamp, true,false)
+        val product = Products(currentTimestampAsId, storeId.toLong(), categoryId.toLong(), imagePath, productName, productInitialStock, productMinStock, productDisplayPrice, productActualPrice, true, true, currentTimestamp, currentTimestamp, true, false)
 
         vm.insertProduct(product)
     }

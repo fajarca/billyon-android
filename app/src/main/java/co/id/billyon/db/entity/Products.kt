@@ -24,10 +24,10 @@ data class Products(
         var id: Long,
 
         @ColumnInfo(name = "store_id")
-        var storeId: Int,
+        var storeId: Long,
 
         @ColumnInfo(name = "category_id")
-        var categoryId: Int,
+        var categoryId: Long,
 
         @ColumnInfo(name = "image_path")
         var imagePath: String,
