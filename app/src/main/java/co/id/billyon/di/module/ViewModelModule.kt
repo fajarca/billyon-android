@@ -1,7 +1,7 @@
 package co.id.billyon.di.module
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import co.id.billyon.di.ViewModelFactory
 import co.id.billyon.di.ViewModelKey
 import co.id.billyon.ui.cashier.addcategory.AddCategoryViewModel

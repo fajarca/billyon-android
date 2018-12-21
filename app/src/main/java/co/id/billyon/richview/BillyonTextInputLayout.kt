@@ -1,14 +1,14 @@
 package co.id.billyon.richview
 
 import android.content.Context
-import android.support.design.widget.TextInputEditText
-import android.support.design.widget.TextInputLayout
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import co.id.billyon.R
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.custom_text_input_layout.view.*
 
 class BillyonTextInputLayout @JvmOverloads constructor(

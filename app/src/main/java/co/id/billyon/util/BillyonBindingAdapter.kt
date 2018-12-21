@@ -1,25 +1,20 @@
 package co.id.billyon.util
 
-import android.databinding.BindingAdapter
 import android.net.Uri
-import android.support.design.widget.TextInputEditText
-import android.support.design.widget.TextInputLayout
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.animation.TranslateAnimation
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import co.id.billyon.R
 import com.bumptech.glide.Glide
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import java.io.File
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
-import android.opengl.ETC1.getHeight
-import android.view.animation.TranslateAnimation
-import android.opengl.ETC1.getHeight
-
-
-
 
 
 @BindingAdapter("loadImage")

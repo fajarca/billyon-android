@@ -1,10 +1,10 @@
 package co.id.billyon.ui.other.login
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableBoolean
-import android.databinding.ObservableField
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import co.id.billyon.model.response.LoginResponse
 import co.id.billyon.repository.cashier.login.LoginRepository
 import co.id.billyon.util.extensions.plusAssign

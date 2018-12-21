@@ -1,6 +1,6 @@
 package co.id.billyon.db.dao
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import co.id.billyon.db.entity.CartProducts
 import co.id.billyon.db.entity.join.CartsAndCartProducts
 import io.reactivex.Flowable

@@ -1,6 +1,6 @@
 package co.id.billyon.db.entity
 
-import android.arch.persistence.room.ColumnInfo
+import androidx.room.ColumnInfo
 
 data class ItemTotalPrice(
         @ColumnInfo(name = "item_count")

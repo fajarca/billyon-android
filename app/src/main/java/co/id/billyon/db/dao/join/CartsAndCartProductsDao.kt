@@ -1,7 +1,7 @@
 package co.id.billyon.db.dao.join
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Query
+import androidx.room.Dao
+import androidx.room.Query
 import co.id.billyon.db.entity.ItemTotalPrice
 import co.id.billyon.db.entity.join.CartsAndCartProducts
 import io.reactivex.Flowable

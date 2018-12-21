@@ -1,9 +1,9 @@
 package co.id.billyon.adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import co.id.billyon.databinding.RvItemProductBinding
 import co.id.billyon.db.entity.join.ProductsAndCartProduct
 

@@ -1,30 +1,26 @@
 package co.id.billyon.ui.cashier.product
 
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
 import android.view.*
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import co.id.billyon.R
 import co.id.billyon.adapter.ProductsRecyclerAdapter
 import co.id.billyon.databinding.DialogCustomQuantityBinding
 import co.id.billyon.databinding.FragmentProductListBinding
-import co.id.billyon.db.entity.Carts
-import co.id.billyon.db.entity.Products
 import co.id.billyon.db.entity.join.ProductsAndCartProduct
 import co.id.billyon.ui.cashier.addproduct.AddProductFragmentArgs
-import co.id.billyon.util.Utils
-import com.karumi.dexter.Dexter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -43,7 +39,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
     private var categoryName: String = ""
     private lateinit var dialog : AlertDialog
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }
@@ -63,7 +59,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
 
             binding.executePendingBindings()
 
-            recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
             recyclerView.adapter = adapter
         }
 
@@ -152,7 +148,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
         dialog.dismiss()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_add_product, menu)
     }

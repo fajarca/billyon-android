@@ -1,12 +1,12 @@
 package co.id.billyon.ui.owner
 
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import co.id.billyon.R
 import co.id.billyon.databinding.FragmentDashboardBinding
 import com.github.mikephil.charting.components.XAxis
@@ -14,7 +14,6 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import kotlinx.android.synthetic.main.content_sales_chart.*
 import java.util.*
 
 
@@ -100,17 +99,17 @@ class DashboardFragment : Fragment() {
        // dataSets.add(secondDataSet)
 
         val lineData = LineData(dataSets)
-        lineChart.data = lineData
+        binding.contentRevenue.lineChart.data = lineData
 
 
         //To remove horizontal grid lines:
-        lineChart.xAxis.setDrawGridLines(false)
+        binding.contentRevenue.lineChart.xAxis.setDrawGridLines(false)
 
         //Put x axis on the bottom
-        lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+        binding.contentRevenue.lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
 
-        lineChart.description.isEnabled = false
-        lineChart.invalidate()
+        binding.contentRevenue.lineChart.description.isEnabled = false
+        binding.contentRevenue.lineChart.invalidate()
     }
 
     fun IntRange.random() = Random().nextInt((endInclusive + 1) - start) +  start

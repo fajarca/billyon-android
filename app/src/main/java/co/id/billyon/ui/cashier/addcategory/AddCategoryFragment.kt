@@ -1,29 +1,27 @@
 package co.id.billyon.ui.cashier.addcategory
 
 import android.app.Activity
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.support.v4.app.Fragment
-import android.support.v4.content.FileProvider
-import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.FileProvider
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import co.id.billyon.R
 import co.id.billyon.databinding.FragmentAddCategoryBinding
 import co.id.billyon.db.entity.Category
-import co.id.billyon.ui.cashier.dashboard.DashboardFragment
 import co.id.billyon.util.REQUEST_IMAGE_CAPTURE
 import co.id.billyon.util.Utils
 import dagger.android.support.AndroidSupportInjection
@@ -80,7 +78,7 @@ class AddCategoryFragment : Fragment() {
         )
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }

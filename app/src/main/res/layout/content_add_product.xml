@@ -11,7 +11,7 @@
             name="vm"
             type="co.id.billyon.ui.cashier.addproduct.AddProductViewModel" />
     </data>
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.cashier.addproduct.AddProductFragment">
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvProductName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -41,15 +41,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etProductName"
                 android:layout_width="match_parent"
                 android:text="@={vm.productName}"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_product_name" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvDisplayPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             app:layout_constraintStart_toStartOf="@+id/tvProductName"
             app:layout_constraintTop_toBottomOf="@+id/tvProductName">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDisplayPrice"
                 android:layout_width="match_parent"
                 android:inputType="numberDecimal"
@@ -67,9 +67,9 @@
                 addThousandSeparator="@{0}"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_display_price" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvActualPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
             app:layout_constraintStart_toStartOf="@+id/tvDisplayPrice"
             app:layout_constraintTop_toBottomOf="@+id/tvDisplayPrice">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etActualPrice"
                 android:layout_width="match_parent"
                 android:inputType="numberDecimal"
@@ -87,9 +87,9 @@
                 addThousandSeparator="@{0}"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_actual_price" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvQuantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -99,16 +99,16 @@
             app:layout_constraintStart_toStartOf="@+id/tvActualPrice"
             app:layout_constraintTop_toBottomOf="@+id/tvActualPrice">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etInitialStock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:text="@={vm.initialStock}"
                 android:hint="@string/label_stock" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvMinQuantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -118,17 +118,17 @@
             app:layout_constraintStart_toStartOf="@+id/tvQuantity"
             app:layout_constraintTop_toBottomOf="@+id/tvQuantity">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etMinStock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:text="@={vm.minStock}"
                 android:hint="@string/label_min_stock" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 
 

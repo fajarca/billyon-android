@@ -1,6 +1,6 @@
 package co.id.billyon.db.entity
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import co.id.billyon.util.Converters
 
 @Entity(tableName = "cart_products",

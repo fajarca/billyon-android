@@ -1,8 +1,8 @@
 package co.id.billyon.db.entity.join
 
-import android.arch.persistence.room.Embedded
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.Relation
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.Relation
 import co.id.billyon.db.entity.CartProducts
 import co.id.billyon.db.entity.Carts
 

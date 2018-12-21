@@ -14,7 +14,7 @@
             type="co.id.billyon.db.entity.join.ProductsAndCartProduct" />
     </data>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/radius4dp"
@@ -24,7 +24,7 @@
         android:layout_marginTop="@dimen/margin8dp"
         android:background="@color/grey_500">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutProduct"
             android:layout_width="match_parent"
             android:clickable="true"
@@ -102,8 +102,8 @@
                 app:layout_constraintVertical_bias="0.0"
                 bind:product="@{product}" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </layout>

@@ -1,8 +1,8 @@
 package co.id.billyon.di
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton

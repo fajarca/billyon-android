@@ -1,6 +1,6 @@
 package co.id.billyon.util
 
-import android.arch.persistence.room.TypeConverter
+import androidx.room.TypeConverter
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*

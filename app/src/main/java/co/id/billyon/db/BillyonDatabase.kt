@@ -1,8 +1,8 @@
 package co.id.billyon.db
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.TypeConverters
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import co.id.billyon.db.dao.*
 import co.id.billyon.db.dao.join.CartsAndCartProductsDao
 import co.id.billyon.db.entity.CartProducts

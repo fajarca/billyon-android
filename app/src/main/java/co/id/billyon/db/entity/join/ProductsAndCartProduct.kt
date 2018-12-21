@@ -1,6 +1,6 @@
 package co.id.billyon.db.entity.join
 
-import android.arch.persistence.room.ColumnInfo
+import androidx.room.ColumnInfo
 
 
 data class ProductsAndCartProduct(
