@@ -4,7 +4,9 @@ import androidx.room.*
 import co.id.billyon.db.entity.Category
 import co.id.billyon.db.entity.Products
 import co.id.billyon.db.entity.join.ProductsAndCartProduct
+import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface ProductsDao {
@@ -19,10 +21,10 @@ interface ProductsDao {
     fun getProductByCategoryId(categoryId : Int) : Flowable<List<ProductsAndCartProduct>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(product: Products)
+    fun insert(product: Products) : Single<Long>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(products: List<Products>)
+    fun insertAll(products: List<Products>) : Single<List<Long>>
 
     @Delete
     fun delete(product: Products)
@@ -31,6 +33,6 @@ interface ProductsDao {
     fun deleteAll()
 
     @Update
-    fun update(product: Products)
+    fun update(product: Products) : Completable
 
 }

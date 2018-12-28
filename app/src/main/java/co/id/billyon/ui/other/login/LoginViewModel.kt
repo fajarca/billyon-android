@@ -10,6 +10,7 @@ import co.id.billyon.repository.cashier.login.LoginRepository
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -70,7 +71,7 @@ class LoginViewModel @Inject constructor(private val repository: LoginRepository
         compositeDisposable += repository.login(username!!, password!!)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext {
+                /*.doOnNext {
                     it?.let {
 
                         if (!it.error) {
@@ -91,8 +92,31 @@ class LoginViewModel @Inject constructor(private val repository: LoginRepository
                 }
                 .doOnComplete {
                     isLoading.set(false)
-                }
-                .subscribe()
+                }*/
+                .subscribeWith(object : DisposableObserver<LoginResponse>() {
+                    override fun onComplete() {
+                        isLoading.set(false)
+                    }
+
+                    override fun onNext(it: LoginResponse) {
+                        if (!it.error) {
+                            _data.value = it.data
+                            _isLoginSuccess.value = true
+
+                            repository.setLoggedIn(true)
+                            repository.setAsCashier(it.data.users.roleId == 1) //role id 1 = cashier
+                        }
+
+                        isLoading.set(false)
+
+
+                    }
+
+                    override fun onError(e: Throwable) {
+                        _isLoginSuccess.value = false
+                        isLoading.set(false)
+                    }
+                })
 
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorOnPrimary">@color/grey_900</color>
     <color name="colorPrimaryDark">@color/grey_400</color>
     <color name="colorAccent">#97DEC5</color>
 
@@ -47,4 +48,7 @@
     <color name="white">#fff</color>
 
     <color name="pale_green">#6BF3AD</color>
+
+    <color name="text_input_stroke_color">@color/grey_900</color>
+    <color name="text_input_hint_color">@color/grey_700</color>
 </resources>

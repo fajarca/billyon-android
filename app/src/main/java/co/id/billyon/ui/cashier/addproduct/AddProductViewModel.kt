@@ -20,6 +20,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableObserver
+import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject
@@ -50,16 +51,15 @@ class AddProductViewModel @Inject constructor(private val repository: ProductRep
 
     fun insertProduct(product: Products) {
         isInsertSuccessful.value = false
-        compositeDisposable += Completable.fromCallable { repository.insertProduct(product) }
+        compositeDisposable += repository.insertProduct(product)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableCompletableObserver() {
-                    override fun onComplete() {
+                .subscribeWith(object : DisposableSingleObserver<Long>() {
+                    override fun onSuccess(t: Long) {
                         isInsertSuccessful.value = true
 
                         val productList = mutableListOf(product)
                         uploadProduct(productList)
-
                     }
 
                     override fun onError(e: Throwable) {
@@ -120,19 +120,19 @@ class AddProductViewModel @Inject constructor(private val repository: ProductRep
 
     }
 
-    fun deleteProduct(product: Products) {
-        compositeDisposable += Completable.fromCallable { repository.delete(product) }
+   /* fun deleteProduct(product: Products) {
+        compositeDisposable += repository.delete(product)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
     }
 
     fun deleteAllProduct() {
-        compositeDisposable += Completable.fromCallable { repository.deleteAll() }
+        compositeDisposable += repository.deleteAll()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { }
-    }
+                .subscribe()
+    }*/
 
     fun validateAddProduct() {
 
