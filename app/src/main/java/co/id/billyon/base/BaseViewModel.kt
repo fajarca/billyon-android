@@ -12,6 +12,6 @@ abstract class BaseViewModel : ViewModel() {
         super.onCleared()
     }
 
-    fun getCompositeDisposable() = mCompositeDisposable
+    fun getCompositeDisposable() = mCompositeDisposable 
 
 }
