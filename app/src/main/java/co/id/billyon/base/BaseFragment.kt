@@ -22,8 +22,8 @@ abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    lateinit var mViewDataBinding: B
-    lateinit var mViewModel: V
+    private lateinit var mViewDataBinding: B
+    private lateinit var mViewModel: V
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
