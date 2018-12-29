@@ -14,12 +14,7 @@ import javax.inject.Inject
 
 class CartFragment : BaseFragment<FragmentCartBinding, CartViewModel>() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    override fun getVmFactory(): ViewModelProvider.Factory {
-        return viewModelFactory
-    }
 
     override fun getLayoutResourceId(): Int {
         return R.layout.fragment_cart
@@ -36,10 +31,7 @@ class CartFragment : BaseFragment<FragmentCartBinding, CartViewModel>() {
         getViewModel().sayO()
     }
 
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
+
 
 
 }

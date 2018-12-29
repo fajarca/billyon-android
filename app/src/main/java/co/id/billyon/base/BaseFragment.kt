@@ -19,12 +19,15 @@ import javax.inject.Inject
 
 abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
     lateinit var mViewDataBinding: B
     lateinit var mViewModel: V
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mViewModel = ViewModelProviders.of(this, getVmFactory()).get(getViewModelClass())
+        mViewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModelClass())
         mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutResourceId(), container, false)
         mViewDataBinding.executePendingBindings()
         return mViewDataBinding.root
@@ -33,7 +36,6 @@ abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
     @LayoutRes
     abstract fun getLayoutResourceId(): Int
     abstract fun getViewModelClass() : Class<V>
-    abstract fun getVmFactory() : ViewModelProvider.Factory
 
     fun getDataBinding(): B {
         return mViewDataBinding
@@ -43,5 +45,9 @@ abstract class BaseFragment<B : ViewDataBinding, V : ViewModel> : Fragment() {
         return mViewModel
     }
 
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
 
 }
