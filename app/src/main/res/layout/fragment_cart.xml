@@ -4,6 +4,9 @@
 
     <data>
         <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="co.id.billyon.ui.cashier.cart.CartViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

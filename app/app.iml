@@ -245,6 +245,7 @@
     <orderEntry type="library" name="Gradle: io.reactivex.rxjava2:rxjava:2.1.8@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.asynclayoutinflater:asynclayoutinflater-1.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.sf.kxml:kxml2:2.3.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.jakewharton.timber:timber-4.5.1" level="project" />
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout-2.0.0-alpha2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.dagger:dagger:2.15@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.activity:activity-1.0.0-alpha02" level="project" />

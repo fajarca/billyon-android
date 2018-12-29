@@ -4,11 +4,12 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import co.id.billyon.base.BaseViewModel
 import co.id.billyon.repository.cashier.category.CategoryRepository
+import timber.log.Timber
 import javax.inject.Inject
 
 class CartViewModel @Inject constructor(private val repository: CategoryRepository) : BaseViewModel() {
 
     fun sayO() {
-        Log.v("TAG", "TAG");
+        Timber.d("Ouch")
     }
 }
