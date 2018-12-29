@@ -84,23 +84,22 @@
                 android:id="@+id/contentQuantityPicker"
                 layout="@layout/quantity_picker"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/btnAdd"
                 app:layout_constraintEnd_toEndOf="@+id/tvProductPrice"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
+                app:layout_constraintTop_toTopOf="@+id/btnAdd"
                 bind:product="@{product}" />
 
-            <include
-                android:id="@+id/contentQuantityPickerButton"
-                layout="@layout/quantity_picker_button"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
-                app:layout_constraintEnd_toEndOf="@+id/tvProductPrice"
-                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
-                app:layout_constraintVertical_bias="0.0"
-                bind:product="@{product}" />
+                android:layout_marginBottom="8dp"
+                android:text="@string/label_add"
+                app:icon="@drawable/ic_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/contentQuantityPicker"
+                app:layout_constraintTop_toBottomOf="@+id/ivProduct" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -39,9 +39,9 @@ class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>
             var current = binding.contentQuantityPicker.etCounter.text.toString().trim().toInt()
 
             listener?.let {
-                binding.contentQuantityPickerButton.layoutAdd.setOnClickListener {
+                binding.btnAdd.setOnClickListener {
                     listener.onAddProductPressed(product, position)
-                    binding.contentQuantityPickerButton.layoutAdd.visibility = View.GONE
+                    binding.btnAdd.visibility = View.INVISIBLE
                     binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.VISIBLE
                 }
                 binding.contentQuantityPicker.ivAdd.setOnClickListener {
@@ -62,7 +62,7 @@ class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>
 
                     if (current == 0 || current < 0) {
                         listener.onRemoveProductPressed(product)
-                        binding.contentQuantityPickerButton.layoutAdd.visibility = View.VISIBLE
+                        binding.btnAdd.visibility = View.VISIBLE
                         binding.contentQuantityPicker.layoutQuantityPicker.visibility = View.GONE
                     }
 
@@ -80,11 +80,11 @@ class ProductsRecyclerAdapter(private var products: List<ProductsAndCartProduct>
 
 
         fun showAddToCart() {
-            binding.contentQuantityPickerButton.layoutAdd.visibility = View.VISIBLE
+            binding.btnAdd.visibility = View.VISIBLE
         }
 
         fun hideAddToCart() {
-            binding.contentQuantityPickerButton.layoutAdd.visibility = View.GONE
+            binding.btnAdd.visibility = View.INVISIBLE
         }
 
         fun showQuantityPicker(quantity: Int) {
