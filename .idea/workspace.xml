@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="CMakeSettings">
@@ -16,26 +16,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c19778c5-ab5e-42d3-99b5-8ce3b575e180" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/base/BaseFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/base/BaseViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/cart/CartFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/cart/CartViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cart.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/ProductsDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/ProductsDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/login/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/login/LoginViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/util/Constant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/util/Constant.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_add_product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_add_product.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_product.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_total_price.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_total_price.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rv_item_category.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rv_item_category.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rv_item_product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rv_item_product.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/FragmentModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/FragmentModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/ViewModelModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/ViewModelModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -71,8 +70,8 @@
       <file leaf-file-name="ProductListFragment.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+            <state relative-caret-position="225">
+              <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
               <folding>
                 <element signature="e#43#1044#0" expanded="true" />
               </folding>
@@ -80,35 +79,65 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_product_list.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_product_list.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="CartViewModel.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/cart/CartViewModel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+            <state relative-caret-position="150">
+              <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+              <folding>
+                <element signature="e#39#233#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout_total_price.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_total_price.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="FragmentModule.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/FragmentModule.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="59" column="57" selection-start-line="59" selection-start-column="57" selection-end-line="59" selection-end-column="57" />
+            <state relative-caret-position="135">
+              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <file leaf-file-name="ViewModelModule.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/ViewModelModule.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="38" column="87" selection-start-line="38" selection-start-column="87" selection-end-line="38" selection-end-column="87" />
+            <state relative-caret-position="570">
+              <caret line="50" column="72" selection-start-line="50" selection-start-column="72" selection-end-line="50" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseViewModel.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/base/BaseViewModel.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+              <folding>
+                <element signature="e#28#115#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CartFragment.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/cart/CartFragment.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+              <folding>
+                <element signature="e#41#307#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseFragment.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/base/BaseFragment.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -4429,14 +4458,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/join/CategoryAndProductsDao.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/dashboard/DashboardLocalDataSource.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/BillyonDatabase.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/DataSourceModule.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/component/AppComponent.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/RepositoryModule.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/CategoryDao.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/model/CategoryRequest.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/dashboard/CategoryRemoteDataSource.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/dashboard/CategoryRepository.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_category.xml" />
@@ -4454,7 +4475,6 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/util/BillyonBindingAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/adapter/ProductsRecyclerAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/richview/BillyonTextInputLayout.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/addcategory/AddCategoryFragment.kt" />
@@ -4469,7 +4489,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/owner/SalesReportFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_add_product.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_product.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/dao/ProductsDao.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductViewModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" />
@@ -4480,13 +4499,22 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/rv_item_category.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_total_price.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/CartFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_cart.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/base/BaseViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/FragmentModule.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/base/BaseFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/ViewModelModule.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/cart/CartViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/cart/CartFragment.kt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="203" />
     <option name="width" value="1440" />
-    <option name="height" value="832" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -4496,6 +4524,54 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="di" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="billyon" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="di" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -4551,22 +4627,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="billyon-android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="sty&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/values/styles.xml&#10;ProductList&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt&#10;rv_&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/layout/rv_item_category.xml&#10;Constant&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/Constant.kt&#10;color&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/values/colors.xml&#10;LoginVie&#9;null&#9;null&#10;fragment&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/layout/fragment_login.xml&#10;style&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/values/styles.xml&#10;MainAc&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt&#10;main_na&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/navigation/main_nav.xml&#10;addpr&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductViewModel.kt&#10;Dao&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/db/dao/ProductsDao.kt&#10;activity_ma&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/layout/activity_main.xml&#10;LoginFr&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/login/LoginFragment.kt&#10;grad&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/build.gradle&#10;AddPr&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductFragment.kt&#10;AddSt&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/owner/AddStoreFragment.kt&#10;AppCom&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/di/component/AppComponent.kt&#10;FragmentMod&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/di/module/FragmentModule.kt&#10;Billy&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/BillyonBindingAdapter.kt&#10;content_add&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/layout/content_add_product.xml&#10;Dash&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardFragment.kt&#10;FragmentPr&#9;PSI&#9;JAVA://co.id.billyon.databinding.FragmentProductListBinding&#10;add&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductFragment.kt&#10;cons&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/Constant.kt&#10;main&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/navigation/main_nav.xml&#10;ProductRe&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/repository/cashier/product/ProductRepository.kt&#10;Dashbo&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardViewModel.kt&#10;AddCate&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addcategory/AddCategoryViewModel.kt&#10;CategoryRe&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/repository/cashier/category/CategoryRepository.kt&#10;CategoryVi&#9;null&#9;null&#10;Consta&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/Constant.kt&#10;Api&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/api/ApiService.kt&#10;BillyonB&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/BillyonBindingAdapter.kt&#10;Bil&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/db/BillyonDatabase.kt&#10;ProductLis&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt&#10;Dashboard&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardViewModel.kt&#10;Dashboa&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardFragment.kt&#10;Login&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/login/LoginFragment.kt&#10;Main&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt&#10;AddProductFra&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductFragment.kt&#10;Dashb&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardFragment.kt&#10;LoginF&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/login/LoginFragment.kt&#10;main_n&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/navigation/main_nav.xml&#10;DashboardView&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardViewModel.kt&#10;ADdPR&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductViewModel.kt&#10;LoginView&#9;null&#9;null&#10;ApiS&#9;null&#9;null&#10;dash&#9;null&#9;null&#10;menu&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/menu/menu_dashboard.xml" />
+    <property name="SearchEverywhereHistoryKey" value="BaseV&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/base/BaseViewModel.kt&#10;View&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardViewModel.kt&#10;FragmentMo&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/di/module/FragmentModule.kt&#10;FragmentMod&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/di/module/FragmentModule.kt&#10;Main&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt&#10;main&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/navigation/main_nav.xml&#10;ProductList&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt&#10;Cart&#9;null&#9;null&#10;sty&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/values/styles.xml&#10;rv_&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/layout/rv_item_category.xml&#10;Constant&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/Constant.kt&#10;color&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/values/colors.xml&#10;LoginVie&#9;null&#9;null&#10;fragment&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/layout/fragment_login.xml&#10;style&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/values/styles.xml&#10;MainAc&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt&#10;main_na&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/navigation/main_nav.xml&#10;addpr&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductViewModel.kt&#10;Dao&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/db/dao/ProductsDao.kt&#10;activity_ma&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/layout/activity_main.xml&#10;LoginFr&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/login/LoginFragment.kt&#10;grad&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/build.gradle&#10;AddPr&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductFragment.kt&#10;AddSt&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/owner/AddStoreFragment.kt&#10;AppCom&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/di/component/AppComponent.kt&#10;Billy&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/BillyonBindingAdapter.kt&#10;content_add&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/layout/content_add_product.xml&#10;Dash&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardFragment.kt&#10;FragmentPr&#9;PSI&#9;JAVA://co.id.billyon.databinding.FragmentProductListBinding&#10;add&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductFragment.kt&#10;cons&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/Constant.kt&#10;ProductRe&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/repository/cashier/product/ProductRepository.kt&#10;Dashbo&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardViewModel.kt&#10;AddCate&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addcategory/AddCategoryViewModel.kt&#10;CategoryRe&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/repository/cashier/category/CategoryRepository.kt&#10;CategoryVi&#9;null&#9;null&#10;Consta&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/Constant.kt&#10;Api&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/api/ApiService.kt&#10;BillyonB&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/util/BillyonBindingAdapter.kt&#10;Bil&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/db/BillyonDatabase.kt&#10;ProductLis&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt&#10;Dashboard&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardViewModel.kt&#10;Dashboa&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardFragment.kt&#10;Login&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/login/LoginFragment.kt&#10;AddProductFra&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductFragment.kt&#10;Dashb&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardFragment.kt&#10;LoginF&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/other/login/LoginFragment.kt&#10;main_n&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/res/navigation/main_nav.xml&#10;DashboardView&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardViewModel.kt&#10;ADdPR&#9;FILE&#9;file:///Users/fajarchaerilazhar/Downloads/billyon-android/app/src/main/java/co/id/billyon/ui/cashier/addproduct/AddProductViewModel.kt" />
     <property name="algorithm" value="Scalr" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
@@ -4577,31 +4642,31 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="method" value="Automatic" />
     <property name="resolutions" value="XHDPI&#10;MDPI&#10;XXXHDPI&#10;HDPI&#10;XXHDPI" />
-    <property name="settings.editor.selected.configurable" value="gradle.compiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="sourceResolution" value="XHDPI" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="co.id.billyon.ui.cashier.cart" />
+      <recent name="co.id.billyon.model.response" />
+      <recent name="co.id.billyon.model.request" />
+      <recent name="co.id.billyon.db.dao.join" />
+      <recent name="co.id.billyon.db.entity.join" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/menu" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/addcategory" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/anim" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="co.id.billyon.di" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/dashboard" />
       <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/register" />
       <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/owner" />
       <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/di" />
       <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui" />
-    </key>
-    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="co.id.billyon.model.response" />
-      <recent name="co.id.billyon.model.request" />
-      <recent name="co.id.billyon.db.dao.join" />
-      <recent name="co.id.billyon.db.entity.join" />
-      <recent name="co.id.billyon.repository.cashier.product" />
-    </key>
-    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
-      <recent name="co.id.billyon.di" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/menu" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/addcategory" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/anim" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -4734,37 +4799,37 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.32969698" />
-      <window_info id="Build Variants" order="2" sideWeight="0.5050505" side_tool="true" weight="0.24964234" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5007153" side_tool="true" weight="0.7163636" />
-      <window_info anchor="bottom" id="Logcat" order="7" sideWeight="0.49928468" weight="0.36727273" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.6678788" />
-      <window_info anchor="right" id="Anko Layout Preview" order="3" sideWeight="0.4969697" weight="0.3297568" />
-      <window_info id="Structure" order="1" sideWeight="0.5030303" side_tool="true" weight="0.24964234" />
-      <window_info anchor="right" id="Device File Explorer" order="3" sideWeight="0.5030303" side_tool="true" weight="0.3297568" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4985694" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
+      <window_info id="Build Variants" order="2" sideWeight="0.5050505" side_tool="true" weight="0.24964234" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info active="true" anchor="right" id="Preview" order="4" sideWeight="0.49939394" visible="true" weight="0.39055794" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5007153" side_tool="true" weight="0.7163636" />
+      <window_info anchor="right" id="Preview" order="4" sideWeight="0.49939394" weight="0.39055794" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32969698" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32969698" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32969698" />
+      <window_info anchor="bottom" id="Logcat" order="7" sideWeight="0.49928468" weight="0.36727273" />
       <window_info id="Captures" order="2" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4949495" weight="0.24964234" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32969698" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4949495" visible="true" weight="0.24964234" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.6678788" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.3297568" />
+      <window_info id="Structure" order="1" sideWeight="0.5030303" side_tool="true" weight="0.24964234" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4985694" weight="0.4" />
+      <window_info anchor="right" id="Device File Explorer" order="3" sideWeight="0.5030303" side_tool="true" weight="0.3297568" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Assistant" order="4" weight="0.3297568" />
+      <window_info active="true" anchor="right" id="Anko Layout Preview" order="3" sideWeight="0.4969697" visible="true" weight="0.3297568" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32969698" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Build" order="7" weight="0.6680272" />
@@ -4808,124 +4873,23 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/login/LoginViewModel.kt</url>
-          <line>97</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/cart/CartViewModel.kt</url>
+          <line>11</line>
           <properties />
-          <option name="timeStamp" value="216" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/login/LoginViewModel.kt</url>
-          <line>101</line>
-          <properties />
-          <option name="timeStamp" value="217" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/login/LoginViewModel.kt</url>
-          <line>115</line>
-          <properties />
-          <option name="timeStamp" value="219" />
+          <option name="timeStamp" value="222" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="220" />
+      <option name="time" value="223" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/repository/cashier/category/CategoryRepository.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/addcategory/AddCategoryViewModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardViewModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="50" column="18" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="50" selection-end-column="18" />
-          <folding>
-            <element signature="e#44#747#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/model/request/AddProductRequest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.3.0/76f3c69879d3e01c082f49d8661c5590838148e1/retrofit-2.3.0-sources.jar!/retrofit2/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/db/entity/Products.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="944">
-          <caret line="64" column="8" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/productionDebug/dataBindingGenBaseClassesProductionDebug/out/co/id/billyon/databinding/FragmentProductListBinding.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-435">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2012">
-          <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/FragmentModule.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="62" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/util/BillyonBindingAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="98" column="50" selection-start-line="98" selection-start-column="50" selection-end-line="98" selection-end-column="50" />
-          <folding>
-            <element signature="e#28#415#0" expanded="true" />
-            <element signature="e#1681#1734#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4961,9 +4925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
-          <folding>
-            <element signature="e#46#1093#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5074,26 +5035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1711">
-          <caret line="5" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="38" column="37" lean-forward="true" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-          <folding>
-            <element signature="e#37#853#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/material-1.1.0-alpha02.aar/6d38e6bca77e88de762849f10fe62c4c/res/values/values.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
@@ -5194,14 +5135,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_button_deep_orange.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
-          <folding>
-            <element signature="e#43#1044#0" expanded="true" />
-          </folding>
-        </state>
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_product_list.xml">
@@ -5214,28 +5153,144 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/rounded_button_deep_orange.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="38" column="87" selection-start-line="38" selection-start-column="87" selection-end-line="38" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_total_price.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="59" column="57" selection-start-line="59" selection-start-column="57" selection-end-line="59" selection-end-column="57" />
+        <state relative-caret-position="719">
+          <caret line="51" column="62" selection-start-line="51" selection-start-column="62" selection-end-line="51" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="87" selection-start-line="38" selection-start-column="87" selection-end-line="38" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListViewModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_store.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/other/main/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_cart.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/dashboard/DashboardViewModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/RepositoryModule.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/ViewModelFactory.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/base/BaseViewModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding>
+            <element signature="e#28#115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/ViewModelModule.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="50" column="72" selection-start-line="50" selection-start-column="72" selection-end-line="50" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/di/module/FragmentModule.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/product/ProductListFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+          <folding>
+            <element signature="e#43#1044#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/cart/CartViewModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="e#39#233#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/ui/cashier/cart/CartFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding>
+            <element signature="e#41#307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/id/billyon/base/BaseFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
         </state>
       </provider>
     </entry>

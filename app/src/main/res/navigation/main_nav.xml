@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/fragmentLogin">
+    app:startDestination="@id/cartFragment">
 
     <fragment
         android:id="@+id/fragmentDashboard"
@@ -158,7 +158,18 @@
         <action
             android:id="@+id/actionLaunchAddProduct"
             app:destination="@id/fragmentAddProduct" />
+        <action
+            android:id="@+id/actionLaunchCartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/fragmentProductList" />
 
     </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="co.id.billyon.ui.cashier.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
 
 </navigation>
