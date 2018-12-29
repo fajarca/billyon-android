@@ -1,8 +1,8 @@
 package co.id.billyon.repository.cashier.carts
 
 import co.id.billyon.db.dao.CartProductsDao
-import co.id.billyon.db.dao.join.CartsAndCartProductsDao
 import co.id.billyon.db.dao.CartsDao
+import co.id.billyon.db.dao.join.CartsAndCartProductsDao
 import co.id.billyon.db.entity.CartProducts
 import co.id.billyon.db.entity.Carts
 import javax.inject.Inject

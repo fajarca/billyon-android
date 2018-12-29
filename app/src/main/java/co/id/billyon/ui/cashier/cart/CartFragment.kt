@@ -3,6 +3,7 @@ package co.id.billyon.ui.cashier.cart
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import co.id.billyon.R
 import co.id.billyon.base.BaseFragment
 import co.id.billyon.databinding.FragmentCartBinding
@@ -22,7 +23,18 @@ class CartFragment : BaseFragment<FragmentCartBinding, CartViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getDataBinding().tvTest.setText("Ha")
-        getViewModel().sayO()
+
+        val args = CartFragmentArgs.fromBundle(arguments)
+        val cartId = args.cartId
+
+        getViewModel().getAllProducts(cartId)
+        getViewModel().products.observe(this,
+                Observer {
+                    it?.let {
+
+                    }
+                }
+        )
     }
 
 

@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         if (viewModel.isLoggedIn) {
             if (viewModel.isCashier) {
                 binding.bottomNavigationView.inflateMenu(R.menu.menu_cashier)
-                graph.startDestination = R.id.cartFragment
+                graph.startDestination = R.id.fragmentCashierDashboard
             } else {
                 binding.bottomNavigationView.inflateMenu(R.menu.menu_owner)
                 graph.startDestination = R.id.fragmentDashboard
@@ -95,6 +95,11 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
             }
 
             R.id.fragmentProductList -> {
+                toolbar.visibility = View.VISIBLE
+                binding.bottomNavigationView.visibility = View.GONE
+            }
+
+            R.id.fragmentCart -> {
                 toolbar.visibility = View.VISIBLE
                 binding.bottomNavigationView.visibility = View.GONE
             }

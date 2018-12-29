@@ -7,7 +7,9 @@
     <data>
 
         <import type="android.view.View" />
-
+        <variable
+            name="fragment"
+            type="co.id.billyon.ui.cashier.product.ProductListFragment"/>
         <variable
             name="vm"
             type="co.id.billyon.ui.cashier.product.ProductListViewModel" />
@@ -34,7 +36,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            bind:vm="@{vm}" />
+            bind:vm="@{vm}"
+            bind:fragment="@{fragment}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

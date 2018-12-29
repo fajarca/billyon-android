@@ -16,6 +16,8 @@
     <string name="label_checkout">Checkout</string>
     <string name="label_stock">Initial stock</string>
     <string name="label_min_stock">Minimal stock</string>
+    <string name="label_add">Add</string>
+    <string name="label_cart">Cart</string>
 
     <string name="hint_password">Password</string>
     <string name="hint_email">Email</string>
@@ -46,7 +48,7 @@
     <string name="hint_category_name">Category Name</string>
     <string name="cancel">Cancel</string>
     <string name="enter_quantity">Enter Quantity</string>
-    <string name="label_add">Add</string>
+
 
 
 </resources>

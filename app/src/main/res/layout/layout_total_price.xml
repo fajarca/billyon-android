@@ -7,6 +7,9 @@
         <import type="android.view.View"/>
         <import type="co.id.billyon.util.Utils"/>
         <variable
+            name="fragment"
+            type="co.id.billyon.ui.cashier.product.ProductListFragment"/>
+        <variable
             name="vm"
             type="co.id.billyon.ui.cashier.product.ProductListViewModel"/>
     </data>
@@ -58,6 +61,7 @@
                 android:includeFontPadding="false"
                 android:minHeight="48dp"
                 android:text="@string/label_checkout"
+                android:onClick="@{()->vm.findActiveCartId()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

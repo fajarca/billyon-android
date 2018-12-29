@@ -9,6 +9,9 @@ import co.id.billyon.db.dao.CategoryDao
 import co.id.billyon.db.dao.ProductsDao
 import co.id.billyon.db.dao.join.CartsAndCartProductsDao
 import co.id.billyon.di.NetManager
+import co.id.billyon.repository.cashier.cartproducts.CartProductsLocalDataSource
+import co.id.billyon.repository.cashier.cartproducts.CartProductsRemoteDataSource
+import co.id.billyon.repository.cashier.cartproducts.CartProductsRepository
 import co.id.billyon.repository.cashier.carts.CartsLocalDataSource
 import co.id.billyon.repository.cashier.carts.CartsRemoteDataSource
 import co.id.billyon.repository.cashier.carts.CartsRepository
@@ -84,6 +87,15 @@ class RepositoryModule {
     fun providesCartsRemoteDataSource(apiService: ApiService) = CartsRemoteDataSource(apiService)
 
 
+    @Provides
+    @Singleton
+    fun providesCartProductsLocalDataSource(cartProductsDao: CartProductsDao) = CartProductsLocalDataSource(cartProductsDao)
+
+    @Provides
+    @Singleton
+    fun providesCartProductsRemoteDataSource(apiService: ApiService) = CartProductsRemoteDataSource(apiService)
+
+
     //Repository
     @Provides
     @Singleton
@@ -101,4 +113,8 @@ class RepositoryModule {
     @Provides
     @Singleton
     fun provideCartsRepository(localDataSource : CartsLocalDataSource, remoteDataSource: CartsRemoteDataSource, netManager: NetManager) = CartsRepository(localDataSource, remoteDataSource, netManager)
+
+    @Provides
+    @Singleton
+    fun provideCartProductRepository(localDataSource : CartProductsLocalDataSource, remoteDataSource: CartProductsRemoteDataSource, netManager: NetManager) = CartProductsRepository(localDataSource, remoteDataSource, netManager)
 }

@@ -16,9 +16,11 @@ import co.id.billyon.db.entity.ItemTotalPrice
 import co.id.billyon.db.entity.Products
 import co.id.billyon.db.entity.join.CartsAndCartProducts
 import co.id.billyon.db.entity.join.ProductsAndCartProduct
+import co.id.billyon.model.ActiveCartUiModel
 import co.id.billyon.repository.cashier.carts.CartsRepository
 import co.id.billyon.repository.cashier.product.ProductRepository
 import co.id.billyon.util.Utils
+import co.id.billyon.util.extensions.default
 import co.id.billyon.util.extensions.plusAssign
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -43,12 +45,16 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
 
     private var _isQuantityValid = MutableLiveData<ProductUIModel>()
     private var _isDialogDismissed = MutableLiveData<Boolean>()
+    private var _activeCartId = MutableLiveData<ActiveCartUiModel>()
 
     val isQuantityValid: LiveData<ProductUIModel>
         get() = _isQuantityValid
 
     val isDialogDismissed : LiveData<Boolean>
         get() = _isDialogDismissed
+
+    val activeCartId: LiveData<ActiveCartUiModel>
+        get() = _activeCartId
 
     var quantity = ObservableField<String>()
     var errorQuantity = ObservableField<String>()
@@ -75,6 +81,21 @@ class ProductListViewModel @Inject constructor(private val productRepo: ProductR
                     //Active cart not found. Create a new one
                     val cart = Carts(1, false, true, Utils.getCurrentTimeStamp(), Utils.getCurrentTimeStamp())
                     createCart(cart, productId, quantity)
+                }
+                .subscribe()
+    }
+
+    fun findActiveCartId() {
+        compositeDisposable += cartRepo.findActiveCartId(false)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess {
+                    //Active cart id found, pass the cart id to the view
+                    _activeCartId.value = ActiveCartUiModel(true,it)
+                }
+                .doOnComplete {
+                    //Active cart id not found
+                    _activeCartId.value = ActiveCartUiModel(false,-1)
                 }
                 .subscribe()
     }

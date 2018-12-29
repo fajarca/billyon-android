@@ -8,18 +8,6 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="cartFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="1174" />
-                            <option name="y" value="-78" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="fragmentAddCategory">
                     <value>
                       <LayoutPositions>
@@ -72,6 +60,18 @@
                           <Point>
                             <option name="x" value="1044" />
                             <option name="y" value="301" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="fragmentCart">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1257" />
+                            <option name="y" value="-43" />
                           </Point>
                         </option>
                       </LayoutPositions>

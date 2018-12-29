@@ -56,6 +56,7 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
 
         binding.apply {
             vm = viewModel
+            fragment = this@ProductListFragment
 
             binding.executePendingBindings()
 
@@ -89,6 +90,14 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
                         }
                     }
                 })
+
+        viewModel.activeCartId.observe(this,
+                Observer {
+                    if (it.success) {
+                        launchCartFragment(it.cartId.toInt())
+                    }
+                }
+        )
 
         val passedArgument = AddProductFragmentArgs.fromBundle(arguments)
         categoryId = passedArgument.categoryId
@@ -142,6 +151,12 @@ class ProductListFragment : Fragment(), ProductsRecyclerAdapter.OnProductClickLi
 
         dialog = builder.create()
         dialog.show()
+    }
+
+    fun launchCartFragment(cartId : Int) {
+        val action = ProductListFragmentDirections.actionLaunchCartFragment()
+        action.setCartId(cartId)
+        findNavController().navigate(action)
     }
 
     private fun dismissDialog() {
