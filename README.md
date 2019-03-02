@@ -1,8 +1,8 @@
 # billyon-android
-a sample project which implementing modern android development and architecture component
+a self-project which implementing modern android development and architecture component
 
 Tech stack : 
-- Model-View-ViewModel design pattern
+- Model-View-ViewModel (MVVM) design pattern
 - AndroidX
 - Kotlin
 - Lifecycle Aware Component
