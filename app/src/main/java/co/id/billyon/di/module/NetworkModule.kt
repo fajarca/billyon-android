@@ -1,7 +1,6 @@
 package co.id.billyon.di.module
 
 import android.app.Application
-import co.id.billyon.api.ApiService
 import co.id.billyon.util.BASE_URL
 import dagger.Module
 import dagger.Provides

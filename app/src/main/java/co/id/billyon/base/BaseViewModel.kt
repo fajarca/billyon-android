@@ -1,6 +1,5 @@
 package co.id.billyon.base
 
-import android.database.Observable
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
